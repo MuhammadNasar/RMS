@@ -37,6 +37,7 @@ coverage/
 /nbproject/
 tmp/
 temp/
+/restaurant-kot/manifest.mf
 $RECYCLE.BIN/
 
 .DS_Store
