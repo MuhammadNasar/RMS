@@ -26,6 +26,19 @@ tmp/
 temp/
 $RECYCLE.BIN/
 
+.idea/
+.sourcemaps/
+.sass-cache/
+.tmp/
+.versions/
+coverage/
+/dist/
+/build/
+/nbproject/
+tmp/
+temp/
+$RECYCLE.BIN/
+
 .DS_Store
 Thumbs.db
 UserInterfaceState.xcuserstate
