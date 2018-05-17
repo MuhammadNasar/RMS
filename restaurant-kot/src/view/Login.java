@@ -68,7 +68,6 @@ public class Login extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1370, 700));
         setPreferredSize(new java.awt.Dimension(911, 600));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\ibrar\\Desktop\\login_bg.jpg")); // NOI18N
         jLabel2.setLabelFor(jLabel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
