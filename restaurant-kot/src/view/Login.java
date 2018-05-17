@@ -5,8 +5,19 @@
  */
 package view;
 
+import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
+import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
+import javax.swing.JDesktopPane;
 import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 
 /**
  *
@@ -14,17 +25,31 @@ import javax.swing.JLabel;
  */
 public class Login extends javax.swing.JFrame {
 
+    private Image image;
+    private JLabel jLabel;
+    Image  img;
+    JDesktopPane desktopPane;
+     
+
+
     /**
      * Creates new form Login
      */
     public Login() {
         initComponents();
         
+
+       
+
         //this.setExtendedState(3);
         this.setExtendedState(MAXIMIZED_BOTH);
-        
-        this.setContentPane(new JLabel(new ImageIcon("src/images/login_bg.jpg")));
-    
+        setResizable(false);
+//             
+       try {
+            this.setIconImage(new ImageIcon(getClass().getResource("login_bg.jpg")).getImage());
+        } catch (Exception ex) {
+
+        }
     }
 
     /**
@@ -36,18 +61,25 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel2 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("RESTAURANT KOT");
+        setMinimumSize(new java.awt.Dimension(1370, 700));
+        setPreferredSize(new java.awt.Dimension(911, 600));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\ibrar\\Desktop\\login_bg.jpg")); // NOI18N
+        jLabel2.setLabelFor(jLabel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 478, Short.MAX_VALUE)
+            .addComponent(jLabel2)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 397, Short.MAX_VALUE)
+            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
@@ -89,5 +121,6 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
