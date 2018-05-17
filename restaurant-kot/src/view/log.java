@@ -30,7 +30,7 @@ public class log extends javax.swing.JFrame{
         jLabel.setBorder(new EmptyBorder(5, 5, 5, 5));
         jLabel.setLayout(new BorderLayout(0, 0));
         setContentPane(jLabel);
-        aaa destop=new aaa();
+        LoginSupportClass destop=new LoginSupportClass();
       jLabel.add(destop,BorderLayout.CENTER);
         
 

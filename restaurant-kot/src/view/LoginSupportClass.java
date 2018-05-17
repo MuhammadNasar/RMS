@@ -22,10 +22,10 @@ import javax.swing.plaf.BorderUIResource;
  *
  * @author ibrar
  */
-public class aaa extends JDesktopPane{
+public class LoginSupportClass extends JDesktopPane{
    
     protected void paintComponent(Graphics g){
-        Image image = new ImageIcon(this.getClass().getResource("login_bg.jpg")).getImage();
+        Image image = new ImageIcon("src/images/login_bg.jpg").getImage();
         try {
             Graphics2D g2d=(Graphics2D)g;
             double y=image.getHeight(null);
