@@ -6,17 +6,10 @@
 package view;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
-import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 /**
@@ -27,8 +20,8 @@ public class Login extends javax.swing.JFrame {
 
     private Image image;
     private JLabel jLabel;
-    Image  img;
-    JDesktopPane desktopPane;
+   // Image  img;
+  //  JDesktopPane desktopPane;
      
 
 
@@ -38,18 +31,25 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         
-
+      
        
-
-        //this.setExtendedState(3);
-        this.setExtendedState(MAXIMIZED_BOTH);
-        setResizable(false);
-//             
-       try {
-            this.setIconImage(new ImageIcon(getClass().getResource("login_bg.jpg")).getImage());
+        try {
+            setIconImage(new ImageIcon(getClass().getResource("logo_round.png")).getImage());
         } catch (Exception ex) {
+            ex.printStackTrace();
 
         }
+    
+
+       jLabel=new JLabel();
+        
+        jLabel.setBorder(new EmptyBorder(5, 5, 5, 5));
+        jLabel.setLayout(new BorderLayout(0, 0));
+        setContentPane(jLabel);
+        LoginSupportClass destop=new LoginSupportClass();
+      jLabel.add(destop,BorderLayout.CENTER);
+        
+
     }
 
     /**
@@ -65,8 +65,6 @@ public class Login extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("RESTAURANT KOT");
-        setMinimumSize(new java.awt.Dimension(1370, 700));
-        setPreferredSize(new java.awt.Dimension(911, 600));
 
         jLabel2.setLabelFor(jLabel2);
 

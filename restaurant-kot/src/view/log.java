@@ -25,6 +25,7 @@ public class log extends javax.swing.JFrame{
      */
     public log() {
         initComponents();
+        
         jLabel=new JLabel();
         
         jLabel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -33,9 +34,11 @@ public class log extends javax.swing.JFrame{
         LoginSupportClass destop=new LoginSupportClass();
       jLabel.add(destop,BorderLayout.CENTER);
         
+        Dimension dimemsion = Toolkit.getDefaultToolkit().getScreenSize();
+        setLocation(dimemsion.width / 2 - this.getSize().width / 2, dimemsion.height / 2 - this.getSize().height / 2);
 
         try {
-            this.setIconImage(new ImageIcon(getClass().getResource("src/view/login_bg.jpg")).getImage());
+            this.setIconImage(new ImageIcon(getClass().getResource("logo_round.png")).getImage());
         } catch (Exception ex) {
 
         }
