@@ -6,19 +6,15 @@
 package view;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.Toolkit;
 import javax.swing.ImageIcon;
-import javax.swing.JDesktopPane;
-import javax.swing.JLabel;
-import javax.swing.border.EmptyBorder;
+import javax.swing.JPanel;
 
 /**
  *
  * @author ibrar
  */
 public class log extends javax.swing.JFrame{
-    private JLabel jLabel;
+    private JPanel jLabel;
 
     /**
      * Creates new form log
@@ -26,9 +22,9 @@ public class log extends javax.swing.JFrame{
     public log() {
         initComponents();
         
-        jLabel=new JLabel();
+        jLabel=new JPanel();
         
-        jLabel.setBorder(new EmptyBorder(5, 5, 5, 5));
+        //jLabel.setBorder(new EmptyBorder(5, 5, 5, 5));
         jLabel.setLayout(new BorderLayout(0, 0));
         setContentPane(jLabel);
         LoginSupportClass destop=new LoginSupportClass();
