@@ -20,35 +20,26 @@ public class Login extends javax.swing.JFrame {
 
     private Image image;
     private JLabel jLabel;
-   // Image  img;
-  //  JDesktopPane desktopPane;
-     
-
 
     /**
      * Creates new form Login
      */
     public Login() {
         initComponents();
-        
-      
-       
+
         try {
             setIconImage(new ImageIcon(getClass().getResource("logo_round.png")).getImage());
         } catch (Exception ex) {
             ex.printStackTrace();
-
         }
-    
 
-       jLabel=new JLabel();
-        
+        jLabel = new JLabel();
+
         jLabel.setBorder(new EmptyBorder(5, 5, 5, 5));
         jLabel.setLayout(new BorderLayout(0, 0));
         setContentPane(jLabel);
-        LoginSupportClass destop=new LoginSupportClass();
-      jLabel.add(destop,BorderLayout.CENTER);
-        
+        LoginSupportClass destop = new LoginSupportClass();
+        jLabel.add(destop, BorderLayout.CENTER);
 
     }
 

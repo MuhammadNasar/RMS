@@ -9,6 +9,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDesktopPane;
@@ -19,7 +21,7 @@ import javax.swing.JTextField;
  *
  * @author ibrar
  */
-public class LoginSupportClass extends JDesktopPane{
+public class LoginSupportClass extends JDesktopPane  {
     private JTextField txtUserName;
     private JPasswordField txtPasswordField;
     private JButton btnLOgIn;
@@ -33,8 +35,8 @@ public class LoginSupportClass extends JDesktopPane{
             g2d.scale(getWidth()/x, getHeight()/y);
             g2d.drawImage(image, 0, 0, this);
             
-            txtUserName=new JTextField();
-            txtPasswordField =new JPasswordField();
+            txtUserName=new JTextField("User Name");
+            txtPasswordField =new JPasswordField("Password");
             btnLOgIn=new JButton();
             
             btnLOgIn.setSize(200, 100);
@@ -44,12 +46,22 @@ public class LoginSupportClass extends JDesktopPane{
             txtUserName.setVisible(true);
             txtPasswordField.setSize(500, 100);
             txtPasswordField.setLocation(100,680);
+            txtUserName.setFont(txtUserName.getFont().deriveFont(40.f));
+            txtUserName.setBackground(Color.BLACK);
+            txtUserName.setForeground(Color.WHITE);
             txtPasswordField.setVisible(true);
             btnLOgIn.setLocation(250, 800);
+             txtUserName.setColumns(30);
+          
+            txtPasswordField.setFont(txtPasswordField.getFont().deriveFont(40.f));
+            txtPasswordField.setBackground(Color.BLACK);
+            txtPasswordField.setForeground(Color.WHITE);
             btnLOgIn.setText("Log In");
+          
             btnLOgIn.setForeground(Color.white);
             btnLOgIn.setFont(btnLOgIn.getFont().deriveFont(40.0f));
             btnLOgIn.setBackground(new Color(210, 84, 0));
+           
             
             btnLOgIn.setVisible(true);
            this. add(txtUserName);
@@ -60,5 +72,5 @@ public class LoginSupportClass extends JDesktopPane{
         } catch (Exception e) {
         }
     }
-    
+
 }
