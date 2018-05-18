@@ -10,6 +10,7 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 /**
@@ -19,7 +20,7 @@ import javax.swing.border.EmptyBorder;
 public class Login extends javax.swing.JFrame {
 
     private Image image;
-    private JLabel jLabel;
+    private JPanel jLabel;
 
     /**
      * Creates new form Login
@@ -33,7 +34,7 @@ public class Login extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
-        jLabel = new JLabel();
+        jLabel = new JPanel();
 
         jLabel.setBorder(new EmptyBorder(5, 5, 5, 5));
         jLabel.setLayout(new BorderLayout(0, 0));
