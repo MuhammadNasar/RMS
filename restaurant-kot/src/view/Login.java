@@ -10,6 +10,8 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 /**
@@ -21,13 +23,14 @@ public class Login extends javax.swing.JFrame {
     private Image image;
     private JLabel jLabel;
 
+    private JTextField txtUserName;
     /**
      * Creates new form Login
      */
     public Login() {
         initComponents();
 
-        try {
+        /*try {
             setIconImage(new ImageIcon(getClass().getResource("../images/logo_round.png")).getImage());
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -40,7 +43,15 @@ public class Login extends javax.swing.JFrame {
         setContentPane(jLabel);
         LoginSupportClass destop = new LoginSupportClass();
         jLabel.add(destop, BorderLayout.CENTER);
-
+*/
+        //this.setContentPane(new JLabel(new ImageIcon("src/images/login_bg.jpg")));
+        this.setExtendedState(6);
+        txtUserName = new JTextField();
+        this.add(txtUserName);
+        txtUserName.setLocation(100, 100);
+        txtUserName.setVisible(true);
+        
+        //JOptionPane.showMessageDialog(this, "hello world");
     }
 
     /**
@@ -53,9 +64,11 @@ public class Login extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("RESTAURANT KOT");
+        setExtendedState(6);
 
         jLabel2.setLabelFor(jLabel2);
 
@@ -64,14 +77,20 @@ public class Login extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel2)
-                .addContainerGap(683, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(124, 124, 124)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(374, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel2)
-                .addContainerGap(545, Short.MAX_VALUE))
+                .addGap(75, 75, 75)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(398, Short.MAX_VALUE))
         );
 
         pack();
@@ -114,5 +133,6 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
