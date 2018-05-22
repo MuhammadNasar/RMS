@@ -6,12 +6,13 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.Image;
+import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
+import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 /**
@@ -21,7 +22,7 @@ import javax.swing.border.EmptyBorder;
 public class Login extends javax.swing.JFrame {
 
     private Image image;
-    private JLabel jLabel;
+    private JPanel jLabel;
 
     private JTextField txtUserName;
     /**
@@ -29,29 +30,27 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        
+         Dimension dimemsion = Toolkit.getDefaultToolkit().getScreenSize();
+        setLocation(dimemsion.width / 2 - this.getSize().width / 2, dimemsion.height / 2 - this.getSize().height / 2);
+       
 
-        /*try {
+        
+
+        try {
             setIconImage(new ImageIcon(getClass().getResource("../images/logo_round.png")).getImage());
         } catch (Exception ex) {
             ex.printStackTrace();
         }
 
-        jLabel = new JLabel();
+//        jLabel = new JPanel();
+//
+//        jLabel.setBorder(new EmptyBorder(5, 5, 5, 5));
+//        jLabel.setLayout(new BorderLayout(0, 0));
+//        setContentPane(jLabel);
+//        LoginSupportClass destop = new LoginSupportClass();
+//        jLabel.add(destop, BorderLayout.CENTER);
 
-        jLabel.setBorder(new EmptyBorder(5, 5, 5, 5));
-        jLabel.setLayout(new BorderLayout(0, 0));
-        setContentPane(jLabel);
-        LoginSupportClass destop = new LoginSupportClass();
-        jLabel.add(destop, BorderLayout.CENTER);
-*/
-        //this.setContentPane(new JLabel(new ImageIcon("src/images/login_bg.jpg")));
-        this.setExtendedState(6);
-        txtUserName = new JTextField();
-        this.add(txtUserName);
-        txtUserName.setLocation(100, 100);
-        txtUserName.setVisible(true);
-        
-        //JOptionPane.showMessageDialog(this, "hello world");
     }
 
     /**
@@ -63,35 +62,33 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
+        jPasswordField1 = new javax.swing.JPasswordField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("RESTAURANT KOT");
-        setExtendedState(6);
+        setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setLabelFor(jLabel2);
+        jTextField1.setBackground(new java.awt.Color(0, 0, 0));
+        jTextField1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField1.setText("hello");
+        jTextField1.setBorder(null);
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, 380, 60));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(124, 124, 124)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(374, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel2)
-                .addGap(75, 75, 75)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(398, Short.MAX_VALUE))
-        );
+        jPasswordField1.setBackground(new java.awt.Color(0, 0, 0));
+        jPasswordField1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jPasswordField1.setForeground(new java.awt.Color(255, 255, 255));
+        jPasswordField1.setText("jPasswordField1");
+        jPasswordField1.setBorder(null);
+        getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 420, 370, 60));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\ibrar\\Desktop\\login_bg2.jpg")); // NOI18N
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1130, 650));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -132,7 +129,8 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
