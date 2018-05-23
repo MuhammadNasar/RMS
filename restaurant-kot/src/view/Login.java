@@ -5,15 +5,12 @@
  */
 package view;
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
-import javax.swing.JDesktopPane;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
+import javax.swing.JTextField;
 
 /**
  *

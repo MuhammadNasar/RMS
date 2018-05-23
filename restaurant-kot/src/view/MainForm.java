@@ -35,8 +35,9 @@ public class MainForm extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        btn_staff = new javax.swing.JLabel();
+        btnStaff = new javax.swing.JLabel();
         btnHome = new javax.swing.JLabel();
         activeTab = new javax.swing.JLabel();
         btnDishes = new javax.swing.JLabel();
@@ -47,21 +48,34 @@ public class MainForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 217, 151));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1075, 684));
+
+        jPanel3.setBackground(new java.awt.Color(255, 217, 151));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 751, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 150, Short.MAX_VALUE)
+        );
 
         jPanel2.setBackground(new java.awt.Color(28, 16, 11));
 
-        btn_staff.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/btn_staff_normal.png"))); // NOI18N
-        btn_staff.setText("jLabel1");
-        btn_staff.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnStaff.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/btn_staff_normal.png"))); // NOI18N
+        btnStaff.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_staffMouseClicked(evt);
+                btnStaffMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btn_staffMouseEntered(evt);
+                btnStaffMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btn_staffMouseExited(evt);
+                btnStaffMouseExited(evt);
             }
         });
 
@@ -158,7 +172,7 @@ public class MainForm extends javax.swing.JFrame {
                         .addComponent(btnCustomers, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
                         .addComponent(btnDrinks, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnDishes, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btn_staff, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnStaff, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnOurstory, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(btnContactus, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 63, Short.MAX_VALUE))
@@ -171,7 +185,7 @@ public class MainForm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnHome)
                 .addGap(18, 18, 18)
-                .addComponent(btn_staff)
+                .addComponent(btnStaff)
                 .addGap(18, 18, 18)
                 .addComponent(btnDishes, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -192,18 +206,22 @@ public class MainForm extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(647, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1126, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -230,22 +248,22 @@ public class MainForm extends javax.swing.JFrame {
         activeTab.setIcon(btnimage2);
     }//GEN-LAST:event_btnHomeMouseClicked
 
-    private void btn_staffMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_staffMouseEntered
+    private void btnStaffMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnStaffMouseEntered
         ImageIcon btnimage = new ImageIcon(getClass().getResource("/images/btn_staff_mhover.png"));
-        btn_staff.setIcon(btnimage);
-    }//GEN-LAST:event_btn_staffMouseEntered
+        btnStaff.setIcon(btnimage);
+    }//GEN-LAST:event_btnStaffMouseEntered
 
-    private void btn_staffMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_staffMouseClicked
+    private void btnStaffMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnStaffMouseClicked
         ImageIcon btnimage = new ImageIcon(getClass().getResource("/images/btn_staff_clicked.png"));
-        btn_staff.setIcon(btnimage);
+        btnStaff.setIcon(btnimage);
         ImageIcon btnimage2 = new ImageIcon(getClass().getResource("/images/staff_icon.png"));
         activeTab.setIcon(btnimage2);
-    }//GEN-LAST:event_btn_staffMouseClicked
+    }//GEN-LAST:event_btnStaffMouseClicked
 
-    private void btn_staffMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_staffMouseExited
+    private void btnStaffMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnStaffMouseExited
         ImageIcon btnimage = new ImageIcon(getClass().getResource("/images/btn_staff_normal.png"));
-        btn_staff.setIcon(btnimage);
-    }//GEN-LAST:event_btn_staffMouseExited
+        btnStaff.setIcon(btnimage);
+    }//GEN-LAST:event_btnStaffMouseExited
 
     private void btnDishesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDishesMouseEntered
         ImageIcon btnimage = new ImageIcon(getClass().getResource("/images/btn_dishes_mhover.png"));
@@ -375,8 +393,9 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JLabel btnDrinks;
     private javax.swing.JLabel btnHome;
     private javax.swing.JLabel btnOurstory;
-    private javax.swing.JLabel btn_staff;
+    private javax.swing.JLabel btnStaff;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
 }
