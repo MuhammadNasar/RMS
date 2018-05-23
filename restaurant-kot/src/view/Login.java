@@ -6,13 +6,10 @@
 package view;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.Image;
-import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 /**
@@ -22,20 +19,13 @@ import javax.swing.border.EmptyBorder;
 public class Login extends javax.swing.JFrame {
 
     private Image image;
-    private JPanel jLabel;
+    private JLabel jLabel;
 
-    private JTextField txtUserName;
     /**
      * Creates new form Login
      */
     public Login() {
         initComponents();
-        
-         Dimension dimemsion = Toolkit.getDefaultToolkit().getScreenSize();
-        setLocation(dimemsion.width / 2 - this.getSize().width / 2, dimemsion.height / 2 - this.getSize().height / 2);
-       
-
-        
 
         try {
             setIconImage(new ImageIcon(getClass().getResource("../images/logo_round.png")).getImage());
@@ -43,13 +33,13 @@ public class Login extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
-//        jLabel = new JPanel();
-//
-//        jLabel.setBorder(new EmptyBorder(5, 5, 5, 5));
-//        jLabel.setLayout(new BorderLayout(0, 0));
-//        setContentPane(jLabel);
-//        LoginSupportClass destop = new LoginSupportClass();
-//        jLabel.add(destop, BorderLayout.CENTER);
+        jLabel = new JLabel();
+
+        jLabel.setBorder(new EmptyBorder(5, 5, 5, 5));
+        jLabel.setLayout(new BorderLayout(0, 0));
+        setContentPane(jLabel);
+        LoginSupportClass destop = new LoginSupportClass();
+        jLabel.add(destop, BorderLayout.CENTER);
 
     }
 
@@ -62,33 +52,27 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("RESTAURANT KOT");
-        setResizable(false);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField1.setBackground(new java.awt.Color(0, 0, 0));
-        jTextField1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField1.setText("hello");
-        jTextField1.setBorder(null);
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, 380, 60));
+        jLabel2.setLabelFor(jLabel2);
 
-        jPasswordField1.setBackground(new java.awt.Color(0, 0, 0));
-        jPasswordField1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jPasswordField1.setForeground(new java.awt.Color(255, 255, 255));
-        jPasswordField1.setText("jPasswordField1");
-        jPasswordField1.setBorder(null);
-        getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 420, 370, 60));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\ibrar\\Desktop\\login_bg2.jpg")); // NOI18N
-        jLabel1.setText("jLabel1");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1130, 650));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel2)
+                .addContainerGap(683, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel2)
+                .addContainerGap(545, Short.MAX_VALUE))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -129,8 +113,6 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
