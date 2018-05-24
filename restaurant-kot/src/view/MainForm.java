@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package view;
 
 import java.util.Locale;
@@ -10,18 +6,23 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author babu
- */
 public class MainForm extends javax.swing.JFrame {
-
+    private DishesForm dish;
+    private Waiters waiters;
+    private Reports reports;
+    private OrdersForm orders;
+ 
+            
     /**
      * Creates new form MainForm
      */
     public MainForm() {
         initComponents();
+        
+        
+       
         //ImageIcon icon = new ImageIcon("");
+        
         
     }
 
@@ -226,10 +227,15 @@ public class MainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDishesMouseExited
 
     private void btnDishesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDishesMouseClicked
+        dish = new DishesForm();
+        
+        dish.show();
+        
         ImageIcon btnimage = new ImageIcon(getClass().getResource("/images/btn_dishes_clicked.png"));
         btnDishes.setIcon(btnimage);
         ImageIcon btnimage2 = new ImageIcon(getClass().getResource("/images/dishes_icon.png"));
         activeTab.setIcon(btnimage2);
+        
     }//GEN-LAST:event_btnDishesMouseClicked
 
     private void btnWaitersMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnWaitersMouseEntered
@@ -243,6 +249,10 @@ public class MainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnWaitersMouseExited
 
     private void btnWaitersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnWaitersMouseClicked
+       
+        waiters = new Waiters();
+        waiters.show();
+        
         ImageIcon btnimage = new ImageIcon(getClass().getResource("/images/btn_waiters_clicked.png"));
         btnWaiters.setIcon(btnimage);
         ImageIcon activeTabicon = new ImageIcon(getClass().getResource("/images/waiters_icon.png"));
@@ -260,6 +270,9 @@ public class MainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnReportsMouseExited
 
     private void btnReportsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReportsMouseClicked
+        reports= new Reports();
+        reports.show();
+
         ImageIcon btnimage = new ImageIcon(getClass().getResource("/images/btn_reports_clicked.png"));
         btnReports.setIcon(btnimage);
         ImageIcon activeTabicon = new ImageIcon(getClass().getResource("/images/reports_icon.png"));
@@ -277,6 +290,11 @@ public class MainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnOrdersMouseExited
 
     private void btnOrdersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOrdersMouseClicked
+
+        
+        orders = new OrdersForm();
+        orders.show();
+        
         ImageIcon btnimage = new ImageIcon(getClass().getResource("/images/btn_orders_clicked.png"));
         btnOrders.setIcon(btnimage);
         ImageIcon activeTabicon = new ImageIcon(getClass().getResource("/images/orders_icon.png"));
