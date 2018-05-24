@@ -8,8 +8,8 @@ import javax.swing.JOptionPane;
 
 public class MainForm extends javax.swing.JFrame {
     private DishesForm dish;
-    private Waiters waiters;
-    private Reports reports;
+    private WaitersForm waiters;
+    private ReportsForm reports;
     private OrdersForm orders;
  
             
@@ -56,7 +56,7 @@ public class MainForm extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 751, Short.MAX_VALUE)
+            .addGap(0, 755, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -118,7 +118,6 @@ public class MainForm extends javax.swing.JFrame {
         });
 
         btnOrders.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/btn_orders_normal.png"))); // NOI18N
-        btnOrders.setPreferredSize(new java.awt.Dimension(230, 58));
         btnOrders.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnOrdersMouseClicked(evt);
@@ -146,7 +145,7 @@ public class MainForm extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(btnReports, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnWaiters, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(btnOrders, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnOrders))
                 .addGap(0, 63, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -163,8 +162,8 @@ public class MainForm extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(btnReports, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnOrders, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(232, Short.MAX_VALUE))
+                .addComponent(btnOrders)
+                .addContainerGap(213, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -172,17 +171,20 @@ public class MainForm extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addContainerGap(24, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 534, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -250,7 +252,7 @@ public class MainForm extends javax.swing.JFrame {
 
     private void btnWaitersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnWaitersMouseClicked
        
-        waiters = new Waiters();
+        waiters = new WaitersForm();
         waiters.show();
         
         ImageIcon btnimage = new ImageIcon(getClass().getResource("/images/btn_waiters_clicked.png"));
@@ -270,7 +272,7 @@ public class MainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnReportsMouseExited
 
     private void btnReportsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReportsMouseClicked
-        reports= new Reports();
+        reports= new ReportsForm();
         reports.show();
 
         ImageIcon btnimage = new ImageIcon(getClass().getResource("/images/btn_reports_clicked.png"));
