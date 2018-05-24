@@ -37,14 +37,12 @@ public class MainForm extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        btnStaff = new javax.swing.JLabel();
         btnHome = new javax.swing.JLabel();
         activeTab = new javax.swing.JLabel();
         btnDishes = new javax.swing.JLabel();
-        btnDrinks = new javax.swing.JLabel();
-        btnCustomers = new javax.swing.JLabel();
-        btnOurstory = new javax.swing.JLabel();
-        btnContactus = new javax.swing.JLabel();
+        btnWaiters = new javax.swing.JLabel();
+        btnReports = new javax.swing.JLabel();
+        btnOrders = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,19 +63,6 @@ public class MainForm extends javax.swing.JFrame {
         );
 
         jPanel2.setBackground(new java.awt.Color(28, 16, 11));
-
-        btnStaff.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/btn_staff_normal.png"))); // NOI18N
-        btnStaff.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnStaffMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnStaffMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnStaffMouseExited(evt);
-            }
-        });
 
         btnHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/btn_home_normal.png"))); // NOI18N
         btnHome.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -105,55 +90,43 @@ public class MainForm extends javax.swing.JFrame {
             }
         });
 
-        btnDrinks.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/btn_Drinks_normal.png"))); // NOI18N
-        btnDrinks.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnWaiters.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/btn_waiters_normal.png"))); // NOI18N
+        btnWaiters.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnDrinksMouseClicked(evt);
+                btnWaitersMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnDrinksMouseEntered(evt);
+                btnWaitersMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnDrinksMouseExited(evt);
+                btnWaitersMouseExited(evt);
             }
         });
 
-        btnCustomers.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/btn_customers_normal.png"))); // NOI18N
-        btnCustomers.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnReports.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/btn_reports_normal.png"))); // NOI18N
+        btnReports.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCustomersMouseClicked(evt);
+                btnReportsMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnCustomersMouseEntered(evt);
+                btnReportsMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnCustomersMouseExited(evt);
+                btnReportsMouseExited(evt);
             }
         });
 
-        btnOurstory.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/btn_ourstory_normal.png"))); // NOI18N
-        btnOurstory.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnOrders.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/btn_orders_normal.png"))); // NOI18N
+        btnOrders.setPreferredSize(new java.awt.Dimension(230, 58));
+        btnOrders.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnOurstoryMouseClicked(evt);
+                btnOrdersMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnOurstoryMouseEntered(evt);
+                btnOrdersMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnOurstoryMouseExited(evt);
-            }
-        });
-
-        btnContactus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/btn_contactus_normal.png"))); // NOI18N
-        btnContactus.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnContactusMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnContactusMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnContactusMouseExited(evt);
+                btnOrdersMouseExited(evt);
             }
         });
 
@@ -167,14 +140,12 @@ public class MainForm extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDishes, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(btnCustomers, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
-                        .addComponent(btnDrinks, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnDishes, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnStaff, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnOurstory, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(btnContactus, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnReports, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnWaiters, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnOrders, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 63, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -185,18 +156,14 @@ public class MainForm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnHome)
                 .addGap(18, 18, 18)
-                .addComponent(btnStaff)
-                .addGap(18, 18, 18)
                 .addComponent(btnDishes, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnDrinks)
+                .addComponent(btnWaiters)
                 .addGap(18, 18, 18)
-                .addComponent(btnCustomers, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnReports, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnOurstory, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnContactus, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addComponent(btnOrders, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(232, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -248,23 +215,6 @@ public class MainForm extends javax.swing.JFrame {
         activeTab.setIcon(btnimage2);
     }//GEN-LAST:event_btnHomeMouseClicked
 
-    private void btnStaffMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnStaffMouseEntered
-        ImageIcon btnimage = new ImageIcon(getClass().getResource("/images/btn_staff_mhover.png"));
-        btnStaff.setIcon(btnimage);
-    }//GEN-LAST:event_btnStaffMouseEntered
-
-    private void btnStaffMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnStaffMouseClicked
-        ImageIcon btnimage = new ImageIcon(getClass().getResource("/images/btn_staff_clicked.png"));
-        btnStaff.setIcon(btnimage);
-        ImageIcon btnimage2 = new ImageIcon(getClass().getResource("/images/staff_icon.png"));
-        activeTab.setIcon(btnimage2);
-    }//GEN-LAST:event_btnStaffMouseClicked
-
-    private void btnStaffMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnStaffMouseExited
-        ImageIcon btnimage = new ImageIcon(getClass().getResource("/images/btn_staff_normal.png"));
-        btnStaff.setIcon(btnimage);
-    }//GEN-LAST:event_btnStaffMouseExited
-
     private void btnDishesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDishesMouseEntered
         ImageIcon btnimage = new ImageIcon(getClass().getResource("/images/btn_dishes_mhover.png"));
         btnDishes.setIcon(btnimage);
@@ -282,73 +232,57 @@ public class MainForm extends javax.swing.JFrame {
         activeTab.setIcon(btnimage2);
     }//GEN-LAST:event_btnDishesMouseClicked
 
-    private void btnDrinksMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDrinksMouseEntered
-        ImageIcon btnImage = new ImageIcon(getClass().getResource("/images/btn_Drinks_mhover.png"));
-        btnDrinks.setIcon(btnImage);
-    }//GEN-LAST:event_btnDrinksMouseEntered
+    private void btnWaitersMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnWaitersMouseEntered
+        ImageIcon btnimage = new ImageIcon(getClass().getResource("/images/btn_waiters_mhover.png"));
+        btnWaiters.setIcon(btnimage);
+    }//GEN-LAST:event_btnWaitersMouseEntered
 
-    private void btnDrinksMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDrinksMouseExited
-        ImageIcon btnImage = new ImageIcon(getClass().getResource("/images/btn_Drinks_normal.png"));
-        btnDrinks.setIcon(btnImage);
-    }//GEN-LAST:event_btnDrinksMouseExited
+    private void btnWaitersMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnWaitersMouseExited
+        ImageIcon btnimage = new ImageIcon(getClass().getResource("/images/btn_waiters_normal.png"));
+        btnWaiters.setIcon(btnimage);
+    }//GEN-LAST:event_btnWaitersMouseExited
 
-    private void btnDrinksMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDrinksMouseClicked
-        ImageIcon btnImage = new ImageIcon(getClass().getResource("/images/btn_Drinks_clicked.png"));
-        btnDrinks.setIcon(btnImage);
-        ImageIcon activeTabicon = new ImageIcon(getClass().getResource("/images/drinks_icon.png"));
+    private void btnWaitersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnWaitersMouseClicked
+        ImageIcon btnimage = new ImageIcon(getClass().getResource("/images/btn_waiters_clicked.png"));
+        btnWaiters.setIcon(btnimage);
+        ImageIcon activeTabicon = new ImageIcon(getClass().getResource("/images/waiters_icon.png"));
         activeTab.setIcon(activeTabicon);
-    }//GEN-LAST:event_btnDrinksMouseClicked
+    }//GEN-LAST:event_btnWaitersMouseClicked
 
-    private void btnCustomersMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCustomersMouseEntered
-        ImageIcon btnImage = new ImageIcon(getClass().getResource("/images/btn_customers_mhover.png"));
-        btnCustomers.setIcon(btnImage);
-    }//GEN-LAST:event_btnCustomersMouseEntered
+    private void btnReportsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReportsMouseEntered
+        ImageIcon btnimage = new ImageIcon(getClass().getResource("/images/btn_reports_mhover.png"));
+        btnReports.setIcon(btnimage);
+    }//GEN-LAST:event_btnReportsMouseEntered
 
-    private void btnCustomersMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCustomersMouseExited
-        ImageIcon btnImage = new ImageIcon(getClass().getResource("/images/btn_customers_normal.png"));
-        btnCustomers.setIcon(btnImage);
-    }//GEN-LAST:event_btnCustomersMouseExited
+    private void btnReportsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReportsMouseExited
+        ImageIcon btnimage = new ImageIcon(getClass().getResource("/images/btn_reports_normal.png"));
+        btnReports.setIcon(btnimage);
+    }//GEN-LAST:event_btnReportsMouseExited
 
-    private void btnCustomersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCustomersMouseClicked
-        ImageIcon btnImage = new ImageIcon(getClass().getResource("/images/btn_customers_clicked.png"));
-        btnCustomers.setIcon(btnImage);
-        ImageIcon activeTabicon = new ImageIcon(getClass().getResource("/images/customers_icon.png"));
+    private void btnReportsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReportsMouseClicked
+        ImageIcon btnimage = new ImageIcon(getClass().getResource("/images/btn_reports_clicked.png"));
+        btnReports.setIcon(btnimage);
+        ImageIcon activeTabicon = new ImageIcon(getClass().getResource("/images/reports_icon.png"));
         activeTab.setIcon(activeTabicon);
-    }//GEN-LAST:event_btnCustomersMouseClicked
+    }//GEN-LAST:event_btnReportsMouseClicked
 
-    private void btnOurstoryMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOurstoryMouseEntered
-        ImageIcon btnImage = new ImageIcon(getClass().getResource("/images/btn_ourstory_mhover.png"));
-        btnOurstory.setIcon(btnImage);
-    }//GEN-LAST:event_btnOurstoryMouseEntered
+    private void btnOrdersMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOrdersMouseEntered
+        ImageIcon btnimage = new ImageIcon(getClass().getResource("/images/btn_orders_mhover.png"));
+        btnOrders.setIcon(btnimage);
+    }//GEN-LAST:event_btnOrdersMouseEntered
 
-    private void btnOurstoryMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOurstoryMouseExited
-        ImageIcon btnImage = new ImageIcon(getClass().getResource("/images/btn_ourstory_normal.png"));
-        btnOurstory.setIcon(btnImage);
-    }//GEN-LAST:event_btnOurstoryMouseExited
+    private void btnOrdersMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOrdersMouseExited
+        ImageIcon btnimage = new ImageIcon(getClass().getResource("/images/btn_orders_normal.png"));
+        btnOrders.setIcon(btnimage);
+    }//GEN-LAST:event_btnOrdersMouseExited
 
-    private void btnOurstoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOurstoryMouseClicked
-        ImageIcon btnImage = new ImageIcon(getClass().getResource("/images/btn_ourstory_clicked.png"));
-        btnOurstory.setIcon(btnImage);
-        ImageIcon activeTabicon = new ImageIcon(getClass().getResource("/images/ourstory_icon.png"));
+    private void btnOrdersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOrdersMouseClicked
+        ImageIcon btnimage = new ImageIcon(getClass().getResource("/images/btn_orders_clicked.png"));
+        btnOrders.setIcon(btnimage);
+        ImageIcon activeTabicon = new ImageIcon(getClass().getResource("/images/orders_icon.png"));
         activeTab.setIcon(activeTabicon);
-    }//GEN-LAST:event_btnOurstoryMouseClicked
-
-    private void btnContactusMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnContactusMouseEntered
-        ImageIcon btmImage = new ImageIcon(getClass().getResource("/images/btn_contactus_mhover.png"));
-        btnContactus.setIcon(btmImage);
-    }//GEN-LAST:event_btnContactusMouseEntered
-
-    private void btnContactusMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnContactusMouseExited
-        ImageIcon btmImage = new ImageIcon(getClass().getResource("/images/btn_contactus_normal.png"));
-        btnContactus.setIcon(btmImage);
-    }//GEN-LAST:event_btnContactusMouseExited
-
-    private void btnContactusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnContactusMouseClicked
-        ImageIcon btmImage = new ImageIcon(getClass().getResource("/images/btn_contactus_clicked.png"));
-        btnContactus.setIcon(btmImage);
-        ImageIcon activeTabicon = new ImageIcon(getClass().getResource("/images/contactus_icon.png"));
-        activeTab.setIcon(activeTabicon);
-    }//GEN-LAST:event_btnContactusMouseClicked
+        
+    }//GEN-LAST:event_btnOrdersMouseClicked
 
     /**
      * @param args the command line arguments
@@ -387,13 +321,11 @@ public class MainForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel activeTab;
-    private javax.swing.JLabel btnContactus;
-    private javax.swing.JLabel btnCustomers;
     private javax.swing.JLabel btnDishes;
-    private javax.swing.JLabel btnDrinks;
     private javax.swing.JLabel btnHome;
-    private javax.swing.JLabel btnOurstory;
-    private javax.swing.JLabel btnStaff;
+    private javax.swing.JLabel btnOrders;
+    private javax.swing.JLabel btnReports;
+    private javax.swing.JLabel btnWaiters;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
