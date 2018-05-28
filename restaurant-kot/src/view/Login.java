@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -171,7 +172,21 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_txtUserNameFocusLost
 
     private void btnLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogInActionPerformed
-        System.out.println("hello");
+         if (evt.getSource() == btnLogIn) {
+            String userText;
+            String pwdText;
+            userText = txtUserName.getText();
+            pwdText = txtPassword.getText();
+            if (userText.equalsIgnoreCase("khan") && pwdText.equalsIgnoreCase("123")) {
+                
+                MainForm2 mainForm = new MainForm2();
+                mainForm.setVisible(true);
+                //this.add(mainForm);
+                this.hide();
+               // JOptionPane.showMessageDialog(this, "Login Successful");
+            } else {
+                JOptionPane.showMessageDialog(this, "Invalid Username or Password");
+            }}
     }//GEN-LAST:event_btnLogInActionPerformed
 
     private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
