@@ -5,11 +5,10 @@
  */
 package view;
 
-import java.awt.BorderLayout;
-import java.awt.Image;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.border.EmptyBorder;
 
 /**
  *
@@ -17,14 +16,22 @@ import javax.swing.border.EmptyBorder;
  */
 public class Login extends javax.swing.JFrame {
 
-    private Image image;
-    private JLabel jLabel;
+  
+    private boolean status;
+    private boolean  status1;
 
     /**
      * Creates new form Login
      */
     public Login() {
         initComponents();
+        
+        
+         Dimension dimemsion = Toolkit.getDefaultToolkit().getScreenSize();
+        setLocation(dimemsion.width / 2 - this.getSize().width / 2, dimemsion.height / 2 - this.getSize().height / 2);
+       
+
+        
 
         try {
             setIconImage(new ImageIcon(getClass().getResource("../images/logo_round.png")).getImage());
@@ -32,13 +39,6 @@ public class Login extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
-        jLabel = new JLabel();
-
-        jLabel.setBorder(new EmptyBorder(5, 5, 5, 5));
-        jLabel.setLayout(new BorderLayout(0, 0));
-        setContentPane(jLabel);
-        LoginSupportClass destop = new LoginSupportClass();
-        jLabel.add(destop, BorderLayout.CENTER);
 
     }
 
@@ -51,30 +51,137 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
+        txtUserName = new javax.swing.JTextField();
+        txtPassword = new javax.swing.JPasswordField();
+        jLabel1 = new javax.swing.JLabel();
+        btnLogIn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("RESTAURANT KOT");
+        setLocation(new java.awt.Point(50, 0));
+        setResizable(false);
 
-        jLabel2.setLabelFor(jLabel2);
+        txtUserName.setBackground(new java.awt.Color(19, 0, 3));
+        txtUserName.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtUserName.setForeground(new java.awt.Color(102, 102, 102));
+        txtUserName.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtUserName.setText("User Name");
+        txtUserName.setToolTipText("User Name");
+        txtUserName.setBorder(null);
+        txtUserName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtUserNameFocusLost(evt);
+            }
+        });
+        txtUserName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtUserNameKeyTyped(evt);
+            }
+        });
+
+        txtPassword.setBackground(new java.awt.Color(15, 0, 7));
+        txtPassword.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtPassword.setForeground(new java.awt.Color(102, 102, 102));
+        txtPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtPassword.setText("Password");
+        txtPassword.setToolTipText("Password");
+        txtPassword.setBorder(null);
+        txtPassword.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtPasswordFocusLost(evt);
+            }
+        });
+        txtPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPasswordActionPerformed(evt);
+            }
+        });
+        txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPasswordKeyTyped(evt);
+            }
+        });
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\ibrar\\Desktop\\login_bg2.jpg")); // NOI18N
+        jLabel1.setText("LogIn");
+
+        btnLogIn.setBackground(new java.awt.Color(240, 97, 27));
+        btnLogIn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnLogIn.setText("LogIn");
+        btnLogIn.setContentAreaFilled(false);
+        btnLogIn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogInActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel2)
-                .addContainerGap(683, Short.MAX_VALUE))
+                .addGap(120, 120, 120)
+                .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(120, 120, 120)
+                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(180, 180, 180)
+                .addComponent(btnLogIn, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1130, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel2)
-                .addContainerGap(545, Short.MAX_VALUE))
+                .addGap(340, 340, 340)
+                .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(btnLogIn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtUserNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUserNameFocusLost
+        if(txtUserName.getText().equals("")){
+            txtUserName.setText("User Name");
+            txtUserName.setForeground(Color.gray);
+            status=false;
+        }
+    }//GEN-LAST:event_txtUserNameFocusLost
+
+    private void btnLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogInActionPerformed
+        System.out.println("hello");
+    }//GEN-LAST:event_btnLogInActionPerformed
+
+    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPasswordActionPerformed
+
+    private void txtUserNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUserNameKeyTyped
+      if(status==false){
+          txtUserName.setText("");
+          status=true;
+      }txtUserName.setForeground(Color.white);
+    }//GEN-LAST:event_txtUserNameKeyTyped
+
+    private void txtPasswordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPasswordFocusLost
+     if(txtPassword.getText().equals("")){
+         txtPassword.setText("Password");
+         txtPassword.setForeground(Color.gray);
+         status1=false;
+     }
+    }//GEN-LAST:event_txtPasswordFocusLost
+
+    private void txtPasswordKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyTyped
+       if(status1==false){
+          txtPassword.setText("");
+          status1=true;
+      }txtPassword.setForeground(Color.white);
+    }//GEN-LAST:event_txtPasswordKeyTyped
 
     /**
      * @param args the command line arguments
@@ -112,6 +219,9 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton btnLogIn;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPasswordField txtPassword;
+    private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables
 }
