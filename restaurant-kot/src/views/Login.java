@@ -33,11 +33,12 @@ public class Login {
         
         
         LoginForm frame = new LoginForm();
-        frame.setTitle("Login Form");
+        frame.setTitle("Restaurent-KOT - LogIn");
         frame.setVisible(true);
-        frame.setBounds(10, 10, 370, 600);
+        frame.setBounds(10, 10, 1078, 720);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setResizable(true);
+        frame.setResizable(false);
+        
 
     }
 }

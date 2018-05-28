@@ -53,13 +53,13 @@ public class LoginForm extends JFrame implements ActionListener {
     public void setLocationAndSize() {
         
         
-        userLabel.setBounds(150, 250, 100, 30);
-        passwordLabel.setBounds(150, 320, 100, 30);
-        userTextField.setBounds(250, 250, 150, 30);
-        passwordField.setBounds(250, 320, 150, 30);
-        showPassword.setBounds(250, 350, 150, 30);
-        loginButton.setBounds(150, 400, 100, 30);
-        resetButton.setBounds(300, 400, 100, 30);
+        userLabel.setBounds(150, 400, 100, 30);
+        passwordLabel.setBounds(150, 470, 100, 30);
+        userTextField.setBounds(250, 400, 150, 30);
+        passwordField.setBounds(250, 470, 150, 30);
+        showPassword.setBounds(250, 500, 150, 30);
+        loginButton.setBounds(150, 550, 100, 30);
+        resetButton.setBounds(300, 550, 100, 30);
         
       
         
