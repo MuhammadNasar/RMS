@@ -28,9 +28,12 @@ public class SQLQueryUtil {
         
         try {
             Class.forName(driver);
+            System.out.println("driver loaded...");
             connection = DriverManager.getConnection(connectionString, user, password);
+            System.out.println("connection established...");
             connection.setAutoCommit(autoCommit);
             statement = connection.createStatement();
+            System.out.println("statement created...");
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -64,7 +67,5 @@ public class SQLQueryUtil {
         }
     }
 
-    public void printStackTrace() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
 }
