@@ -8,7 +8,6 @@ import javax.swing.JOptionPane;
 
 public class MainForm extends javax.swing.JFrame {
     private DishesForm dish;
-    private WaitersForm waiters;
     private ReportsForm reports;
     private OrdersForm orders;
  
@@ -252,13 +251,7 @@ public class MainForm extends javax.swing.JFrame {
 
     private void btnWaitersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnWaitersMouseClicked
        
-        waiters = new WaitersForm();
-        waiters.show();
-        
-        ImageIcon btnimage = new ImageIcon(getClass().getResource("/images/btn_waiters_clicked.png"));
-        btnWaiters.setIcon(btnimage);
-        ImageIcon activeTabicon = new ImageIcon(getClass().getResource("/images/waiters_icon.png"));
-        activeTab.setIcon(activeTabicon);
+
     }//GEN-LAST:event_btnWaitersMouseClicked
 
     private void btnReportsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReportsMouseEntered
