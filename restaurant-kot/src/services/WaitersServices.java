@@ -4,8 +4,6 @@ import entity.Waiters;
 import java.awt.Component;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import util.SQLQueryUtil;
 
@@ -14,9 +12,12 @@ public class WaitersServices {
     private Waiters waiters;
             
     private Component rootPane;
+    /*
+    WaitersServices = new WaitersServices();
+    
     
     SQLQueryUtil sql = new SQLQueryUtil();
-    Sql.connect(false);
+    sql.connect(false);
     String query, queryCheck;      
    
             
@@ -56,6 +57,7 @@ public class WaitersServices {
 
     } finally {
                 sql.disconnect();
-    }
+    }*/
+    
 }
 
