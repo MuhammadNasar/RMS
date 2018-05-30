@@ -21,7 +21,7 @@ public class SQLQueryUtil {
     private ResultSet resultSet;
     
     public void connect ( boolean autoCommit) {
-        String driver = "com.mysql.jdbc.driver";
+        String driver = "com.mysql.jdbc.Driver";
         String connectionString = "jdbc:mysql://localhost:3306/restaurant_kot";
         String user = "root";
         String password = "";
