@@ -44,15 +44,27 @@ public class OrdersForm extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+<<<<<<< HEAD
                 .addGap(294, 294, 294)
                 .addComponent(jLabel1)
                 .addContainerGap(295, Short.MAX_VALUE))
+=======
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addContainerGap(329, Short.MAX_VALUE))
+>>>>>>> master
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+<<<<<<< HEAD
                 .addComponent(jLabel1)
                 .addGap(0, 358, Short.MAX_VALUE))
+=======
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addContainerGap(257, Short.MAX_VALUE))
+>>>>>>> master
         );
 
         pack();

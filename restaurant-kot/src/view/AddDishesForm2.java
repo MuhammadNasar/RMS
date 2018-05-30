@@ -3,24 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package views;
+package view;
 
 import java.awt.Color;
 import javax.swing.BorderFactory;
 
 /**
  *
- * @author ehsas
+ * @author ibrar
  */
-public class ReportsForm extends javax.swing.JInternalFrame {
+public class AddDishesForm2 extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form ReportsForm
+     * Creates new form AddDishesForm2
      */
-    public ReportsForm() {
+    public AddDishesForm2() {
         initComponents();
-        
-        this.getContentPane().setBackground(Color.WHITE);
+         this.getContentPane().setBackground(Color.yellow);
         setBorder(BorderFactory.createLineBorder(new Color(201, 201, 201)));
         javax.swing.plaf.InternalFrameUI ifu = this.getUI();
         ((javax.swing.plaf.basic.BasicInternalFrameUI) ifu).setNorthPane(null);
@@ -35,25 +34,15 @@ public class ReportsForm extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-
-        jLabel1.setText("Reports Form");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(319, Short.MAX_VALUE))
+            .addGap(0, 394, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(257, Short.MAX_VALUE))
+            .addGap(0, 274, Short.MAX_VALUE)
         );
 
         pack();
@@ -61,6 +50,5 @@ public class ReportsForm extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
