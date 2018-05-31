@@ -7,14 +7,18 @@ package views;
 
 
 
+import entity.User;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.border.EmptyBorder;
+import services.UserService;
 
 public class LoginForm extends JFrame implements ActionListener {
 
+    private UserService userService;
+    
     Container container = getContentPane();
     JLabel userLabel = new JLabel("USERNAME");
     JLabel passwordLabel = new JLabel("PASSWORD");
@@ -33,7 +37,7 @@ public class LoginForm extends JFrame implements ActionListener {
         bg_label.setLayout(new BorderLayout(0, 0));
         setContentPane(bg_label);
 
-        
+userService = new UserService();        
         userLabel.setForeground(Color.WHITE);
         passwordLabel.setForeground(Color.WHITE);
         showPassword.setForeground(Color.WHITE);
@@ -88,19 +92,27 @@ public class LoginForm extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == loginButton) {
-            String userText;
-            String pwdText;
-            userText = userTextField.getText();
-            pwdText = passwordField.getText();
-            if (userText.equalsIgnoreCase("khan") && pwdText.equalsIgnoreCase("123")) {
-                
+            String userName;
+            String password="";
+            userName = userTextField.getText();
+            char[] passwordArray = passwordField.getPassword();
+            for(int i = 0; i < passwordArray.length; i++) {
+                password = password + passwordArray[i];
+            }
+            User user = new User();
+            user.setUserName(userName);
+            user.setPassword(password);
+            
+            int canLogin = userService.tryLogin(user);
+                    
+            if (canLogin == 1) {
                 MainForm mainForm = new MainForm();
                 mainForm.setVisible(true);
                 //this.add(mainForm);
-                this.hide();
+                this.dispose();
                // JOptionPane.showMessageDialog(this, "Login Successful");
             } else {
-                JOptionPane.showMessageDialog(this, "Invalid Username or Password");
+                JOptionPane.showMessageDialog(this, "Invalid Username or Password" + canLogin);
             }
 
         }

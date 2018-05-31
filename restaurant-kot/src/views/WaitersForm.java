@@ -1,15 +1,18 @@
 
 package views;
 
-
 import entity.Waiters;
 import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
+import services.WaitersServices;
 
 public class WaitersForm extends javax.swing.JInternalFrame {
 
     private Waiters waiters;
+    
+    private WaitersServices waiterService;
+    
     public WaitersForm() {
         initComponents();
         
@@ -17,6 +20,9 @@ public class WaitersForm extends javax.swing.JInternalFrame {
         setBorder(BorderFactory.createLineBorder(new Color(201, 201, 201)));
         javax.swing.plaf.InternalFrameUI ifu = this.getUI();
         ((javax.swing.plaf.basic.BasicInternalFrameUI) ifu).setNorthPane(null);
+        
+        waiterService = new WaitersServices();
+        
     }
 
 
@@ -139,21 +145,22 @@ public class WaitersForm extends javax.swing.JInternalFrame {
             || txtWaiterNumber.getText().equals("") || txtPhoneNumber.getText().equals("")
             || txtCnic.getText().equals("") || txtAddress.getText().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "empty data can not be inserted");
-        }
-        else {
-
+        } else {
             waiters = new Waiters();
 
             waiters.setName(txtName.getText());
             waiters.setFatherName(txtFatherName.getText());
-            waiters.setWaiterNumber(Integer.parseInt(txtWaiterNumber.getText()));
+            waiters.setWaiterNumber(txtWaiterNumber.getText());
             waiters.setPhoneNumber(Integer.parseInt(txtPhoneNumber.getText()) );
             waiters.setCnic(txtCnic.getText());
             waiters.setAddress(txtAddress.getText());
             
+            waiterService.waiter(waiters);
             
     }//GEN-LAST:event_btnSaveActionPerformed
     }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSave;

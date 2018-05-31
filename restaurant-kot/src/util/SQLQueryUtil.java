@@ -21,16 +21,19 @@ public class SQLQueryUtil {
     private ResultSet resultSet;
     
     public void connect ( boolean autoCommit) {
-        String driver = "com.mysql.jdbc.driver";
+        String driver = "com.mysql.jdbc.Driver";
         String connectionString = "jdbc:mysql://localhost:3306/restaurant_kot";
         String user = "root";
         String password = "";
         
         try {
             Class.forName(driver);
+            System.out.println("driver loaded...");
             connection = DriverManager.getConnection(connectionString, user, password);
+            System.out.println("connection established...");
             connection.setAutoCommit(autoCommit);
             statement = connection.createStatement();
+            System.out.println("statement created...");
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -64,7 +67,5 @@ public class SQLQueryUtil {
         }
     }
 
-    public void printStackTrace() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
 }

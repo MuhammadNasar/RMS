@@ -52,6 +52,7 @@ public class MainForm extends javax.swing.JFrame {
         btnWaiters = new javax.swing.JLabel();
         btnReports = new javax.swing.JLabel();
         btnOrders = new javax.swing.JLabel();
+        btnTable = new javax.swing.JLabel();
         desktopPane = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -162,6 +163,19 @@ public class MainForm extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        btnTable.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/btn_table_normal.png"))); // NOI18N
+        btnTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnTableMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnTableMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnTableMouseExited(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -169,10 +183,15 @@ public class MainForm extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(1, 1, 1)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(btnTable)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnTable)
+                .addContainerGap())
         );
 
         desktopPane.setBackground(new java.awt.Color(255, 217, 151));
@@ -337,6 +356,23 @@ public class MainForm extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnOrdersMouseClicked
 
+    private void btnTableMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTableMouseEntered
+        ImageIcon btnimage = new ImageIcon(getClass().getResource("/images/btn_table_mhover.png"));
+        btnTable.setIcon(btnimage);
+    }//GEN-LAST:event_btnTableMouseEntered
+
+    private void btnTableMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTableMouseExited
+        ImageIcon btnimage = new ImageIcon(getClass().getResource("/images/btn_table_normal.png"));
+        btnTable.setIcon(btnimage);
+    }//GEN-LAST:event_btnTableMouseExited
+
+    private void btnTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTableMouseClicked
+        ImageIcon btnimage = new ImageIcon(getClass().getResource("/images/btn_table_clicked.png"));
+        btnTable.setIcon(btnimage);
+        ImageIcon activeTabicon = new ImageIcon(getClass().getResource("/images/table_icon.png"));
+        activeTab.setIcon(activeTabicon);
+    }//GEN-LAST:event_btnTableMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -379,6 +415,7 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JLabel btnHome;
     private javax.swing.JLabel btnOrders;
     private javax.swing.JLabel btnReports;
+    private javax.swing.JLabel btnTable;
     private javax.swing.JLabel btnWaiters;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JPanel jPanel1;
