@@ -10,8 +10,8 @@ public class MainForm extends javax.swing.JFrame {
     private MenuForm dish;
     private WaitersForm waiters;
     private ReportsForm reports;
-    private OrdersForm orders;
- 
+    private OrdersForm  orders;
+    private TablesForm  tables;
             
     /**
      * Creates new form MainForm
@@ -385,6 +385,16 @@ public class MainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTableMouseExited
 
     private void btnTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTableMouseClicked
+        
+        tables = new TablesForm();
+        desktopPane.add(tables);
+        tables.setVisible(true);
+          try {
+            tables.setMaximum(true);
+        } catch (Exception ex) {
+            
+        }
+        
         ImageIcon btnimage = new ImageIcon(getClass().getResource("/images/btn_table_clicked.png"));
         btnTable.setIcon(btnimage);
         ImageIcon activeTabicon = new ImageIcon(getClass().getResource("/images/table_icon.png"));
