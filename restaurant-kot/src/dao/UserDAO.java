@@ -5,6 +5,7 @@
  */
 package dao;
 
+import entity.Menu;
 import entity.User;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -39,6 +40,13 @@ public class UserDAO {
         }
         return canLogin;
     }
+  public int registerMenuItem (Menu menu) {
+   
+      int dataInserted = 0;
+      String query = "INSERT INTO `menu_items`(`item_name`, `price`) "
+              + "VALUES ('" + menu.getMenuName() + "'," + menu.getPrice() + ");";
+      return dataInserted;
+  }
 }
 
 

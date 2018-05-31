@@ -5,10 +5,33 @@
  */
 package dao;
 
+import entity.Menu;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import util.SQLQueryUtil;
+
 /**
  *
  * @author User
  */
 public class MenuDAO {
-    
+
+    public MenuDAO() {
+    }
+    public int registerMenuItem (Menu menu) {
+      SQLQueryUtil sql = new SQLQueryUtil();
+      sql.connect(false);
+      int dataInserted = 0;
+      String query = "INSERT INTO `menu_items`(`item_name`, `price`) "
+              + "VALUES ('" + menu.getMenuName() + "'," + menu.getPrice() + ");";
+      try {
+          dataInserted = sql.executeUpdate(query);
+          sql.commit();
+      } catch (SQLException ex) {
+          ex.printStackTrace();
+      } finally {
+          sql.disconnect();
+      }
+      return dataInserted;
+  }
 }
