@@ -15,12 +15,12 @@ import services.MenuService;
  *
  * @author ehsas
  */
-public class DishesForm extends javax.swing.JInternalFrame {
+public class MenuForm extends javax.swing.JInternalFrame {
     private MenuService menuService;
     /**
      * Creates new form DishesForm
      */
-    public DishesForm() {
+    public MenuForm() {
         menuService = new MenuService();
         initComponents();
         
@@ -75,7 +75,7 @@ public class DishesForm extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/dishes_label.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/dish_label.png"))); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Price");
@@ -130,7 +130,7 @@ public class DishesForm extends javax.swing.JInternalFrame {
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         String menuItemName = txtDishName.getText().trim();
         String price = txtPrice.getText().trim();
-        System.out.println("i am here 0");
+        int inserted =0;
         if ( menuItemName.equals("") || price.equals("") ) {
             JOptionPane.showMessageDialog(this, "No Data Inserted!");
             txtDishName.setText("");
@@ -138,11 +138,13 @@ public class DishesForm extends javax.swing.JInternalFrame {
            } else {
             Menu menu = new Menu();
             menu.setMenuName(menuItemName);
-            System.out.println("i am here 1");
             menu.setPrice(Integer.parseInt(price));
-            System.out.println("i am here 2");
-            menuService.registerMenuItem(menu);
-            System.out.println("i am here 3");
+            inserted = menuService.checkMenuItem(menu);
+            if ( inserted == 0) {
+                JOptionPane.showMessageDialog(this, "No Data Inserted!");
+            } else {
+                JOptionPane.showMessageDialog(this, "Data Inserted Successfully!");
+            }
         }
         txtDishName.setText("");
         txtPrice.setText("");
