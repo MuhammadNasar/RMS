@@ -266,7 +266,7 @@ public class MainForm extends javax.swing.JFrame {
         } catch (Exception ex) {
             
         }
-        
+        System.out.print("Am here 1");
         ImageIcon btnimage = new ImageIcon(getClass().getResource("/images/btn_dishes_clicked.png"));
         btnDishes.setIcon(btnimage);
         ImageIcon btnimage2 = new ImageIcon(getClass().getResource("/images/dishes_icon.png"));
