@@ -1,14 +1,24 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dao;
 
-/**
- *
- * @author SOHAIL AHMAD
- */
+import entity.Waiters;
+
 public class WaitersDAO {
-    
+
+    public WaitersDAO() {
+    }
+
+    public int registerWaiters(Waiters waiters) {
+
+        int dataInserted = 0;
+       String  query = " INSERT INTO `waiters`(`full_name`, `father_name`, `waiter_number`, `phone_number`, `cnic`, `address`) "
+                + " VALUES ('" + waiters.getName() 
+                + "','" + waiters.getFatherName() 
+                + "','" + waiters.getWaiterNumber() 
+                + "','" + waiters.getPhoneNumber() 
+                + "','" + waiters.getCnic() + "','" 
+                + waiters.getAddress() + "');";
+       return dataInserted;
+
+    }
+
 }

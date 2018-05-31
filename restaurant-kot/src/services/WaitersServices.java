@@ -1,5 +1,6 @@
 package services;
 
+import dao.WaitersDAO;
 import entity.Waiters;
 import java.awt.Component;
 import java.sql.ResultSet;
@@ -8,8 +9,13 @@ import javax.swing.JOptionPane;
 import util.SQLQueryUtil;
 
 public class WaitersServices {
-   
+    
+   private WaitersDAO waitersDAO;
    private Component rootPane;
+
+    public WaitersServices() {
+        waitersDAO = new WaitersDAO();
+    }
     
     public void waiter(Waiters waiters){
         
@@ -27,8 +33,7 @@ public class WaitersServices {
                 rs.next();
                 int data = rs.getInt("count");
                 
-                    query = " INSERT INTO `waiters`(`full_name`, `father_name`, `waiter_number`, `phone_number`, `cnic`, `address`) "
-                            + " VALUES ('"+waiters.getName()+"','"+waiters.getFatherName()+"','"+waiters.getWaiterNumber()+"','"+waiters.getPhoneNumber()+"','"+waiters.getCnic()+"','"+waiters.getAddress()+"');";
+                    
                     System.out.println(query);
                        if (data == 0) {
                     System.out.println("inside if");

@@ -141,6 +141,7 @@ public class WaitersForm extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        
         if (txtName.getText().equals("") || txtFatherName.getText().equals("")
             || txtWaiterNumber.getText().equals("") || txtPhoneNumber.getText().equals("")
             || txtCnic.getText().equals("") || txtAddress.getText().equals("")) {
