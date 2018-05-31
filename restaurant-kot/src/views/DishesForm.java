@@ -69,6 +69,11 @@ public class DishesForm extends javax.swing.JInternalFrame {
 
         btnReset.setText("Reset");
         btnReset.setPreferredSize(new java.awt.Dimension(75, 25));
+        btnReset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResetActionPerformed(evt);
+            }
+        });
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/dishes_lebel.png"))); // NOI18N
 
@@ -139,7 +144,14 @@ public class DishesForm extends javax.swing.JInternalFrame {
             menuService.registerMenuItem(menu);
             System.out.println("i am here 3");
         }
+        txtDishName.setText("");
+        txtPrice.setText("");
     }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
+        txtDishName.setText("");
+        txtPrice.setText("");
+    }//GEN-LAST:event_btnResetActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
