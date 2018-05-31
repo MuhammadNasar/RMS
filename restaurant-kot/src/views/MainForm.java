@@ -7,11 +7,11 @@ import javax.swing.JComponent;
 import javax.swing.plaf.basic.BasicDesktopPaneUI;
 
 public class MainForm extends javax.swing.JFrame {
-    private DishesForm dish;
+    private MenuForm dish;
     private WaitersForm waiters;
     private ReportsForm reports;
-    private OrdersForm orders;
- 
+    private OrdersForm  orders;
+    private TablesForm  tables;
             
     /**
      * Creates new form MainForm
@@ -53,6 +53,7 @@ public class MainForm extends javax.swing.JFrame {
         btnReports = new javax.swing.JLabel();
         btnOrders = new javax.swing.JLabel();
         btnTable = new javax.swing.JLabel();
+        btnUser = new javax.swing.JLabel();
         desktopPane = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -176,6 +177,19 @@ public class MainForm extends javax.swing.JFrame {
             }
         });
 
+        btnUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/btn_user_normal.png"))); // NOI18N
+        btnUser.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnUserMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnUserMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnUserMouseExited(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -183,7 +197,9 @@ public class MainForm extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(1, 1, 1)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(btnTable)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addComponent(btnUser, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnTable, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -191,6 +207,8 @@ public class MainForm extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnTable)
+                .addGap(18, 18, 18)
+                .addComponent(btnUser, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -258,7 +276,7 @@ public class MainForm extends javax.swing.JFrame {
 
     private void btnDishesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDishesMouseClicked
         
-        dish = new DishesForm();
+        dish = new MenuForm();
         desktopPane.add(dish);
             dish.setVisible(true);
             try {
@@ -266,7 +284,7 @@ public class MainForm extends javax.swing.JFrame {
         } catch (Exception ex) {
             
         }
-        
+        System.out.print("Am here 1");
         ImageIcon btnimage = new ImageIcon(getClass().getResource("/images/btn_dishes_clicked.png"));
         btnDishes.setIcon(btnimage);
         ImageIcon btnimage2 = new ImageIcon(getClass().getResource("/images/dishes_icon.png"));
@@ -367,11 +385,38 @@ public class MainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTableMouseExited
 
     private void btnTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTableMouseClicked
+        
+        tables = new TablesForm();
+        desktopPane.add(tables);
+        tables.setVisible(true);
+          try {
+            tables.setMaximum(true);
+        } catch (Exception ex) {
+            
+        }
+        
         ImageIcon btnimage = new ImageIcon(getClass().getResource("/images/btn_table_clicked.png"));
         btnTable.setIcon(btnimage);
         ImageIcon activeTabicon = new ImageIcon(getClass().getResource("/images/table_icon.png"));
         activeTab.setIcon(activeTabicon);
     }//GEN-LAST:event_btnTableMouseClicked
+
+    private void btnUserMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUserMouseEntered
+        ImageIcon btnimage = new ImageIcon(getClass().getResource("/images/btn_user_mhover.png"));
+        btnUser.setIcon(btnimage);
+    }//GEN-LAST:event_btnUserMouseEntered
+
+    private void btnUserMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUserMouseExited
+        ImageIcon btnimage = new ImageIcon(getClass().getResource("/images/btn_user_normal.png"));
+        btnUser.setIcon(btnimage);
+    }//GEN-LAST:event_btnUserMouseExited
+
+    private void btnUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUserMouseClicked
+        ImageIcon btnimage = new ImageIcon(getClass().getResource("/images/btn_user_clicked.png"));
+        btnUser.setIcon(btnimage);
+        ImageIcon activeTabicon = new ImageIcon(getClass().getResource("/images/user_icon.png"));
+        activeTab.setIcon(activeTabicon);
+    }//GEN-LAST:event_btnUserMouseClicked
 
     /**
      * @param args the command line arguments
@@ -416,6 +461,7 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JLabel btnOrders;
     private javax.swing.JLabel btnReports;
     private javax.swing.JLabel btnTable;
+    private javax.swing.JLabel btnUser;
     private javax.swing.JLabel btnWaiters;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JPanel jPanel1;

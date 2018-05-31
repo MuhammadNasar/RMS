@@ -37,7 +37,7 @@ public class LoginForm extends JFrame implements ActionListener {
         bg_label.setLayout(new BorderLayout(0, 0));
         setContentPane(bg_label);
 
-userService = new UserService();        
+        userService = new UserService();        
         userLabel.setForeground(Color.WHITE);
         passwordLabel.setForeground(Color.WHITE);
         showPassword.setForeground(Color.WHITE);
