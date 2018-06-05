@@ -176,9 +176,11 @@ public class MenuForm extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        String menuItemName = txtDishName.getText().trim();
-        String price = txtPrice.getText().trim();
-        int inserted =0;
+        String menuItemName ="";
+        String price ="";
+        menuItemName = txtDishName.getText().trim();
+        price = txtPrice.getText().trim();
+        int inserted = 0;
             Menu menu = new Menu();
             menu.setMenuName(menuItemName);
             menu.setPrice(Integer.parseInt(price));

@@ -2,8 +2,10 @@
 package views;
 
 import java.awt.Graphics;
+import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
+import javax.swing.JFrame;
 import javax.swing.plaf.basic.BasicDesktopPaneUI;
 
 public class MainForm extends javax.swing.JFrame {
@@ -19,6 +21,8 @@ public class MainForm extends javax.swing.JFrame {
     public MainForm() {
         initComponents();
         
+        
+        
         desktopPane.setUI(new BasicDesktopPaneUI() {
             public void paint(Graphics g, JComponent c) {
                 //c.setSize(1500, 1500);
@@ -29,7 +33,7 @@ public class MainForm extends javax.swing.JFrame {
         });
         
         
-       
+        //setIconImage(Toolkit.getDefaultToolkit().getClass().getResource("/images/logo_round.png"));
         //ImageIcon icon = new ImageIcon("");
         
         
@@ -240,7 +244,7 @@ public class MainForm extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 838, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(desktopPane)
                 .addContainerGap())
         );
