@@ -19,29 +19,29 @@ import table_models.MenuTableModel;
  * @author ehsas
  */
 public class MenuForm extends javax.swing.JInternalFrame {
+
     private MenuService menuService;
     CommonService commonService;
+
     /**
      * Creates new form DishesForm
      */
     public MenuForm() {
         initComponents();
-        
+
         this.getContentPane().setBackground(new Color(255, 217, 151));
         setBorder(BorderFactory.createLineBorder(new Color(235, 163, 91)));
         javax.swing.plaf.InternalFrameUI ifu = this.getUI();
         ((javax.swing.plaf.basic.BasicInternalFrameUI) ifu).setNorthPane(null);
-        
+
         menuService = new MenuService();
         commonService = new CommonService();
-        
+
         Vector<Menu> vectorMenuitem = commonService.getVectorMenuItem();
-        
+
         MenuTableModel menuTableModel = new MenuTableModel(vectorMenuitem);
         jtMenuItem.setModel(menuTableModel);
-        
-        
-        
+
     }
 
     /**
@@ -176,23 +176,28 @@ public class MenuForm extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        String menuItemName ="";
-        String price ="";
-        menuItemName = txtDishName.getText().trim();
-        price = txtPrice.getText().trim();
-        int inserted = 0;
+
+        String menuItemName = txtDishName.getText().trim();
+        String price = txtPrice.getText().trim();
+
+        if (menuItemName.equals("") || price.equals("")) {
+            JOptionPane.showMessageDialog(null, "Empty data can not be saved.");
+        } else {
+            int inserted = 0;
             Menu menu = new Menu();
             menu.setMenuName(menuItemName);
             menu.setPrice(Integer.parseInt(price));
             inserted = menuService.checkMenuItem(menu);
             txtDishName.setText("");
             txtPrice.setText("");
-            if ( inserted == 0) {
+            if (inserted == 0) {
                 JOptionPane.showMessageDialog(this, "No Data Inserted!");
             } else {
                 JOptionPane.showMessageDialog(this, "Data Inserted Successfully!");
             }
-        
+        }
+
+
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
