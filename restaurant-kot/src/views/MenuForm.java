@@ -179,23 +179,18 @@ public class MenuForm extends javax.swing.JInternalFrame {
         String menuItemName = txtDishName.getText().trim();
         String price = txtPrice.getText().trim();
         int inserted =0;
-        if ( menuItemName.equals("") || price.equals("") ) {
-            JOptionPane.showMessageDialog(this, "No Data Inserted!");
-            txtDishName.setText("");
-            txtPrice.setText("");
-           } else {
             Menu menu = new Menu();
             menu.setMenuName(menuItemName);
             menu.setPrice(Integer.parseInt(price));
             inserted = menuService.checkMenuItem(menu);
+            txtDishName.setText("");
+            txtPrice.setText("");
             if ( inserted == 0) {
                 JOptionPane.showMessageDialog(this, "No Data Inserted!");
             } else {
                 JOptionPane.showMessageDialog(this, "Data Inserted Successfully!");
             }
-        }
-        txtDishName.setText("");
-        txtPrice.setText("");
+        
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed

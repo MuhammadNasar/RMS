@@ -38,11 +38,7 @@ public class MenuService {
             count = resultSet.getInt("count");
 
             if (count == 0) {
-                if(menu.getMenuName().equals("") ) {
-                    JOptionPane.showMessageDialog(null, "Empty Data Cant Be Stored!");
-                } else {
-                    canInserted = menuDao.registerMenuItem(menu);
-                }
+                canInserted = menuDao.registerMenuItem(menu); 
             } else{
                 JOptionPane.showMessageDialog(null, menu.getMenuName() + " Already exists.");
             }

@@ -40,13 +40,13 @@ public class MenuTableModel extends AbstractTableModel {
         
         switch(columnIndex) {
             case 0:
-                columnName = "MenuItem ID";
+                columnName = "ID";
                 break;
             case 1:
-                columnName = "MenuItem Name";
+                columnName = "Name";
                 break;
             case 2:
-                columnName = "MenuItem Price";
+                columnName = "Price";
                 break;
         }
         return columnName;
