@@ -180,21 +180,18 @@ public class MenuForm extends javax.swing.JInternalFrame {
         String menuItemName = txtDishName.getText().trim();
         String price = txtPrice.getText().trim();
 
-        
-            int inserted = 0;
+            int rowsAffected = 0;
             Menu menu = new Menu();
             menu.setMenuName(menuItemName);
             menu.setPrice(Integer.parseInt(price));
-            inserted = menuService.registerMenuItem(menu);
+            rowsAffected = menuService.registerMenuItem(menu);
             txtDishName.setText("");
             txtPrice.setText("");
-            if (inserted == 0) {
+            if (rowsAffected == 0) {
                 JOptionPane.showMessageDialog(this, "No Data Inserted!");
             } else {
-                JOptionPane.showMessageDialog(this, "Data Inserted Successfully!");
+                JOptionPane.showMessageDialog(this, "New menu item saved successfully!");
             }
-        
-
 
     }//GEN-LAST:event_btnSaveActionPerformed
 

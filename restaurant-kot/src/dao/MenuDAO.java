@@ -26,7 +26,9 @@ public class MenuDAO {
                 + "VALUES ('" + menu.getMenuName() + "'," + menu.getPrice() + ");";
         try {
             rowsAffected = sql.executeUpdate(query);
+            
             sql.commit();
+            
         } catch (SQLException ex) {
             ex.printStackTrace();
         } finally {
