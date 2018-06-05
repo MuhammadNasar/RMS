@@ -17,36 +17,45 @@ import dao.MenuDAO;
  * @author User
  */
 public class MenuService {
+
     private MenuDAO menuDao;
+
     public MenuService() {
         menuDao = new MenuDAO();
     }
 
-    public int checkMenuItem(Menu menu) {
-        
+    public int registerMenuItem(Menu menu) {
+
         SQLQueryUtil sqlutil = new SQLQueryUtil();
         sqlutil.connect(false);
 
         int rowsAffected = 0;
         int count = 0;
-        int canInserted =0;
-        String queryCheck = "SELECT COUNT(*) AS `count` FROM `menu_items` WHERE `item_name` LIKE('" + menu.getMenuName() + "');";
-        try {
-            ResultSet resultSet = sqlutil.executeQuery(queryCheck);
-            resultSet.next();
+        
+        if (menu.getMenuName().equals("") || menu.getPrice() < 0) {
+            JOptionPane.showMessageDialog(null, "Empty data can not be saved.");
+        } else {
 
-            count = resultSet.getInt("count");
+            String queryCheck = "SELECT COUNT(*) AS `count` FROM `menu_items` WHERE `item_name` LIKE('" + menu.getMenuName() + "');";
+            try {
+                ResultSet resultSet = sqlutil.executeQuery(queryCheck);
+                resultSet.next();
 
-            if (count == 0) {
-                canInserted = menuDao.registerMenuItem(menu); 
-            } else{
-                JOptionPane.showMessageDialog(null, menu.getMenuName() + " Already exists.");
+                count = resultSet.getInt("count");
+
+                if (count == 0) {
+                    rowsAffected = menuDao.registerMenuItem(menu);
+                } else {
+                    JOptionPane.showMessageDialog(null, menu.getMenuName() + " Already exists.");
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            } finally {
+                sqlutil.disconnect();
             }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        } finally {
-            sqlutil.disconnect();
         }
-        return canInserted;
+
+        return rowsAffected;
+        
     }
 }
