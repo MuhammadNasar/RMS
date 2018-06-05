@@ -44,7 +44,7 @@ public class WaitersServices {
                 System.out.println("inside if");
                 
                 waitersDAO.registerWaiters(waiters);
-                JOptionPane.showMessageDialog(rootPane," Waiter register successfully");
+                JOptionPane.showMessageDialog(rootPane,"Waiter register successfully");
                 
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Already exists.");
