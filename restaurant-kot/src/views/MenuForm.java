@@ -68,12 +68,12 @@ public class MenuForm extends javax.swing.JInternalFrame {
         btnPrintAllMenu = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        lblID = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtNewMenuName = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        txtNewPrice = new javax.swing.JTextField();
+        btnUpdate = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 217, 151));
         setTitle("Dishes");
@@ -119,6 +119,11 @@ public class MenuForm extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblMenuItems.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblMenuItemsMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblMenuItems);
 
         tblLebel.setFont(new java.awt.Font("Norwester", 0, 24)); // NOI18N
@@ -133,27 +138,33 @@ public class MenuForm extends javax.swing.JInternalFrame {
         });
 
         jPanel1.setBackground(new java.awt.Color(255, 217, 151));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Update  Menu Item", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 18))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Update  Menu Item", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 18), new java.awt.Color(28, 16, 11))); // NOI18N
+        jPanel1.setForeground(new java.awt.Color(28, 16, 11));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("ID:");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("1");
+        lblID.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblID.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblID.setText("1");
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel6.setText("New Menu Item Name");
 
-        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        txtNewMenuName.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel7.setText("New Price");
 
-        jTextField2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        txtNewPrice.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton1.setText("Update");
+        btnUpdate.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -162,16 +173,16 @@ public class MenuForm extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1)
+                    .addComponent(btnUpdate)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabel4)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblID, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jLabel6)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtNewMenuName, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel7)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtNewPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(138, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -180,17 +191,17 @@ public class MenuForm extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblID, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtNewMenuName, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtNewPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(btnUpdate)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -298,27 +309,61 @@ public class MenuForm extends javax.swing.JInternalFrame {
         menuService.printAllMenuItems();
     }//GEN-LAST:event_btnPrintAllMenuActionPerformed
 
+    private void tblMenuItemsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMenuItemsMouseClicked
+        int rowIndex = tblMenuItems.getSelectedRow();
+        System.out.println(rowIndex);
+        int choice = JOptionPane.showConfirmDialog(this, "Are You Sure To Update This Item?");
+        if (choice ==0) {
+           //vectorMenuitem.
+           MenuTableModel newModel = (MenuTableModel)tblMenuItems.getModel();
+           lblID.setText(newModel.getValueAt(rowIndex, 0).toString());
+           txtNewMenuName.setText(newModel.getValueAt(rowIndex, 1).toString());
+           txtNewPrice.setText(newModel.getValueAt(rowIndex, 2).toString());
+        }
+    }//GEN-LAST:event_tblMenuItemsMouseClicked
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        Menu menu = new Menu();
+        int id = Integer.parseInt(lblID.getText().trim());
+        String menuName = txtNewMenuName.getText().trim();
+        int price = Integer.parseInt(txtNewPrice.getText().trim());
+        
+        menu.setMenuId(id);
+        menu.setMenuName(menuName);
+        menu.setPrice(price);
+        menuService.updateMenuItem(menu);
+        
+        vectorMenuitem = commonService.getVectorMenuItem();
+
+        MenuTableModel menuTableModel = new MenuTableModel(vectorMenuitem);
+        tblMenuItems.setModel(menuTableModel);
+        
+        
+        txtNewMenuName.setText("");
+        txtNewPrice.setText("");
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnPrintAllMenu;
     private javax.swing.JButton btnReset;
     private javax.swing.JButton btnSave;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnUpdate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel lblID;
     private javax.swing.JLabel tblLebel;
     private javax.swing.JPanel tblMenu;
     private javax.swing.JTable tblMenuItems;
     private javax.swing.JTextField txtDishName;
+    private javax.swing.JTextField txtNewMenuName;
+    private javax.swing.JTextField txtNewPrice;
     private javax.swing.JTextField txtPrice;
     // End of variables declaration//GEN-END:variables
 }
