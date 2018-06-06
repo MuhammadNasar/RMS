@@ -7,6 +7,7 @@ package dao;
 
 import entity.Menu;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import util.SQLQueryUtil;
 
 /**
@@ -37,5 +38,25 @@ public class MenuDAO {
 
         return rowsAffected;
 
+    } 
+    public int updateMenuItem (Menu menu) {
+        int isUpdated =0;
+        
+        SQLQueryUtil sql = new SQLQueryUtil();
+        sql.connect(false);
+        
+        String query ="UPDATE `menu_items` SET `item_name`='" + menu.getMenuName() + "',"
+                + "`price`=" + menu.getPrice() + " WHERE `id` =" + menu.getMenuId() + ";";
+        System.out.println(query);
+        
+        try {
+            isUpdated =  sql.executeUpdate(query);
+            sql.commit();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            sql.disconnect();
+        }
+        return isUpdated;
     }
 }
