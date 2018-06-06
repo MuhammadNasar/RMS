@@ -10,7 +10,7 @@ import javax.swing.plaf.basic.BasicDesktopPaneUI;
 
 public class MainForm extends javax.swing.JFrame {
     private MenuForm dish;
-    private WaitersForm waiters;
+    private WaitersFormNew waiters;
     private ReportsForm reports;
     private OrdersForm  orders;
     private TablesForm  tables;
@@ -309,7 +309,7 @@ public class MainForm extends javax.swing.JFrame {
 
     private void btnWaitersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnWaitersMouseClicked
        
-        waiters = new WaitersForm();
+        waiters = new WaitersFormNew();
         desktopPane.add(waiters);
         waiters.setVisible(true);
              try {
