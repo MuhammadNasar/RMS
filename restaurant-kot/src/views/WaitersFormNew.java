@@ -7,9 +7,12 @@ package views;
 
 import entity.Waiters;
 import java.awt.Color;
+import java.util.Vector;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
+import services.CommonService;
 import services.WaitersServices;
+import table_models.WaitersTableModel;
 
 
 /**
@@ -19,7 +22,8 @@ import services.WaitersServices;
 public class WaitersFormNew extends javax.swing.JInternalFrame {
     
     private Waiters waiters;
-    
+    private CommonService commonService;
+    Vector<Waiters> vectorWaiter;
     private WaitersServices waiterService;
    
 
@@ -31,7 +35,15 @@ public class WaitersFormNew extends javax.swing.JInternalFrame {
         javax.swing.plaf.InternalFrameUI ifu = this.getUI();
         ((javax.swing.plaf.basic.BasicInternalFrameUI) ifu).setNorthPane(null);
         
+        
+        commonService = new CommonService();
+        
+        vectorWaiter = commonService.getVectorWaiters();
+        
         waiterService = new WaitersServices();
+        
+        WaitersTableModel waiterTableModel = new WaitersTableModel(vectorWaiter);
+        tbleWaiter.setModel(waiterTableModel);
         
         
     }
@@ -61,7 +73,7 @@ public class WaitersFormNew extends javax.swing.JInternalFrame {
         txtCnic = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbleWaiter = new javax.swing.JTable();
 
         txtWaiterName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,7 +118,7 @@ public class WaitersFormNew extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Cnic");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbleWaiter.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -117,7 +129,7 @@ public class WaitersFormNew extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbleWaiter);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -245,7 +257,7 @@ public class WaitersFormNew extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tbleWaiter;
     private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtCnic;
     private javax.swing.JTextField txtFatherName;

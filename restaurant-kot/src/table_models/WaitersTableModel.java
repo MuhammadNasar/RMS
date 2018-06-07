@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package table_models;
 
 import entity.Menu;
@@ -10,10 +5,6 @@ import entity.Waiters;
 import java.util.Vector;
 import javax.swing.table.AbstractTableModel;
 
-/**
- *
- * @author SOHAIL AHMAD
- */
 public class WaitersTableModel extends AbstractTableModel{
     private Vector<Waiters> vectorwaiters;
 
@@ -55,8 +46,12 @@ public class WaitersTableModel extends AbstractTableModel{
                 columnName = "Phone Number";
                 break;
             case 5:
-                columnName = "Father Name";
+                columnName = "cnic";
                 break;
+            case 6:
+                columnName = "Address";
+                break;
+            
         }
         return columnName;
     }
@@ -74,11 +69,20 @@ public class WaitersTableModel extends AbstractTableModel{
            case 2:
                object = vectorwaiters.get(rowsIndex).getFatherName();
                break;
+           case 3:
+               object = vectorwaiters.get(rowsIndex).getWaiterNumber();
+               break;
+           case 4:
+               object = vectorwaiters.get(rowsIndex).getPhoneNumber();
+               break;
+           case 5:
+               object = vectorwaiters.get(rowsIndex).getCnic();
+               break;
+           case 6:
+               object = vectorwaiters.get(rowsIndex).getAddress();
+               break;
        }
        return object;
     }
-
-    
-    
     
 }

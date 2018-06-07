@@ -66,7 +66,7 @@ public class CommonService {
             while (resultSet.next()) {
                 waiters = new Waiters();
                 waiters.setWaiterId(resultSet.getInt("id"));
-                waiters.setName(resultSet.getString("name"));
+                waiters.setName(resultSet.getString("full_name"));
                 waiters.setFatherName(resultSet.getString("father_name"));
                 waiters.setWaiterNumber(resultSet.getString("waiter_number"));
                 waiters.setPhoneNumber(resultSet.getInt("phone_number"));
