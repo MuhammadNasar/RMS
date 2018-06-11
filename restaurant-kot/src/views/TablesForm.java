@@ -5,15 +5,19 @@
  */
 package views;
 
+import entity.Menu;
+import entity.Tables;
 import java.awt.Color;
 import javax.swing.BorderFactory;
+import javax.swing.JOptionPane;
+import services.TableService;
 
 /**
  *
  * @author Muhammad Nasar
  */
 public class TablesForm extends javax.swing.JInternalFrame {
-
+    private TableService tableService ;
     /**
      * Creates new form TablesForm
      */
@@ -63,8 +67,18 @@ public class TablesForm extends javax.swing.JInternalFrame {
         });
 
         btnReset.setText("Reset");
+        btnReset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResetActionPerformed(evt);
+            }
+        });
 
         btnSave.setText("Save");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -129,6 +143,36 @@ public class TablesForm extends javax.swing.JInternalFrame {
     private void radioAvailableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioAvailableActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_radioAvailableActionPerformed
+
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        // TODO add your handling code here:
+        String tableNumber = txtTable.getText().trim();
+        boolean asAvailable = radioAvailable.isSelected();
+        boolean asUnavailable = radioUnavailable.isSelected();
+        int inserted =0;
+        if ( tableNumber.equals("") ) {
+            JOptionPane.showMessageDialog(this, "No Data Inserted!");
+            txtTable.setText("");
+            
+           } else {
+            Tables table = new Tables() ;
+            table.setTableNumber(tableNumber);
+            inserted = tableService.chickTableNumber(table) ;
+            if ( inserted == 0) {
+                JOptionPane.showMessageDialog(this, "No Data Inserted!");
+            } else {
+                JOptionPane.showMessageDialog(this, "Data Inserted Successfully!");
+            }
+        }
+        txtTable.setText("");
+        radioAvailable.enableInputMethods(true);
+    }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
+        // TODO add your handling code here:
+        txtTable.setText("");
+        radioAvailable.setSelected(false);
+    }//GEN-LAST:event_btnResetActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -139,11 +139,17 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Reset"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnResetActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JToggleButton" name="btnSave">
           <Properties>
             <Property name="text" type="java.lang.String" value="Save"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSaveActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
