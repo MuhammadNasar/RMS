@@ -15,6 +15,7 @@ public class Menu {
     private int price;
 
     public Menu() {
+        price = 0;
     }
 
     public int getMenuId() {

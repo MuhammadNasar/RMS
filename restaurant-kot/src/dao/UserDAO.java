@@ -5,7 +5,6 @@
  */
 package dao;
 
-import entity.Menu;
 import entity.User;
 import java.sql.ResultSet;
 import java.sql.SQLException;

@@ -2,13 +2,15 @@
 package views;
 
 import java.awt.Graphics;
+import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
+import javax.swing.JFrame;
 import javax.swing.plaf.basic.BasicDesktopPaneUI;
 
 public class MainForm extends javax.swing.JFrame {
     private MenuForm dish;
-    private WaitersForm waiters;
+    private WaitersFormNew waiters;
     private ReportsForm reports;
     private OrdersForm  orders;
     private TablesForm  tables;
@@ -18,6 +20,8 @@ public class MainForm extends javax.swing.JFrame {
      */
     public MainForm() {
         initComponents();
+        
+        
         
         desktopPane.setUI(new BasicDesktopPaneUI() {
             public void paint(Graphics g, JComponent c) {
@@ -29,7 +33,7 @@ public class MainForm extends javax.swing.JFrame {
         });
         
         
-       
+        //setIconImage(Toolkit.getDefaultToolkit().getClass().getResource("/images/logo_round.png"));
         //ImageIcon icon = new ImageIcon("");
         
         
@@ -57,6 +61,7 @@ public class MainForm extends javax.swing.JFrame {
         desktopPane = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Main Form | KOT");
         setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel1.setBackground(new java.awt.Color(28, 16, 11));
@@ -239,7 +244,7 @@ public class MainForm extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 838, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(desktopPane)
                 .addContainerGap())
         );
@@ -304,7 +309,7 @@ public class MainForm extends javax.swing.JFrame {
 
     private void btnWaitersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnWaitersMouseClicked
        
-        waiters = new WaitersForm();
+        waiters = new WaitersFormNew();
         desktopPane.add(waiters);
         waiters.setVisible(true);
              try {

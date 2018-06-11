@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package table_models;
 
 import entity.Menu;
@@ -10,10 +6,6 @@ import java.util.Vector;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author User
- */
 public class MenuTableModel extends AbstractTableModel {
     private Vector<Menu> vectorMenuItem;
 
@@ -40,13 +32,13 @@ public class MenuTableModel extends AbstractTableModel {
         
         switch(columnIndex) {
             case 0:
-                columnName = "MenuItem ID";
+                columnName = "ID";
                 break;
             case 1:
-                columnName = "MenuItem Name";
+                columnName = "Name";
                 break;
             case 2:
-                columnName = "MenuItem Price";
+                columnName = "Price";
                 break;
         }
         return columnName;

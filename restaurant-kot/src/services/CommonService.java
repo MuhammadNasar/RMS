@@ -6,6 +6,7 @@
 package services;
 
 import entity.Menu;
+import entity.Waiters;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Vector;
@@ -48,4 +49,36 @@ public class CommonService {
         
         return vectorMenuItem;
     }
+    
+    public Vector<Waiters> getVectorWaiters(){
+        SQLQueryUtil sql = new SQLQueryUtil();
+        sql.connect(false);
+        
+        String query = "SELECT * FROM `waiters` ORDER BY `id` ASC;";
+        Vector<Waiters> vectorwaiters = new Vector<>();
+        
+        ResultSet resultSet;
+        Waiters waiters;
+        
+        try{
+            
+            resultSet = sql.executeQuery(query);
+            while (resultSet.next()) {
+                waiters = new Waiters();
+                waiters.setWaiterId(resultSet.getInt("id"));
+                waiters.setName(resultSet.getString("full_name"));
+                waiters.setFatherName(resultSet.getString("father_name"));
+                waiters.setWaiterNumber(resultSet.getString("waiter_number"));
+                waiters.setPhoneNumber(resultSet.getInt("phone_number"));
+                waiters.setCnic(resultSet.getString("cnic"));
+                waiters.setAddress(resultSet.getString("address"));
+                
+                vectorwaiters.add(waiters);
+            }
+        }catch(SQLException ex){
+        ex.printStackTrace();
+        }
+        return vectorwaiters;
+    }
+    
 }
