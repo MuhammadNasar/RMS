@@ -31,7 +31,7 @@ public class MainForm extends javax.swing.JFrame {
                 g.fillRect(0, 0, c.getWidth(), c.getHeight());
             }
         });
-        setExtendedState(6);
+        
         
         //setIconImage(Toolkit.getDefaultToolkit().getClass().getResource("/images/logo_round.png"));
         //ImageIcon icon = new ImageIcon("");
