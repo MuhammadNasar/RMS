@@ -43,8 +43,6 @@ public class TablesForm extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         lblTable = new javax.swing.JLabel();
         txtTable = new javax.swing.JTextField();
-        radioUnavailable = new javax.swing.JRadioButton();
-        radioAvailable = new javax.swing.JRadioButton();
         btnReset = new javax.swing.JToggleButton();
         btnSave = new javax.swing.JToggleButton();
 
@@ -52,19 +50,6 @@ public class TablesForm extends javax.swing.JInternalFrame {
 
         lblTable.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblTable.setText("Table number");
-
-        buttonGroup1.add(radioUnavailable);
-        radioUnavailable.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        radioUnavailable.setText("Unavailable");
-
-        buttonGroup1.add(radioAvailable);
-        radioAvailable.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        radioAvailable.setText("Available");
-        radioAvailable.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                radioAvailableActionPerformed(evt);
-            }
-        });
 
         btnReset.setText("Reset");
         btnReset.addActionListener(new java.awt.event.ActionListener() {
@@ -90,17 +75,13 @@ public class TablesForm extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(radioAvailable, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(10, 10, 10)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(radioUnavailable, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(20, 20, 20)
+                        .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(txtTable, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(26, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -109,15 +90,11 @@ public class TablesForm extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTable)
                     .addComponent(txtTable, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(radioAvailable)
-                    .addComponent(radioUnavailable))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
+                .addGap(52, 52, 52)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addContainerGap(83, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -140,38 +117,31 @@ public class TablesForm extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void radioAvailableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioAvailableActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_radioAvailableActionPerformed
-
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
         String tableNumber = txtTable.getText().trim();
-        boolean asAvailable = radioAvailable.isSelected();
-        boolean asUnavailable = radioUnavailable.isSelected();
-        int inserted =0;
-        if ( tableNumber.equals("") ) {
-            JOptionPane.showMessageDialog(this, "No Data Inserted!");
-            txtTable.setText("");
-            
-           } else {
-            Tables table = new Tables() ;
-            table.setTableNumber(tableNumber);
-            inserted = tableService.chickTableNumber(table) ;
-            if ( inserted == 0) {
+        int asAvailable = 1 ;
+                
+        int rowsAffected =0;
+        Tables table = new Tables();
+        table.setTableNumber(tableNumber);
+        table.setAsAvailable(asAvailable);
+        tableService = new TableService() ;
+        rowsAffected = tableService.chickTableNumber(table) ;
+        if ( rowsAffected == 0) {
                 JOptionPane.showMessageDialog(this, "No Data Inserted!");
-            } else {
+        } else {
                 JOptionPane.showMessageDialog(this, "Data Inserted Successfully!");
-            }
         }
+        
         txtTable.setText("");
-        radioAvailable.enableInputMethods(true);
+     
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         // TODO add your handling code here:
         txtTable.setText("");
-        radioAvailable.setSelected(false);
+        
     }//GEN-LAST:event_btnResetActionPerformed
 
 
@@ -181,8 +151,6 @@ public class TablesForm extends javax.swing.JInternalFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblTable;
-    private javax.swing.JRadioButton radioAvailable;
-    private javax.swing.JRadioButton radioUnavailable;
     private javax.swing.JTextField txtTable;
     // End of variables declaration//GEN-END:variables
 }

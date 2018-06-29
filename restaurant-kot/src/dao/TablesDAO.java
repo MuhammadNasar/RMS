@@ -15,21 +15,27 @@ import util.SQLQueryUtil;
  */
 public class TablesDAO {
     public int registerTablesNumber(Tables table){
-         SQLQueryUtil sql = new SQLQueryUtil();
-      sql.connect(false);
-      int dataInserted = 0;
-      String query = "INSERT INTO `tables`( `table_number` )" +
-              "VALUES (' " + table.getTableNumber() + " ');";
-              
-      try {
-          dataInserted = sql.executeUpdate(query);
-          sql.commit();
-      } catch (SQLException ex) {
-          ex.printStackTrace();
-      } finally {
-          sql.disconnect();
-      }
-      return dataInserted;
-    }
+    
+    
+     SQLQueryUtil sql = new SQLQueryUtil();
+        sql.connect(false);
+        int rowsAffected = 0;
+        String query = "INSERT INTO `tables`( `table_number` ,`as_available` )" +
+                "VALUES (' " + table.getTableNumber() + "' ," + table.getAsAvailable()+  ");";
+               
+        try {
+            rowsAffected = sql.executeUpdate(query);
+            
+            sql.commit();
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            sql.disconnect();
+        }
+
+        return rowsAffected;
+
+    } 
 } 
 

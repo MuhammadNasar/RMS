@@ -18,6 +18,7 @@ import util.SQLQueryUtil;
  */
 public class TableService {
     private TablesDAO tablesDao ;
+    
     public TableService(){
         tablesDao = new TablesDAO() ;
     }
@@ -28,28 +29,34 @@ public class TableService {
 
         int rowsAffected = 0;
         int count = 0;
-        int canInserted =0;
-        String queryCheck = "SELECT COUNT(*) AS `count` FROM `tables` WHERE `table_number` LIKE('" + tables.getTableNumber() + "');";
-        try {
-            ResultSet resultSet = sqlutil.executeQuery(queryCheck);
-            resultSet.next();
+        
+        if (tables.getTableNumber().equals("")  ) {
+            JOptionPane.showMessageDialog(null, "Empty data can not be saved.");
+        } else {
 
-            count = resultSet.getInt("count");
+            String queryCheck = "SELECT COUNT(*) AS `count` FROM `tables` WHERE `table_number` LIKE('" + tables.getTableNumber() + "');";
+            try {
+                ResultSet resultSet = sqlutil.executeQuery(queryCheck);
+                resultSet.next();
 
-            if (count == 0) {
-                if(tables.getTableNumber().equals("") ) {
-                    JOptionPane.showMessageDialog(null, "Empty Data Cant Be Stored!");
+                count = resultSet.getInt("count");
+
+                if (count == 0) {
+                    rowsAffected = tablesDao.registerTablesNumber(tables);
                 } else {
-                    canInserted = tablesDao.registerTablesNumber(tables);
+                    JOptionPane.showMessageDialog(null, tables.getTableNumber() + " Already exists.");
                 }
-            } else{
-                JOptionPane.showMessageDialog(null, tables.getTableNumber() + " Already exists.");
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            } finally {
+                sqlutil.disconnect();
             }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        } finally {
-            sqlutil.disconnect();
         }
-        return canInserted;
+
+        return rowsAffected;
+        
     }
+        
+       
+    
 }
