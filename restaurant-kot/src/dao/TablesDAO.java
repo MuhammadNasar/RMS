@@ -45,8 +45,8 @@ public class TablesDAO {
         SQLQueryUtil sql = new SQLQueryUtil();
         sql.connect(false);
         
-        String query = "INSERT INTO `tables`( `table_number` ,`as_available` )" +
-                "VALUES (' " + table.getTableNumber() + "' ," + table.getAsAvailable()+  ");";
+        String query ="UPDATE `tables` SET `table_number`='" + table.getTableNumber() + "',"
+                + "`as_available`=" + table.getAsAvailable()+ " WHERE `id` =" + table.getTableId() + ";";
         System.out.println(query);
         
         try {
