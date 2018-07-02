@@ -5,7 +5,9 @@
  */
 package services;
 
+import com.itextpdf.layout.element.Table;
 import entity.Menu;
+import entity.Tables;
 import entity.Waiters;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -81,4 +83,32 @@ public class CommonService {
         return vectorwaiters;
     }
     
+     public Vector<Tables> getVectorTables () {
+        SQLQueryUtil sql = new SQLQueryUtil();
+        sql.connect(false);
+        
+        String query = "SELECT * FROM `tables` ORDER BY `id` ASC;";
+        Vector<Tables> vectorTables = new Vector<>();
+        
+        ResultSet resultSet;
+        Tables tables ;
+        try {
+            resultSet = sql.executeQuery(query);
+            while (resultSet.next()) {
+                tables = new Tables();
+                tables.setTableId(resultSet.getInt("id"));
+                tables.setAsAvailable(resultSet.getInt("as_available"));
+                tables.setTableNumber(resultSet.getString("table_number"));
+                
+                vectorTables.add(tables);
+            }
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            sql.disconnect();
+        }
+        
+        return vectorTables;
+    }
 }

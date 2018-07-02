@@ -5,9 +5,8 @@ package entity;
 public class Tables {
     private int tableId ;
     private String tableNumber ;
-    private int available ;
-    private int unavailable ;
-
+    private int asAvailable ;
+    
     public int getTableId() {
         return tableId;
     }
@@ -24,20 +23,18 @@ public class Tables {
         this.tableNumber = tableNumber;
     }
 
-    public int getAvailable() {
-        return available;
+    /**
+     * @return the asAvailable
+     */
+    public int getAsAvailable() {
+        return asAvailable;
     }
 
-    public void setAvailable(int available) {
-        this.available = available;
+    /**
+     * @param asAvailable the asAvailable to set
+     */
+    public void setAsAvailable(int asAvailable) {
+        this.asAvailable = asAvailable;
     }
-
-    public int getUnavailable() {
-        return unavailable;
-    }
-
-    public void setUnavailable(int unavailable) {
-        this.unavailable = unavailable;
-    }
-    
+   
 }
