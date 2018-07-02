@@ -38,7 +38,16 @@ public class UserTableModel extends AbstractTableModel {
         Object object = null;
         switch(columnIndex){
             case 0:
-                //object=vectorUser.get(rowIndex).
+                object=vectorUser.get(rowIndex).getUserId();
+                break;
+            case 1:
+                object=vectorUser.get(rowIndex).getDisplayName();
+                break;
+            case 2:
+                object=vectorUser.get(rowIndex).getUserName();
+                break;
+            case 3:
+                object=vectorUser.get(rowIndex).getPassword();
         
     }
 return object;
