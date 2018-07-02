@@ -12,6 +12,7 @@ import java.util.Vector;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import services.CommonService;
+import services.MenuService;
 import services.TableService;
 import table_models.MenuTableModel;
 import table_models.TablesTableModel;
@@ -33,6 +34,14 @@ public class TablesForm extends javax.swing.JInternalFrame {
         setBorder(BorderFactory.createLineBorder(new Color(235, 163, 91)));
         javax.swing.plaf.InternalFrameUI ifu = this.getUI();
         ((javax.swing.plaf.basic.BasicInternalFrameUI) ifu).setNorthPane(null);
+    
+         tableService = new TableService();
+         commonService = new CommonService();
+
+         Vector<Tables> vectorTables = commonService.getVectorTables();
+
+         TablesTableModel tablesTableModel = new TablesTableModel(vectorTables);
+         tblTablesNumber.setModel(tablesTableModel);
     }
     
 
@@ -53,7 +62,7 @@ public class TablesForm extends javax.swing.JInternalFrame {
         btnSave = new javax.swing.JToggleButton();
         btnPrintTable = new javax.swing.JToggleButton();
         jPanel2 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        txtUpdateTable = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         btnUpdate = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -159,7 +168,7 @@ public class TablesForm extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblID)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtUpdateTable, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnUpdate))
                 .addContainerGap(34, Short.MAX_VALUE))
         );
@@ -174,7 +183,7 @@ public class TablesForm extends javax.swing.JInternalFrame {
                     .addComponent(lblID))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtUpdateTable, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(34, 34, 34)
                 .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -300,9 +309,9 @@ public class TablesForm extends javax.swing.JInternalFrame {
         int choice = JOptionPane.showConfirmDialog(this, "Are You Sure To Update This Item?");
         if (choice ==0) {
            //vectorMenuitem.
-           MenuTableModel newModel = (MenuTableModel)tblTablesNumber.getModel();
+           TablesTableModel newModel = (TablesTableModel)tblTablesNumber.getModel();
            lblID.setText(newModel.getValueAt(rowIndex, 0).toString());
-           txtTable.setText(newModel.getValueAt(rowIndex, 1).toString());
+           txtUpdateTable.setText(newModel.getValueAt(rowIndex, 1).toString());
            
     }//GEN-LAST:event_tblTablesNumberMouseClicked
  }
@@ -310,7 +319,7 @@ public class TablesForm extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
          Tables tables = new Tables();
         int id = Integer.parseInt(lblID.getText().trim());
-        String tableNumber = txtTable.getText().trim();
+        String tableNumber = txtUpdateTable.getText().trim();
         int asAvailable = 1 ;
         
         tables.setTableId(id);
@@ -325,7 +334,7 @@ public class TablesForm extends javax.swing.JInternalFrame {
         tblTablesNumber.setModel(tableTableModel);
         
         
-        txtTable.setText("");
+        txtUpdateTable.setText("");
         
     }//GEN-LAST:event_btnUpdateActionPerformed
 
@@ -344,10 +353,10 @@ public class TablesForm extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lblID;
     private javax.swing.JLabel lblTable;
     private javax.swing.JTable tblTablesNumber;
     private javax.swing.JTextField txtTable;
+    private javax.swing.JTextField txtUpdateTable;
     // End of variables declaration//GEN-END:variables
 }
