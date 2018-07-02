@@ -8,9 +8,13 @@ package views;
 import entity.Menu;
 import entity.Tables;
 import java.awt.Color;
+import java.util.Vector;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
+import services.CommonService;
 import services.TableService;
+import table_models.MenuTableModel;
+import table_models.TablesTableModel;
 
 /**
  *
@@ -18,6 +22,8 @@ import services.TableService;
  */
 public class TablesForm extends javax.swing.JInternalFrame {
     private TableService tableService ;
+    private CommonService commonService;
+    private Vector<Tables> vectorTablesNumber;
     /**
      * Creates new form TablesForm
      */
@@ -49,18 +55,18 @@ public class TablesForm extends javax.swing.JInternalFrame {
         jPanel2 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        btnupdate = new javax.swing.JButton();
+        btnUpdate = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         lblID = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblTablesNumber = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(255, 217, 151));
 
-        lblTable.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblTable.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblTable.setText("Table number");
 
         btnReset.setText("Reset");
@@ -123,8 +129,13 @@ public class TablesForm extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("update table");
 
-        btnupdate.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnupdate.setText("update");
+        btnUpdate.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnUpdate.setText("update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setText("new table");
@@ -149,7 +160,7 @@ public class TablesForm extends javax.swing.JInternalFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblID)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnupdate))
+                    .addComponent(btnUpdate))
                 .addContainerGap(34, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -157,23 +168,23 @@ public class TablesForm extends javax.swing.JInternalFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(39, 39, 39)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(lblID))
-                .addGap(11, 11, 11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39)
-                .addComponent(btnupdate)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(34, 34, 34)
+                .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(255, 217, 151));
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblTablesNumber.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -184,7 +195,12 @@ public class TablesForm extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tblTablesNumber.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblTablesNumberMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblTablesNumber);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setText("Available Tables");
@@ -199,7 +215,7 @@ public class TablesForm extends javax.swing.JInternalFrame {
                 .addGap(48, 48, 48))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(186, 186, 186)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -252,13 +268,18 @@ public class TablesForm extends javax.swing.JInternalFrame {
         table.setAsAvailable(asAvailable);
         tableService = new TableService() ;
         rowsAffected = tableService.chickTableNumber(table) ;
+        txtTable.setText("");
         if ( rowsAffected == 0) {
                 JOptionPane.showMessageDialog(this, "No Data Inserted!");
         } else {
                 JOptionPane.showMessageDialog(this, "Data Inserted Successfully!");
         }
+        vectorTablesNumber = commonService.getVectorTables();
+
+        TablesTableModel tableTableModel = new TablesTableModel(vectorTablesNumber);
+        tblTablesNumber.setModel(tableTableModel);
         
-        txtTable.setText("");
+        
      
     }//GEN-LAST:event_btnSaveActionPerformed
 
@@ -272,12 +293,48 @@ public class TablesForm extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnPrintTableActionPerformed
 
+    private void tblTablesNumberMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblTablesNumberMouseClicked
+        // TODO add your handling code here:
+        int rowIndex = tblTablesNumber.getSelectedRow();
+        System.out.println(rowIndex);
+        int choice = JOptionPane.showConfirmDialog(this, "Are You Sure To Update This Item?");
+        if (choice ==0) {
+           //vectorMenuitem.
+           MenuTableModel newModel = (MenuTableModel)tblTablesNumber.getModel();
+           lblID.setText(newModel.getValueAt(rowIndex, 0).toString());
+           txtTable.setText(newModel.getValueAt(rowIndex, 1).toString());
+           
+    }//GEN-LAST:event_tblTablesNumberMouseClicked
+ }
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        // TODO add your handling code here:
+         Tables tables = new Tables();
+        int id = Integer.parseInt(lblID.getText().trim());
+        String tableNumber = txtTable.getText().trim();
+        int asAvailable = 1 ;
+        
+        tables.setTableId(id);
+        tables.setTableNumber(tableNumber);
+        tables.setAsAvailable(asAvailable);
+        
+        tableService.updateTableNumber(tables);
+        
+        vectorTablesNumber = commonService.getVectorTables();
+
+        TablesTableModel tableTableModel = new TablesTableModel(vectorTablesNumber);
+        tblTablesNumber.setModel(tableTableModel);
+        
+        
+        txtTable.setText("");
+        
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnPrintTable;
     private javax.swing.JToggleButton btnReset;
     private javax.swing.JToggleButton btnSave;
-    private javax.swing.JButton btnupdate;
+    private javax.swing.JButton btnUpdate;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -287,10 +344,10 @@ public class TablesForm extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lblID;
     private javax.swing.JLabel lblTable;
+    private javax.swing.JTable tblTablesNumber;
     private javax.swing.JTextField txtTable;
     // End of variables declaration//GEN-END:variables
 }

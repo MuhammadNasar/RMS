@@ -5,6 +5,7 @@
  */
 package dao;
 
+
 import entity.Tables;
 import java.sql.SQLException;
 import util.SQLQueryUtil;
@@ -37,5 +38,26 @@ public class TablesDAO {
         return rowsAffected;
 
     } 
+    
+    public int updateTableNumber (Tables table) {
+        int isUpdated =0;
+        
+        SQLQueryUtil sql = new SQLQueryUtil();
+        sql.connect(false);
+        
+        String query = "INSERT INTO `tables`( `table_number` ,`as_available` )" +
+                "VALUES (' " + table.getTableNumber() + "' ," + table.getAsAvailable()+  ");";
+        System.out.println(query);
+        
+        try {
+            isUpdated =  sql.executeUpdate(query);
+            sql.commit();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            sql.disconnect();
+        }
+        return isUpdated;
+    }
 } 
 
