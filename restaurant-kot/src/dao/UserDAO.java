@@ -39,6 +39,23 @@ public class UserDAO {
         }
         return canLogin;
     }
+
+    public int registerUser(User user) {
+        SQLQueryUtil sql =new SQLQueryUtil();
+        sql.connect(false);
+        int rowAffacted=0;
+        String query="INSERT INTO `users`(`display_name`,`user_name`,`password`) VALUES ('"+user.getDisplayName()+"'"
+               + ",'"+user.getUserName()+"','"+user.getPassword()+"');";
+      try{ 
+        rowAffacted= sql.executeUpdate(query);
+        sql.commit();
+      }catch(SQLException e){
+          e.printStackTrace();
+      }finally{
+          sql.disconnect();
+      }
+      return rowAffacted;
+      }
 }
 
 

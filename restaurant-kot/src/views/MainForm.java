@@ -2,10 +2,9 @@
 package views;
 
 import java.awt.Graphics;
-import java.awt.Toolkit;
+import java.beans.PropertyVetoException;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
-import javax.swing.JFrame;
 import javax.swing.plaf.basic.BasicDesktopPaneUI;
 
 public class MainForm extends javax.swing.JFrame {
@@ -14,6 +13,7 @@ public class MainForm extends javax.swing.JFrame {
     private ReportsForm reports;
     private OrdersForm  orders;
     private TablesForm  tables;
+    private UserForm userForm;
             
     /**
      * Creates new form MainForm
@@ -417,6 +417,14 @@ public class MainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUserMouseExited
 
     private void btnUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUserMouseClicked
+     userForm=new UserForm();
+     userForm.setVisible(true);
+     desktopPane.add(userForm);
+        try {
+            userForm.setMaximum(true);
+        } catch (PropertyVetoException ex) {
+            ex.printStackTrace();
+      }
         ImageIcon btnimage = new ImageIcon(getClass().getResource("/images/btn_user_clicked.png"));
         btnUser.setIcon(btnimage);
         ImageIcon activeTabicon = new ImageIcon(getClass().getResource("/images/user_icon.png"));
