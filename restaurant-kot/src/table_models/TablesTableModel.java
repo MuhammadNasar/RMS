@@ -42,10 +42,10 @@ public class TablesTableModel extends AbstractTableModel{
                 columnName = "ID";
                 break;
             case 1:
-                columnName = "Table_Number";
+                columnName = "Table Number";
                 break;
             case 2:
-                columnName = "As_Available";
+                columnName = "Is Available";
                 break;
         }
         return columnName;

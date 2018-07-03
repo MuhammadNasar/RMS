@@ -5,11 +5,20 @@
  */
 package services;
 
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.property.UnitValue;
 import dao.TablesDAO;
 import entity.Tables;
+import java.awt.Desktop;
+import java.io.File;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Vector;
 import javax.swing.JOptionPane;
 import util.SQLQueryUtil;
 
@@ -94,7 +103,66 @@ public class TableService {
         return isUpdated;
         
     }
+    
+    public void printAllTables () {
+         CommonService commonService = new CommonService();
+         Vector<Tables> tablesNumber = commonService.getVectorTables();
         
+         try {
+             PdfDocument pdfDocument = new PdfDocument(new PdfWriter("./all_tables_number.pdf"));
+             Document layoutDocument = new Document(pdfDocument);
+            
+             //title
+             layoutDocument.add(new Paragraph("ALL Tables Number").setBold().setUnderline()
+                    .setTextAlignment(TextAlignment.CENTER));
+            
+            //other reference information
+            layoutDocument.add(new Paragraph("THE WAITERS RESTAURANT")
+                    .setTextAlignment(TextAlignment.LEFT).setMultipliedLeading(0.2f).setBold());
+            layoutDocument.add(new Paragraph("PESHAWAR").setMultipliedLeading(.2f));
+            layoutDocument.add(new Paragraph("Phone# 091-123456789").setMultipliedLeading(.2f));
+            
+            //create items to add into pdf
+            //create a table to display items into tabular form
+            
+            Table table = new Table(UnitValue.createPointArray(new float[]{60f,180f,50f}));
+            
+            //headers
+            table.addCell(new Paragraph("S.N.O").setBold());
+            table.addCell(new Paragraph("Tables Number").setBold());
+            table.addCell(new Paragraph("Is Available").setBold());
+            
+            //Now Add Data Into these table Columns 
+            for (Tables tables : tablesNumber) {
+                table.addCell(new Paragraph(tables.getTableId()+""));
+                table.addCell(new Paragraph(tables.getMenuName());
+                table.addCell(new Paragraph(tables.getPrice()+""));
+            }
+            
+            // add table to pdf
+            layoutDocument.add(table);
+            
+            //close document
+            layoutDocument.close();
+            
+            //now opening it in browser to print
+            
+            File pdfFile =  new File("./all_menu_items.pdf");
+            if (pdfFile.exists()) {
+                if (Desktop.isDesktopSupported()) {
+                    Desktop.getDesktop().open(pdfFile);
+                    System.out.println("File Has Been Opened Successfully!");   
+                } else {
+                    System.out.println("Desktop Not Supported!");
+                }
+            } else {
+                System.out.println("File Is Not Generated Successfully");
+            }
+            
+        } catch (Throwable th) {
+            th.printStackTrace();
+        }
+    }        
        
     
 }
