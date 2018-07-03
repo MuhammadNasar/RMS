@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package views;
 
 import entity.Waiters;
@@ -14,11 +9,6 @@ import services.CommonService;
 import services.WaitersServices;
 import table_models.WaitersTableModel;
 
-
-/**
- *
- * @author SOHAIL AHMAD
- */
 public class WaitersFormNew extends javax.swing.JInternalFrame {
     
     private Waiters waiters;
