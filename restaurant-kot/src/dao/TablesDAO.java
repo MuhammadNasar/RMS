@@ -5,26 +5,25 @@
  */
 package dao;
 
-import entity.Menu;
+
+import entity.Tables;
 import java.sql.SQLException;
-import javax.swing.JOptionPane;
 import util.SQLQueryUtil;
 
 /**
  *
- * @author User
+ * @author Muhammad Nasar
  */
-public class MenuDAO {
-
-    public MenuDAO() {
-    }
-
-    public int registerMenuItem(Menu menu) {
-        SQLQueryUtil sql = new SQLQueryUtil();
+public class TablesDAO {
+    public int registerTablesNumber(Tables table){
+    
+    
+     SQLQueryUtil sql = new SQLQueryUtil();
         sql.connect(false);
         int rowsAffected = 0;
-        String query = "INSERT INTO `menu_items`(`item_name`, `price`) "
-                + "VALUES ('" + menu.getMenuName() + "'," + menu.getPrice() + ");";
+        String query = "INSERT INTO `tables`( `table_number` ,`as_available` )" +
+                "VALUES (' " + table.getTableNumber() + "' ," + table.getAsAvailable()+  ");";
+               
         try {
             rowsAffected = sql.executeUpdate(query);
             
@@ -39,14 +38,15 @@ public class MenuDAO {
         return rowsAffected;
 
     } 
-    public int updateMenuItem (Menu menu) {
+    
+    public int updateTableNumber (Tables table) {
         int isUpdated =0;
         
         SQLQueryUtil sql = new SQLQueryUtil();
         sql.connect(false);
         
-        String query ="UPDATE `menu_items` SET `item_name`='" + menu.getMenuName() + "',"
-                + "`price`=" + menu.getPrice() + " WHERE `id` ='" + menu.getMenuId() + "';";
+        String query ="UPDATE `tables` SET `table_number`='" + table.getTableNumber() + "',"
+                + "`as_available`=" + table.getAsAvailable()+ " WHERE `id` =" + table.getTableId() + ";";
         System.out.println(query);
         
         try {
@@ -59,4 +59,5 @@ public class MenuDAO {
         }
         return isUpdated;
     }
-}
+} 
+

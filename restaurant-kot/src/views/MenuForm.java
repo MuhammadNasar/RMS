@@ -295,8 +295,8 @@ public class MenuForm extends javax.swing.JInternalFrame {
             }
             vectorMenuitem = commonService.getVectorMenuItem();
 
-        MenuTableModel menuTableModel = new MenuTableModel(vectorMenuitem);
-        tblMenuItems.setModel(menuTableModel);
+            MenuTableModel menuTableModel = new MenuTableModel(vectorMenuitem);
+            tblMenuItems.setModel(menuTableModel);
 
     }//GEN-LAST:event_btnSaveActionPerformed
 
