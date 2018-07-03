@@ -22,7 +22,7 @@ public class SQLQueryUtil {
     
     public void connect ( boolean autoCommit) {
         String driver = "com.mysql.jdbc.Driver";
-        String connectionString = "jdbc:mysql://localhost:3306/restaurant_kot";
+        String connectionString = "jdbc:mysql://localhost:3306/restaurant_kot3";
         String user = "root";
         String password = "";
         

@@ -81,7 +81,7 @@ public class UserService {
             JOptionPane.showMessageDialog(null, " Empty data can not to be save");
 
         } else {
-            String query = "SELECT COUNT(*) AS `count` FROM  `users` WHERE `display_name` LIKE ('" + user.getDisplayName() + "');";
+            String query = "SELECT COUNT(*) AS `count` FROM  `users` WHERE `user_name` LIKE ('" + user.getUserName()+ "');";
             try {
                 int rowAffected = 0;
                 int count = 0;
