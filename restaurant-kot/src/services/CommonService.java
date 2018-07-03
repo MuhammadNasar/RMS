@@ -8,6 +8,7 @@ package services;
 import com.itextpdf.layout.element.Table;
 import entity.Menu;
 import entity.Tables;
+import entity.User;
 import entity.Waiters;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -111,4 +112,30 @@ public class CommonService {
         
         return vectorTables;
     }
+
+    public Vector<User> getVectorUser() {
+        SQLQueryUtil sql = new SQLQueryUtil();
+        sql.connect(false);
+        
+        String query = "SELECT * FROM `users` ORDER BY `id` ASC;";
+        Vector<User> vectorUsers = new Vector<>();
+        
+        ResultSet rs; 
+        User user;
+         try {
+            rs = sql.executeQuery(query);
+            while (rs.next()) {
+               user=new User();
+               user.setUserId(rs.getInt("id"));
+               user.setDisplayName(rs.getString("display_name"));
+               user.setUserName(rs.getString("user_name"));
+               user.setPassword(rs.getString("password"));
+               vectorUsers.add(user);
+                
+            }
+         }catch(Exception e){
+            e.printStackTrace();
+         }
+         return vectorUsers;
+   }
 }

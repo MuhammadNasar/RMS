@@ -46,7 +46,7 @@ public class MenuDAO {
         sql.connect(false);
         
         String query ="UPDATE `menu_items` SET `item_name`='" + menu.getMenuName() + "',"
-                + "`price`=" + menu.getPrice() + " WHERE `id` =" + menu.getMenuId() + ";";
+                + "`price`=" + menu.getPrice() + " WHERE `id` ='" + menu.getMenuId() + "';";
         System.out.println(query);
         
         try {

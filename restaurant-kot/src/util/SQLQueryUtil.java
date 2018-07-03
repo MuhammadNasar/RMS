@@ -28,12 +28,12 @@ public class SQLQueryUtil {
         
         try {
             Class.forName(driver);
-            System.out.println("driver loaded...");
+           // System.out.println("driver loaded...");
             connection = DriverManager.getConnection(connectionString, user, password);
-            System.out.println("connection established...");
+           // System.out.println("connection established...");
             connection.setAutoCommit(autoCommit);
             statement = connection.createStatement();
-            System.out.println("statement created...");
+           // System.out.println("statement created...");
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -65,6 +65,10 @@ public class SQLQueryUtil {
         } } catch (SQLException ex) {
             ex.printStackTrace();
         }
+    }
+
+    public Connection getConnection() {
+    return connection;
     }
 
    
