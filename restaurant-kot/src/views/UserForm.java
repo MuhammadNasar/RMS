@@ -8,9 +8,18 @@ package views;
 import dao.UserDAO;
 import entity.User;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.util.Vector;
 import javax.swing.BorderFactory;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPopupMenu;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.JTableHeader;
+import services.CommonService;
 import services.UserService;
+import table_models.UserTableModel;
 
 /**
  *
@@ -23,17 +32,27 @@ public class UserForm extends javax.swing.JInternalFrame {
     private boolean status;
     private boolean status1;
     private boolean status2;
+    private Vector<User> vectorUsers;
+    private CommonService commonService;
+
     /**
      * Creates new form UserForm
      */
     public UserForm() {
         initComponents();
-        userService=new UserService();
-        
-          this.getContentPane().setBackground(new Color(255, 217, 151));
+        userService = new UserService();
+        commonService = new CommonService();
+
+        this.getContentPane().setBackground(new Color(255, 217, 151));
         setBorder(BorderFactory.createLineBorder(new Color(235, 163, 91)));
         javax.swing.plaf.InternalFrameUI ifu = this.getUI();
         ((javax.swing.plaf.basic.BasicInternalFrameUI) ifu).setNorthPane(null);
+        vectorUsers = commonService.getVectorUser();
+        UserTableModel userTableModel = new UserTableModel(vectorUsers);
+        tbluser.setModel(userTableModel);
+        tableDesin();
+
+        
 
     }
 
@@ -45,6 +64,7 @@ public class UserForm extends javax.swing.JInternalFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         jPanel1 = new javax.swing.JPanel();
         txtUserName = new javax.swing.JTextField();
@@ -52,20 +72,28 @@ public class UserForm extends javax.swing.JInternalFrame {
         txtDisplayName = new javax.swing.JTextField();
         txtPassword = new javax.swing.JPasswordField();
         btnSave = new javax.swing.JButton();
+        jSeparator4 = new javax.swing.JSeparator();
+        jSeparator5 = new javax.swing.JSeparator();
+        jSeparator6 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbluser = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        btnUpdate = new javax.swing.JButton();
+        txtUpdateDisplayName = new javax.swing.JTextField();
+        txtupdatePassword = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        txtUpdateUserName = new javax.swing.JTextField();
+        lblId = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
+
+        getContentPane().setLayout(new java.awt.GridBagLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 217, 151));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""))));
 
+        txtUserName.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtUserName.setForeground(new java.awt.Color(153, 153, 153));
         txtUserName.setText("User Name");
         txtUserName.setToolTipText("User Name");
@@ -87,6 +115,7 @@ public class UserForm extends javax.swing.JInternalFrame {
             }
         });
 
+        txtDisplayName.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtDisplayName.setForeground(new java.awt.Color(153, 153, 153));
         txtDisplayName.setText("Display Name");
         txtDisplayName.setToolTipText("Display Name");
@@ -101,6 +130,7 @@ public class UserForm extends javax.swing.JInternalFrame {
             }
         });
 
+        txtPassword.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtPassword.setForeground(new java.awt.Color(153, 153, 153));
         txtPassword.setText("Passworde");
         txtPassword.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -128,33 +158,50 @@ public class UserForm extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtDisplayName, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(chekpas)))
+                        .addGap(6, 6, 6)
+                        .addComponent(chekpas)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 188, Short.MAX_VALUE)
+                        .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator5)
+                    .addComponent(txtDisplayName)
+                    .addComponent(txtUserName)
+                    .addComponent(txtPassword)
+                    .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jSeparator6, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtDisplayName, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
+                .addComponent(txtDisplayName, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(chekpas))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(47, Short.MAX_VALUE))
+                    .addComponent(chekpas)
+                    .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipadx = 186;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(47, 216, 0, 0);
+        getContentPane().add(jPanel1, gridBagConstraints);
+
+        tbluser.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -165,91 +212,118 @@ public class UserForm extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tbluser.setRowHeight(20);
+        tbluser.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbluserMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tbluser);
 
-        jButton2.setText("jButton2");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 554;
+        gridBagConstraints.ipady = 245;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(56, 75, 0, 0);
+        getContentPane().add(jScrollPane1, gridBagConstraints);
 
-        jButton1.setText("jButton1");
+        jPanel2.setBackground(new java.awt.Color(255, 217, 151));
 
-        jTextField3.setText("jTextField1");
+        btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
 
-        jTextField2.setText("jTextField1");
+        txtUpdateDisplayName.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txtUpdateDisplayName.setForeground(new java.awt.Color(153, 153, 153));
+        txtUpdateDisplayName.setText("Update Display Name");
+        txtUpdateDisplayName.setToolTipText("Update Display Name");
+
+        txtupdatePassword.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txtupdatePassword.setForeground(new java.awt.Color(153, 153, 153));
+        txtupdatePassword.setText("Update Password");
+        txtupdatePassword.setToolTipText("Update Password");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setText("ID");
 
-        jTextField1.setText("jTextField1");
+        txtUpdateUserName.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txtUpdateUserName.setForeground(new java.awt.Color(153, 153, 153));
+        txtUpdateUserName.setText("Update User name");
+        txtUpdateUserName.setToolTipText("Update User name");
 
-        jLabel2.setText("jLabel2");
+        lblId.setBackground(new java.awt.Color(255, 217, 151));
+
+        jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
+
+        jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
+
+        jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jSeparator3)
+                    .addComponent(txtUpdateUserName, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtUpdateDisplayName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                    .addComponent(txtupdatePassword)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(jButton2)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jButton1))
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(lblId, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(33, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblId, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtUpdateDisplayName, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(7, 7, 7)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtUpdateUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(7, 7, 7)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addComponent(txtupdatePassword, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(57, 57, 57)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 505, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(175, 175, 175)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(21, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(44, 44, 44))
-        );
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 146;
+        gridBagConstraints.ipady = 22;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(11, 10, 0, 10);
+        getContentPane().add(jPanel2, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -258,103 +332,187 @@ public class UserForm extends javax.swing.JInternalFrame {
         String displayName = txtDisplayName.getText().trim();
         String userName = txtUserName.getText().trim();
         String password = txtPassword.getText().trim();
-        user=new User();
-       
+        user = new User();
+
         user.setDisplayName(displayName);
         user.setUserName(userName);
         user.setPassword(password);
-        int rowAffacted=0;
-        
-        rowAffacted=userService.registerUser(user);
-        txtDisplayName.setText("");
-        txtUserName.setText("");
-        txtPassword.setText("");
-        if(rowAffacted==0){
-            JOptionPane.showMessageDialog(this, "  Data Not insearted.");
-        }else{
-            JOptionPane.showMessageDialog(null, "New menu item saved successfully!");
+        int rowAffacted = 0;
+
+        rowAffacted = userService.registerUser(user);
+
+        if (rowAffacted == 0) {
+            JOptionPane.showMessageDialog(this, " Please Choos Another Admin Name .");
+        } else {
+            JOptionPane.showMessageDialog(null, " New Admin  added successfully!");
+            txtDisplayName.setText("");
+            txtUserName.setText("");
+            txtPassword.setText("");
         }
-        
-        
-        
+        vectorUsers = commonService.getVectorUser();
+        UserTableModel userTableModel = new UserTableModel(vectorUsers);
+        tbluser.setModel(userTableModel);
 
 
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void txtDisplayNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDisplayNameKeyTyped
-     if(status==false){
-         txtDisplayName.setText("");
-        // txtDisplayName.setForeground(Color.black);
-         status=true;
-     }txtDisplayName.setForeground(Color.black);
+        if (status == false) {
+            txtDisplayName.setText("");
+            // txtDisplayName.setForeground(Color.black);
+            status = true;
+        }
+        txtDisplayName.setForeground(Color.black);
     }//GEN-LAST:event_txtDisplayNameKeyTyped
 
     private void txtDisplayNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDisplayNameFocusLost
-         if(txtDisplayName.getText().equals("")){
-           txtDisplayName.setText("Display Name");
-           txtDisplayName.setForeground(Color.gray);
-           status=false;
-       }
+        if (txtDisplayName.getText().equals("")) {
+            txtDisplayName.setText("Display Name");
+            txtDisplayName.setForeground(Color.gray);
+            status = false;
+        }
     }//GEN-LAST:event_txtDisplayNameFocusLost
 
     private void txtUserNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUserNameFocusLost
-         if(txtUserName.getText().equals("")){
-           txtUserName.setText("User Name");
-           txtUserName.setForeground(Color.gray);
-           status1=false;
-       }
+        if (txtUserName.getText().equals("")) {
+            txtUserName.setText("User Name");
+            txtUserName.setForeground(Color.gray);
+            status1 = false;
+        }
     }//GEN-LAST:event_txtUserNameFocusLost
 
     private void txtUserNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUserNameKeyTyped
-         if(status1==false){
-         txtUserName.setText("");
-        
-         status1=true;
-     }txtUserName.setForeground(Color.black);
+        if (status1 == false) {
+            txtUserName.setText("");
+
+            status1 = true;
+        }
+        txtUserName.setForeground(Color.black);
     }//GEN-LAST:event_txtUserNameKeyTyped
 
     private void txtPasswordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPasswordFocusLost
-         if(txtPassword.getText().equals("")){
-           txtPassword.setText("Password");
-           txtPassword.setForeground(Color.gray);
-           status2=false;
-       }
+        if (txtPassword.getText().equals("")) {
+            txtPassword.setText("Password");
+            txtPassword.setForeground(Color.gray);
+            status2 = false;
+        }
     }//GEN-LAST:event_txtPasswordFocusLost
 
     private void txtPasswordKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyTyped
-        if(status2==false){
-         txtPassword.setText("");
-        
-         status2=true;
-     }txtPassword.setForeground(Color.black);
+        if (status2 == false) {
+            txtPassword.setText("");
+
+            status2 = true;
+        }
+        txtPassword.setForeground(Color.black);
     }//GEN-LAST:event_txtPasswordKeyTyped
 
     private void chekpasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chekpasActionPerformed
-       if (evt.getSource() == chekpas) {
+        if (evt.getSource() == chekpas) {
             if (chekpas.isSelected()) {
                 txtPassword.setEchoChar((char) 0);
             } else {
                 txtPassword.setEchoChar('*');
-            }}
+            }
+        }
     }//GEN-LAST:event_chekpasActionPerformed
 
+    private void tbluserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbluserMouseClicked
+        int rowIndex = tbluser.getSelectedRow();
+        int choce = JOptionPane.showConfirmDialog(null, "Are You Sure To Update This User Detail?");
+        if (choce == 0) {
+            UserTableModel userTableModel = (UserTableModel) tbluser.getModel();
+            lblId.setText(userTableModel.getValueAt(rowIndex, 0).toString());
+            txtUpdateDisplayName.setText(userTableModel.getValueAt(rowIndex, 1).toString());
+            txtUpdateUserName.setText(userTableModel.getValueAt(rowIndex, 2).toString());
+            txtupdatePassword.setText(userTableModel.getValueAt(rowIndex, 3).toString());
+            txtUpdateUserName.setForeground(Color.black);
+            txtupdatePassword.setForeground(Color.black);
+            txtUpdateDisplayName.setForeground(Color.black);
+            //  txtUpdateDisplayName.setForeground(Color.black);
+
+        }
+
+    }//GEN-LAST:event_tbluserMouseClicked
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        String id = lblId.getText();
+        String displayName = txtUpdateDisplayName.getText().trim();
+        String userName = txtUpdateUserName.getText().trim();
+        String password = txtupdatePassword.getText().trim();
+        
+        User user = new User();
+        try{
+        user.setUserId(Integer.parseInt(id));
+        user.setDisplayName(displayName);
+        user.setUserName(userName);
+        user.setPassword(password);
+        
+        userService.updateUser(user);
+        
+        vectorUsers = commonService.getVectorUser();
+        UserTableModel userTableModel = new UserTableModel(vectorUsers);
+        tbluser.setModel(userTableModel);
+        
+        txtUpdateDisplayName.setText("Update Display Name");
+        txtUpdateDisplayName.setForeground(Color.gray);
+
+        txtUpdateUserName.setText("Update User name");
+        txtUpdateUserName.setForeground(Color.gray);
+
+        txtupdatePassword.setText("Update Password");
+        txtupdatePassword.setForeground(Color.gray);
+        }catch(Exception E){
+            JOptionPane.showMessageDialog(lblId,E+ "Please Select data in Table");
+        }
+
+
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
+    
+    public void tableDesin(){
+        JTableHeader header = tbluser.getTableHeader();
+        header.setPreferredSize(new Dimension(150, 50));
+        //  header.setBorder(new DropShadowBorder());
+        header.setBounds(20, 20, 30, 30);
+        header.setFont(new Font("Tahoma", Font.BOLD, 15));
+        header.setBackground(Color.red);
+
+        tbluser.setBackground(Color.red);
+        ((DefaultTableCellRenderer) tbluser.getDefaultRenderer(Object.class)).setBackground(new Color(255, 255, 204));
+
+        tbluser.setGridColor(Color.red);
+        tbluser.setForeground(Color.black);
+        jScrollPane1.setBackground(Color.red);
+        tbluser.setOpaque(false);
+        ((DefaultTableCellRenderer) header.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
+        tbluser.setFont(new Font("Tahome", Font.PLAIN, 20));
+
+        jScrollPane1.getViewport().setOpaque(false);
+        tbluser.setShowGrid(true);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSave;
+    private javax.swing.JButton btnUpdate;
     private javax.swing.JCheckBox chekpas;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JLabel lblId;
+    private javax.swing.JTable tbluser;
     private javax.swing.JTextField txtDisplayName;
     private javax.swing.JPasswordField txtPassword;
+    private javax.swing.JTextField txtUpdateDisplayName;
+    private javax.swing.JTextField txtUpdateUserName;
     private javax.swing.JTextField txtUserName;
+    private javax.swing.JTextField txtupdatePassword;
     // End of variables declaration//GEN-END:variables
 }

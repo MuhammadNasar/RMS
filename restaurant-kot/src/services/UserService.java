@@ -34,41 +34,84 @@ public class UserService {
 
         return canLogin;
     }
-    public int registerUser(User user){
-        SQLQueryUtil sql =new SQLQueryUtil();
+
+    public int registerUser(User user) {
+        SQLQueryUtil sql = new SQLQueryUtil();
         System.out.println("0");
         sql.connect(false);
-        int rowAffected=0;
-        int count=0;
-        System.out.println("1");
-        if (user.getDisplayName().equals("Display Name")||user.getUserName().equals("User Name")||user.getPassword().equals("Password"))
-        {
-            JOptionPane.showMessageDialog(null, "Empty data can not be save .");
-        }
-        else{
-            String chekQuery="SELECT COUNT(*) AS `count` FROM `users` WHERE `user_name` LIKE('"+user.getUserName()+"');";
-            System.out.println("2");
-            try{
-                ResultSet rs= sql.executeQuery(chekQuery);
-                System.out.println("3");
-            rs.next();
-            count=rs.getInt("count");
-            if(count==0){
-                System.out.println("4");
-                rowAffected=userDAO.registerUser(user);
-            }else{
-                JOptionPane.showMessageDialog(null,user.getUserName()+ "Already exists.");
-            }
-            
-            }catch(SQLException e){
+        int rowAffected = 0;
+        int count = 0;
+
+        if (user.getDisplayName().equals("Display Name") || user.getDisplayName().equals("")
+                || user.getUserName().equals("User Name") || user.getUserName().equals("")
+                || user.getPassword().equals("Password") || user.getPassword().equals("")) {
+            JOptionPane.showMessageDialog(null, " Empty data can not be save .");
+        } else {
+            String chekQuery = "SELECT COUNT(*) AS `count` FROM `users` WHERE `user_name` LIKE('" + user.getUserName() + "');";
+
+            try {
+                ResultSet rs = sql.executeQuery(chekQuery);
+
+                rs.next();
+                count = rs.getInt("count");
+                if (count == 0) {
+
+                    rowAffected = userDAO.registerUser(user);
+                } else {
+                    JOptionPane.showMessageDialog(null, user.getUserName() + " Already exists.");
+                }
+
+            } catch (SQLException e) {
                 e.printStackTrace();
-                
-            }finally{
+
+            } finally {
                 sql.disconnect();
             }
-            
+
         }
         return rowAffected;
+    }
+
+    public void updateUser(User user) {
+        SQLQueryUtil sql = new SQLQueryUtil();
+        sql.connect(false);
+        if (user.getDisplayName().equals("Display Name") || user.getDisplayName().equals("")
+                || user.getUserName().equals("User Name") || user.getUserName().equals("")
+                || user.getPassword().equals("Password") || user.getPassword().equals("")) {
+            JOptionPane.showMessageDialog(null, " Empty data can not to be save");
+
+        } else {
+            String query = "SELECT COUNT(*) AS `count` FROM  `users` WHERE `display_name` LIKE ('" + user.getDisplayName() + "');";
+            try {
+                int rowAffected = 0;
+                int count = 0;
+
+                ResultSet rs = sql.executeQuery(query);
+                rs.next();
+
+                count = rs.getInt("count");
+
+                if (count == 0) {
+
+                    rowAffected = userDAO.updateUser(user);
+
+                    if (rowAffected > 0) {
+                        JOptionPane.showMessageDialog(null, "User Detail Update Successsful ");
+                    } else if (rowAffected == 0 || rowAffected < 0) {
+                        JOptionPane.showMessageDialog(null, "Operation field");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "  This User information Already Existed");
+
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+
+            } finally {
+                sql.disconnect();
+            }
+        }
+
     }
 
 }

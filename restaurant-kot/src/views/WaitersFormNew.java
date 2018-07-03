@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package views;
 
 import entity.Waiters;
@@ -14,40 +9,32 @@ import services.CommonService;
 import services.WaitersServices;
 import table_models.WaitersTableModel;
 
-
-/**
- *
- * @author SOHAIL AHMAD
- */
 public class WaitersFormNew extends javax.swing.JInternalFrame {
-    
+
     private Waiters waiters;
     private CommonService commonService;
-    Vector<Waiters> vectorWaiter;
+    private Vector<Waiters> vectorWaiter;
     private WaitersServices waiterService;
-   
+    private boolean status;
 
     public WaitersFormNew() {
         initComponents();
-        
+
         this.getContentPane().setBackground(Color.WHITE);
         setBorder(BorderFactory.createLineBorder(new Color(201, 201, 201)));
         javax.swing.plaf.InternalFrameUI ifu = this.getUI();
         ((javax.swing.plaf.basic.BasicInternalFrameUI) ifu).setNorthPane(null);
-        
-        
+
         commonService = new CommonService();
-        
+
         vectorWaiter = commonService.getVectorWaiters();
-        
+
         waiterService = new WaitersServices();
-        
+
         WaitersTableModel waiterTableModel = new WaitersTableModel(vectorWaiter);
         tbleWaiter.setModel(waiterTableModel);
-        
-        
+
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -75,9 +62,24 @@ public class WaitersFormNew extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbleWaiter = new javax.swing.JTable();
 
+        jPanel1.setBackground(new java.awt.Color(255, 217, 151));
+
+        txtWaiterName.setForeground(new java.awt.Color(204, 204, 204));
+        txtWaiterName.setText("waiter name");
+        txtWaiterName.setToolTipText("waiter name");
+        txtWaiterName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtWaiterNameFocusLost(evt);
+            }
+        });
         txtWaiterName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtWaiterNameActionPerformed(evt);
+            }
+        });
+        txtWaiterName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtWaiterNameKeyTyped(evt);
             }
         });
 
@@ -89,13 +91,59 @@ public class WaitersFormNew extends javax.swing.JInternalFrame {
 
         jLabel3.setText("Waiter Number");
 
+        txtWaiterNumber.setForeground(new java.awt.Color(204, 204, 204));
+        txtWaiterNumber.setText("Waiter Number");
+        txtWaiterNumber.setToolTipText("Waiter Number");
+        txtWaiterNumber.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtWaiterNumberFocusLost(evt);
+            }
+        });
         txtWaiterNumber.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtWaiterNumberActionPerformed(evt);
             }
         });
+        txtWaiterNumber.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtWaiterNumberKeyTyped(evt);
+            }
+        });
+
+        txtAddress.setForeground(new java.awt.Color(204, 204, 204));
+        txtAddress.setText("Address");
+        txtAddress.setToolTipText("Address");
+        txtAddress.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtAddressFocusLost(evt);
+            }
+        });
+        txtAddress.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtAddressKeyTyped(evt);
+            }
+        });
 
         jLabel6.setText("Address");
+
+        txtFatherName.setForeground(new java.awt.Color(204, 204, 204));
+        txtFatherName.setText("Father name");
+        txtFatherName.setToolTipText("Father name");
+        txtFatherName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtFatherNameFocusLost(evt);
+            }
+        });
+        txtFatherName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFatherNameActionPerformed(evt);
+            }
+        });
+        txtFatherName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtFatherNameKeyTyped(evt);
+            }
+        });
 
         btnSave.setText("Save");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
@@ -104,15 +152,41 @@ public class WaitersFormNew extends javax.swing.JInternalFrame {
             }
         });
 
+        txtPhoneNumber.setForeground(new java.awt.Color(204, 204, 204));
+        txtPhoneNumber.setText("Phone Number");
+        txtPhoneNumber.setToolTipText("Phone Number");
+        txtPhoneNumber.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtPhoneNumberFocusLost(evt);
+            }
+        });
         txtPhoneNumber.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPhoneNumberActionPerformed(evt);
             }
         });
+        txtPhoneNumber.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPhoneNumberKeyTyped(evt);
+            }
+        });
 
+        txtCnic.setForeground(new java.awt.Color(204, 204, 204));
+        txtCnic.setText("Cnic");
+        txtCnic.setToolTipText("Cnic");
+        txtCnic.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtCnicFocusLost(evt);
+            }
+        });
         txtCnic.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCnicActionPerformed(evt);
+            }
+        });
+        txtCnic.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCnicKeyTyped(evt);
             }
         });
 
@@ -212,26 +286,27 @@ public class WaitersFormNew extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtCnicActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-      
+
         if (txtWaiterName.getText().equals("") || txtFatherName.getText().equals("")
-            || txtWaiterNumber.getText().equals("") || txtPhoneNumber.getText().equals("")
-            || txtCnic.getText().equals("") || txtAddress.getText().equals("")) {
-            
-            JOptionPane.showMessageDialog(rootPane,"empty data can not be inserted");
-            
+                || txtWaiterNumber.getText().equals("") || txtPhoneNumber.getText().equals("")
+                || txtCnic.getText().equals("") || txtAddress.getText().equals("")) {
+
+            JOptionPane.showMessageDialog(rootPane, "empty data can not be inserted");
+            JOptionPane.showMessageDialog(rootPane, "please insert data");
+
         } else {
             waiters = new Waiters();
-           
+
             waiters.setName(txtWaiterName.getText());
             waiters.setFatherName(txtFatherName.getText());
             waiters.setWaiterNumber(txtWaiterNumber.getText());
-            waiters.setPhoneNumber(Integer.parseInt(txtPhoneNumber.getText()) );
+            waiters.setPhoneNumber(Integer.parseInt(txtPhoneNumber.getText()));
             waiters.setCnic(txtCnic.getText());
             waiters.setAddress(txtAddress.getText());
-           
+
             waiterService.waiter(waiters);
-            
-    }
+
+        }
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void txtWaiterNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtWaiterNumberActionPerformed
@@ -245,6 +320,95 @@ public class WaitersFormNew extends javax.swing.JInternalFrame {
     private void txtPhoneNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhoneNumberActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPhoneNumberActionPerformed
+
+    private void txtWaiterNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtWaiterNameKeyTyped
+
+        if (status == false) {
+            txtWaiterName.setText("");
+            status = true;
+        }
+        txtWaiterName.setForeground(Color.black);
+
+    }//GEN-LAST:event_txtWaiterNameKeyTyped
+
+    private void txtFatherNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFatherNameKeyTyped
+
+        if (status == false) {
+            txtFatherName.setText("");
+            status = true;
+        }
+        txtFatherName.setForeground(Color.black);
+
+    }//GEN-LAST:event_txtFatherNameKeyTyped
+
+    private void txtWaiterNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtWaiterNumberKeyTyped
+
+        if (status == false) {
+            txtWaiterNumber.setText("");
+            status = true;
+        }
+        txtWaiterNumber.setForeground(Color.black);
+
+    }//GEN-LAST:event_txtWaiterNumberKeyTyped
+
+    private void txtPhoneNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPhoneNumberKeyTyped
+
+        if (status == false) {
+            txtPhoneNumber.setText("");
+            status = true;
+        }
+        txtPhoneNumber.setForeground(Color.black);
+
+    }//GEN-LAST:event_txtPhoneNumberKeyTyped
+
+    private void txtCnicKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCnicKeyTyped
+
+        if (status == false) {
+            txtCnic.setText("");
+            status = true;
+        }
+        txtCnic.setForeground(Color.black);
+
+    }//GEN-LAST:event_txtCnicKeyTyped
+
+    private void txtAddressKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAddressKeyTyped
+
+        if (status == false) {
+            txtAddress.setText("");
+            status = true;
+        }
+        txtAddress.setForeground(Color.black);
+
+
+    }//GEN-LAST:event_txtAddressKeyTyped
+
+    private void txtFatherNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFatherNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFatherNameActionPerformed
+
+    private void txtFatherNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFatherNameFocusLost
+        status = false;
+    }//GEN-LAST:event_txtFatherNameFocusLost
+
+    private void txtPhoneNumberFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPhoneNumberFocusLost
+        status = false;
+    }//GEN-LAST:event_txtPhoneNumberFocusLost
+
+    private void txtAddressFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtAddressFocusLost
+        status = false;
+    }//GEN-LAST:event_txtAddressFocusLost
+
+    private void txtWaiterNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtWaiterNameFocusLost
+        status = false;
+    }//GEN-LAST:event_txtWaiterNameFocusLost
+
+    private void txtWaiterNumberFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtWaiterNumberFocusLost
+        status = false;
+    }//GEN-LAST:event_txtWaiterNumberFocusLost
+
+    private void txtCnicFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCnicFocusLost
+        status = false;
+    }//GEN-LAST:event_txtCnicFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
