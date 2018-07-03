@@ -292,6 +292,7 @@ public class WaitersFormNew extends javax.swing.JInternalFrame {
                 || txtCnic.getText().equals("") || txtAddress.getText().equals("")) {
 
             JOptionPane.showMessageDialog(rootPane, "empty data can not be inserted");
+            JOptionPane.showMessageDialog(rootPane, "please insert data");
 
         } else {
             waiters = new Waiters();
