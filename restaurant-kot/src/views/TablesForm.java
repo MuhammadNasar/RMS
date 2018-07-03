@@ -107,15 +107,15 @@ public class TablesForm extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblTable)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnPrintTable, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnPrintTable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(txtTable, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,7 +153,6 @@ public class TablesForm extends javax.swing.JInternalFrame {
         jLabel4.setText("ID");
 
         lblID.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblID.setText("jLabel5");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -279,7 +278,7 @@ public class TablesForm extends javax.swing.JInternalFrame {
         rowsAffected = tableService.chickTableNumber(table) ;
         txtTable.setText("");
         if ( rowsAffected == 0) {
-                JOptionPane.showMessageDialog(this, "No Data Inserted!");
+                JOptionPane.showMessageDialog(this, "Data can not Inserted successfully");
         } else {
                 JOptionPane.showMessageDialog(this, "Data Inserted Successfully!");
         }
@@ -300,6 +299,7 @@ public class TablesForm extends javax.swing.JInternalFrame {
 
     private void btnPrintTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintTableActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_btnPrintTableActionPerformed
 
     private void tblTablesNumberMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblTablesNumberMouseClicked
