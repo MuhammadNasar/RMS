@@ -30,7 +30,7 @@ public class UserTableModel extends AbstractTableModel {
     @Override
     public int getColumnCount() {
 
-        return 4;
+        return 3;
     }
 
     @Override
@@ -66,9 +66,9 @@ return object;
             case 2:
                 name = "User Name";
                 break;
-            case 3:
-                name = "Password";
-                break;
+           // case 3:
+                //name = "Password";
+              //  break;
 
         }
         return name;

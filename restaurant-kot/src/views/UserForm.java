@@ -203,13 +203,13 @@ public class UserForm extends javax.swing.JInternalFrame {
 
         tbluser.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Title 1", "Title 2", "Title 3"
             }
         ));
         tbluser.setRowHeight(20);
@@ -430,6 +430,10 @@ public class UserForm extends javax.swing.JInternalFrame {
             lblId.setText(userTableModel.getValueAt(rowIndex, 0).toString());
             txtUpdateDisplayName.setText(userTableModel.getValueAt(rowIndex, 1).toString());
             txtUpdateUserName.setText(userTableModel.getValueAt(rowIndex, 2).toString());
+          //  Object object = tbluser.getSelectionModel();
+           // vectorUsers=(Vector<User>) object;
+          // User p= vectorUsers.get(4);
+          // txtupdatePassword.setText(p.getPassword());
             txtupdatePassword.setText(userTableModel.getValueAt(rowIndex, 3).toString());
             txtUpdateUserName.setForeground(Color.black);
             txtupdatePassword.setForeground(Color.black);
