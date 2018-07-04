@@ -135,8 +135,8 @@ public class TableService {
             //Now Add Data Into these table Columns 
             for (Tables tables : tablesNumber) {
                 table.addCell(new Paragraph(tables.getTableId()+""));
-                table.addCell(new Paragraph(tables.getMenuName());
-                table.addCell(new Paragraph(tables.getPrice()+""));
+                //table.addCell(new Paragraph(tables.getMenuName());
+                //table.addCell(new Paragraph(tables.getPrice()+""));
             }
             
             // add table to pdf

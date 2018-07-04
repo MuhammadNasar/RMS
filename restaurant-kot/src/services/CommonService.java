@@ -5,7 +5,6 @@
  */
 package services;
 
-import com.itextpdf.layout.element.Table;
 import entity.Menu;
 import entity.Tables;
 import entity.User;
