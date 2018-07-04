@@ -7,6 +7,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import services.CommonService;
 import services.WaitersServices;
+import table_models.UserTableModel;
 import table_models.WaitersTableModel;
 
 public class WaitersFormNew extends javax.swing.JInternalFrame {
@@ -16,6 +17,7 @@ public class WaitersFormNew extends javax.swing.JInternalFrame {
     private Vector<Waiters> vectorWaiter;
     private WaitersServices waiterService;
     private boolean status;
+    private WaitersTableModel waitersTableModel;
 
     public WaitersFormNew() {
         initComponents();
@@ -30,6 +32,8 @@ public class WaitersFormNew extends javax.swing.JInternalFrame {
         vectorWaiter = commonService.getVectorWaiters();
 
         waiterService = new WaitersServices();
+        
+      
 
         WaitersTableModel waiterTableModel = new WaitersTableModel(vectorWaiter);
         tbleWaiter.setModel(waiterTableModel);
@@ -61,12 +65,27 @@ public class WaitersFormNew extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbleWaiter = new javax.swing.JTable();
+        jPanel2 = new javax.swing.JPanel();
+        txtUpdateWaiterName = new javax.swing.JTextField();
+        txtUpdateFatherName = new javax.swing.JTextField();
+        txtUpdateWaiterNumber = new javax.swing.JTextField();
+        txtUpdatePhoneNumber = new javax.swing.JTextField();
+        txtUpdateCnic = new javax.swing.JTextField();
+        txtUpdateAddress = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        btnUpdate = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(255, 217, 151));
 
+        txtWaiterName.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtWaiterName.setForeground(new java.awt.Color(204, 204, 204));
-        txtWaiterName.setText("waiter name");
-        txtWaiterName.setToolTipText("waiter name");
+        txtWaiterName.setText("waiter Name");
+        txtWaiterName.setToolTipText("waiter Name");
         txtWaiterName.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtWaiterNameFocusLost(evt);
@@ -91,9 +110,11 @@ public class WaitersFormNew extends javax.swing.JInternalFrame {
 
         jLabel3.setText("Waiter Number");
 
+        txtWaiterNumber.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtWaiterNumber.setForeground(new java.awt.Color(204, 204, 204));
         txtWaiterNumber.setText("Waiter Number");
         txtWaiterNumber.setToolTipText("Waiter Number");
+        txtWaiterNumber.setMaximumSize(new java.awt.Dimension(2147483647, 21474836));
         txtWaiterNumber.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtWaiterNumberFocusLost(evt);
@@ -110,6 +131,7 @@ public class WaitersFormNew extends javax.swing.JInternalFrame {
             }
         });
 
+        txtAddress.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtAddress.setForeground(new java.awt.Color(204, 204, 204));
         txtAddress.setText("Address");
         txtAddress.setToolTipText("Address");
@@ -126,9 +148,10 @@ public class WaitersFormNew extends javax.swing.JInternalFrame {
 
         jLabel6.setText("Address");
 
+        txtFatherName.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtFatherName.setForeground(new java.awt.Color(204, 204, 204));
-        txtFatherName.setText("Father name");
-        txtFatherName.setToolTipText("Father name");
+        txtFatherName.setText("Father Name");
+        txtFatherName.setToolTipText("Father Name");
         txtFatherName.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtFatherNameFocusLost(evt);
@@ -152,6 +175,7 @@ public class WaitersFormNew extends javax.swing.JInternalFrame {
             }
         });
 
+        txtPhoneNumber.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtPhoneNumber.setForeground(new java.awt.Color(204, 204, 204));
         txtPhoneNumber.setText("Phone Number");
         txtPhoneNumber.setToolTipText("Phone Number");
@@ -171,6 +195,7 @@ public class WaitersFormNew extends javax.swing.JInternalFrame {
             }
         });
 
+        txtCnic.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtCnic.setForeground(new java.awt.Color(204, 204, 204));
         txtCnic.setText("Cnic");
         txtCnic.setToolTipText("Cnic");
@@ -192,6 +217,7 @@ public class WaitersFormNew extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Cnic");
 
+        tbleWaiter.setBackground(new java.awt.Color(255, 217, 151));
         tbleWaiter.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -203,68 +229,255 @@ public class WaitersFormNew extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tbleWaiter.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbleWaiterMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbleWaiter);
+
+        jPanel2.setBackground(new java.awt.Color(255, 217, 151));
+
+        txtUpdateWaiterName.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txtUpdateWaiterName.setForeground(new java.awt.Color(204, 204, 204));
+        txtUpdateWaiterName.setText("Waiter Name");
+        txtUpdateWaiterName.setToolTipText("Waiter Name");
+        txtUpdateWaiterName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtUpdateWaiterNameFocusLost(evt);
+            }
+        });
+        txtUpdateWaiterName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtUpdateWaiterNameKeyTyped(evt);
+            }
+        });
+
+        txtUpdateFatherName.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txtUpdateFatherName.setForeground(new java.awt.Color(204, 204, 204));
+        txtUpdateFatherName.setText("Father Name");
+        txtUpdateFatherName.setToolTipText("Father Name");
+        txtUpdateFatherName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtUpdateFatherNameFocusLost(evt);
+            }
+        });
+        txtUpdateFatherName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUpdateFatherNameActionPerformed(evt);
+            }
+        });
+        txtUpdateFatherName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtUpdateFatherNameKeyTyped(evt);
+            }
+        });
+
+        txtUpdateWaiterNumber.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txtUpdateWaiterNumber.setForeground(new java.awt.Color(204, 204, 204));
+        txtUpdateWaiterNumber.setText("Waiter Number");
+        txtUpdateWaiterNumber.setToolTipText("Waiter Number");
+        txtUpdateWaiterNumber.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtUpdateWaiterNumberFocusLost(evt);
+            }
+        });
+        txtUpdateWaiterNumber.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtUpdateWaiterNumberKeyTyped(evt);
+            }
+        });
+
+        txtUpdatePhoneNumber.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txtUpdatePhoneNumber.setForeground(new java.awt.Color(204, 204, 204));
+        txtUpdatePhoneNumber.setText("Phone Number");
+        txtUpdatePhoneNumber.setToolTipText("Phone Number");
+        txtUpdatePhoneNumber.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtUpdatePhoneNumberFocusLost(evt);
+            }
+        });
+        txtUpdatePhoneNumber.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtUpdatePhoneNumberKeyTyped(evt);
+            }
+        });
+
+        txtUpdateCnic.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txtUpdateCnic.setForeground(new java.awt.Color(204, 204, 204));
+        txtUpdateCnic.setText("Cnic");
+        txtUpdateCnic.setToolTipText("Cnic");
+        txtUpdateCnic.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtUpdateCnicFocusLost(evt);
+            }
+        });
+        txtUpdateCnic.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtUpdateCnicKeyTyped(evt);
+            }
+        });
+
+        txtUpdateAddress.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txtUpdateAddress.setForeground(new java.awt.Color(204, 204, 204));
+        txtUpdateAddress.setText("Address");
+        txtUpdateAddress.setToolTipText("Address");
+        txtUpdateAddress.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtUpdateAddressFocusLost(evt);
+            }
+        });
+        txtUpdateAddress.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtUpdateAddressKeyTyped(evt);
+            }
+        });
+
+        jLabel7.setText("Waiter Name");
+
+        jLabel8.setText("Father Name");
+
+        jLabel9.setText("Waiter Number");
+
+        jLabel10.setText("Phone Number");
+
+        jLabel11.setText("Cnic");
+
+        jLabel12.setText("Address");
+
+        btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtUpdateWaiterName)
+                    .addComponent(txtUpdateFatherName)
+                    .addComponent(txtUpdateWaiterNumber, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtUpdatePhoneNumber, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtUpdateCnic, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtUpdateAddress, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(89, 89, 89)
+                .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(103, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtUpdateWaiterName, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtUpdateFatherName, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtUpdateWaiterNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtUpdatePhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtUpdateCnic, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtUpdateAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(69, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(116, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtWaiterNumber, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
-                            .addComponent(txtWaiterName, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtCnic))
-                        .addGap(51, 51, 51)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtFatherName, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(141, 141, 141))
+                            .addComponent(txtWaiterName, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCnic, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtWaiterNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(89, 89, 89)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtFatherName)
+                                .addComponent(txtPhoneNumber)
+                                .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 690, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(15, 15, 15)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtWaiterName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtFatherName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(txtWaiterName, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFatherName, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtWaiterNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCnic, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
-                .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(182, Short.MAX_VALUE))
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(3, 3, 3)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtWaiterNumber, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(19, 19, 19)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtCnic)
+                            .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
+                        .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(123, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -275,7 +488,7 @@ public class WaitersFormNew extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -287,7 +500,10 @@ public class WaitersFormNew extends javax.swing.JInternalFrame {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
 
-        if (txtWaiterName.getText().equals("") || txtFatherName.getText().equals("")
+        if (txtWaiterName.getText().equals("Waiter Name") || txtFatherName.getText().equals("Father Name")
+                || txtWaiterNumber.getText().equals("Waiter Number") || txtPhoneNumber.getText().equals("Phone Number")
+                || txtCnic.getText().equals("Cnic") || txtAddress.getText().equals("Address")
+                || txtWaiterName.getText().equals("") || txtFatherName.getText().equals("")
                 || txtWaiterNumber.getText().equals("") || txtPhoneNumber.getText().equals("")
                 || txtCnic.getText().equals("") || txtAddress.getText().equals("")) {
 
@@ -410,22 +626,149 @@ public class WaitersFormNew extends javax.swing.JInternalFrame {
         status = false;
     }//GEN-LAST:event_txtCnicFocusLost
 
+    private void txtUpdateFatherNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUpdateFatherNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUpdateFatherNameActionPerformed
+
+    private void txtUpdateWaiterNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUpdateWaiterNameKeyTyped
+        if (status == false) {
+            txtUpdateWaiterName.setText("");
+            status = true;
+        }
+        txtUpdateWaiterName.setForeground(Color.black);
+    }//GEN-LAST:event_txtUpdateWaiterNameKeyTyped
+
+    private void txtUpdateFatherNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUpdateFatherNameKeyTyped
+        if (status == false) {
+            txtUpdateFatherName.setText("");
+            status = true;
+        }
+        txtUpdateFatherName.setForeground(Color.black);
+    }//GEN-LAST:event_txtUpdateFatherNameKeyTyped
+
+    private void txtUpdateWaiterNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUpdateWaiterNumberKeyTyped
+        if (status == false) {
+            txtUpdateWaiterNumber.setText("");
+            status = true;
+        }
+        txtUpdateWaiterNumber.setForeground(Color.black);
+    }//GEN-LAST:event_txtUpdateWaiterNumberKeyTyped
+
+    private void txtUpdatePhoneNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUpdatePhoneNumberKeyTyped
+        if (status == false) {
+            txtUpdatePhoneNumber.setText("");
+            status = true;
+        }
+        txtUpdatePhoneNumber.setForeground(Color.black);
+    }//GEN-LAST:event_txtUpdatePhoneNumberKeyTyped
+
+    private void txtUpdateCnicKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUpdateCnicKeyTyped
+        if (status == false) {
+            txtUpdateCnic.setText("");
+            status = true;
+        }
+        txtUpdateCnic.setForeground(Color.black);
+    }//GEN-LAST:event_txtUpdateCnicKeyTyped
+
+    private void txtUpdateAddressKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUpdateAddressKeyTyped
+        if (status == false) {
+            txtUpdateAddress.setText("");
+            status = true;
+        }
+        txtUpdateAddress.setForeground(Color.black);
+    }//GEN-LAST:event_txtUpdateAddressKeyTyped
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        if (txtUpdateWaiterName.getText().equals("Waiter Name") || txtUpdateFatherName.getText().equals("Father Name")
+                || txtUpdateWaiterNumber.getText().equals("Waiter Number") || txtUpdatePhoneNumber.getText().equals("Phone Number")
+                || txtUpdateCnic.getText().equals("Cnic") || txtUpdateAddress.getText().equals("Address")
+                || txtUpdateWaiterName.getText().equals("") || txtUpdateFatherName.getText().equals("")
+                || txtUpdateWaiterNumber.getText().equals("") || txtUpdatePhoneNumber.getText().equals("")
+                || txtUpdateCnic.getText().equals("") || txtUpdateCnic.getText().equals("")) {
+
+            JOptionPane.showMessageDialog(rootPane, "empty data can not be updated");
+            //  JOptionPane.showMessageDialog(rootPane, "please insert data");
+            System.out.println(txtWaiterName.getText());
+
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "data Upadated");
+        }
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void txtUpdateWaiterNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUpdateWaiterNameFocusLost
+        status = false;
+    }//GEN-LAST:event_txtUpdateWaiterNameFocusLost
+
+    private void txtUpdateFatherNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUpdateFatherNameFocusLost
+        status = false;
+    }//GEN-LAST:event_txtUpdateFatherNameFocusLost
+
+    private void txtUpdateWaiterNumberFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUpdateWaiterNumberFocusLost
+        status = false;
+    }//GEN-LAST:event_txtUpdateWaiterNumberFocusLost
+
+    private void txtUpdatePhoneNumberFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUpdatePhoneNumberFocusLost
+        status = false;
+    }//GEN-LAST:event_txtUpdatePhoneNumberFocusLost
+
+    private void txtUpdateCnicFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUpdateCnicFocusLost
+        status = false;
+    }//GEN-LAST:event_txtUpdateCnicFocusLost
+
+    private void txtUpdateAddressFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUpdateAddressFocusLost
+        status = false;
+    }//GEN-LAST:event_txtUpdateAddressFocusLost
+
+    private void tbleWaiterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbleWaiterMouseClicked
+            int rowIndex = tbleWaiter.getSelectedRow();
+        int choice = JOptionPane.showConfirmDialog(null, "Are You Sure To Update This Waiter Detail?");
+        if (choice == 0) {
+            WaitersTableModel waitertable = (WaitersTableModel) tbleWaiter.getModel();
+            txtUpdateWaiterName.setText(waitersTableModel.getValueAt(rowIndex, 0).toString());
+            txtUpdateFatherName.setText(waitersTableModel.getValueAt(rowIndex, 1).toString());
+            txtUpdateWaiterNumber.setText(waitersTableModel.getValueAt(rowIndex, 2).toString());
+            txtUpdatePhoneNumber.setText(waitersTableModel.getValueAt(rowIndex, 3).toString());
+            txtUpdateCnic.setText(waitersTableModel.getValueAt(rowIndex, 4).toString());
+            txtUpdateAddress.setText(waitersTableModel.getValueAt(rowIndex, 5).toString());
+            txtUpdateWaiterName.setForeground(Color.black);
+            txtUpdateFatherName.setForeground(Color.black);
+            txtUpdateWaiterNumber.setForeground(Color.black);
+            txtUpdatePhoneNumber.setForeground(Color.black);
+            txtUpdateCnic.setForeground(Color.black);
+            txtUpdateAddress.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_tbleWaiterMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSave;
+    private javax.swing.JButton btnUpdate;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tbleWaiter;
     private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtCnic;
     private javax.swing.JTextField txtFatherName;
     private javax.swing.JTextField txtPhoneNumber;
+    private javax.swing.JTextField txtUpdateAddress;
+    private javax.swing.JTextField txtUpdateCnic;
+    private javax.swing.JTextField txtUpdateFatherName;
+    private javax.swing.JTextField txtUpdatePhoneNumber;
+    private javax.swing.JTextField txtUpdateWaiterName;
+    private javax.swing.JTextField txtUpdateWaiterNumber;
     private javax.swing.JTextField txtWaiterName;
     private javax.swing.JTextField txtWaiterNumber;
     // End of variables declaration//GEN-END:variables

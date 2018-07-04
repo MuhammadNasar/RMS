@@ -5,7 +5,6 @@
  */
 package services;
 
-import com.itextpdf.layout.element.Table;
 import entity.Menu;
 import entity.Tables;
 import entity.User;
@@ -98,7 +97,7 @@ public class CommonService {
             while (resultSet.next()) {
                 tables = new Tables();
                 tables.setTableId(resultSet.getInt("id"));
-                tables.setAsAvailable(resultSet.getInt("as_available"));
+                tables.setAsAvailable(resultSet.getInt("is_available"));
                 tables.setTableNumber(resultSet.getString("table_number"));
                 
                 vectorTables.add(tables);

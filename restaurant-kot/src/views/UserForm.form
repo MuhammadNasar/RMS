@@ -311,6 +311,9 @@
             <Property name="text" type="java.lang.String" value="Update User name"/>
             <Property name="toolTipText" type="java.lang.String" value="Update User name"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtUpdateUserNameActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblId">
           <Properties>

@@ -3,12 +3,12 @@ package entity;
 
 public class Waiters {
     private int waiterId;
-    private String  Name;
+    private String  name;
     private String fatherName;
     private String waiterNumber;
     private int phoneNumber;
     private String cnic;
-    private String Address;
+    private String address;
 
     public int getWaiterId() {
         return waiterId;
@@ -19,11 +19,11 @@ public class Waiters {
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
-    public void setName(String Name) {
-        this.Name = Name;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getFatherName() {
@@ -59,12 +59,16 @@ public class Waiters {
     }
 
     public String getAddress() {
-        return Address;
+        return address;
     }
 
-    public void setAddress(String Address) {
-        this.Address = Address;
+    public void setAddress(String address) {
+        this.address = address;
     }
+
     
-    
+    @Override
+    public String toString() {
+        return name;
+    }
 }
