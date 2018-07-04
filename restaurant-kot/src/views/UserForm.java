@@ -259,6 +259,11 @@ public class UserForm extends javax.swing.JInternalFrame {
         txtUpdateUserName.setForeground(new java.awt.Color(153, 153, 153));
         txtUpdateUserName.setText("Update User name");
         txtUpdateUserName.setToolTipText("Update User name");
+        txtUpdateUserName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUpdateUserNameActionPerformed(evt);
+            }
+        });
 
         lblId.setBackground(new java.awt.Color(255, 217, 151));
 
@@ -294,7 +299,7 @@ public class UserForm extends javax.swing.JInternalFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(33, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblId, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -468,6 +473,10 @@ public class UserForm extends javax.swing.JInternalFrame {
 
 
     }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void txtUpdateUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUpdateUserNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUpdateUserNameActionPerformed
 
     
     public void tableDesin(){
