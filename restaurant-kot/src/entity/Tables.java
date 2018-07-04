@@ -36,5 +36,10 @@ public class Tables {
     public void setAsAvailable(int asAvailable) {
         this.asAvailable = asAvailable;
     }
+    @Override
+    public String toString() {
+        return tableNumber;
+    }
+    
    
 }
