@@ -21,7 +21,7 @@ public class TablesDAO {
      SQLQueryUtil sql = new SQLQueryUtil();
         sql.connect(false);
         int rowsAffected = 0;
-        String query = "INSERT INTO `tables`( `table_number` ,`as_available` )" +
+        String query = "INSERT INTO `tables`( `table_number` ,`is_available` )" +
                 "VALUES (' " + table.getTableNumber() + "' ," + table.getAsAvailable()+  ");";
                
         try {
@@ -46,7 +46,7 @@ public class TablesDAO {
         sql.connect(false);
         
         String query ="UPDATE `tables` SET `table_number`='" + table.getTableNumber() + "',"
-                + "`as_available`=" + table.getAsAvailable()+ " WHERE `id` =" + table.getTableId() + ";";
+                + "`is_available`=" + table.getAsAvailable()+ " WHERE `id` =" + table.getTableId() + ";";
         System.out.println(query);
         
         try {
