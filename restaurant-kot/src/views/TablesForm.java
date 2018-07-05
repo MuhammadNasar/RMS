@@ -341,8 +341,10 @@ public class TablesForm extends javax.swing.JInternalFrame {
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
          Tables tables = new Tables();
+         try{
         int id = Integer.parseInt(lblID.getText().trim());
         String tableNumber = txtUpdateTable.getText().trim();
+        
         int asAvailable = 1 ;
         
         tables.setTableId(id);
@@ -350,6 +352,9 @@ public class TablesForm extends javax.swing.JInternalFrame {
         tables.setAsAvailable(asAvailable);
         
         tableService.updateTableNumber(tables);
+         }catch(Exception e){
+             JOptionPane.showMessageDialog(null, "Please Fill TextField");
+         }
         
         vectorTablesNumber = commonService.getVectorTables();
 
@@ -371,7 +376,7 @@ public class TablesForm extends javax.swing.JInternalFrame {
             txtTable.setText("");
             status = true;
         }
-        txtTable.setForeground(Color.black);
+        
     }//GEN-LAST:event_txtTableKeyTyped
 
     private void txtTableFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTableFocusLost

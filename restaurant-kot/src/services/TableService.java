@@ -73,7 +73,7 @@ public class TableService {
         sql.connect(false);
         
         if (tables.getTableNumber().equals("")) {
-            JOptionPane.showMessageDialog(null, "Empty Data Cant Be Stored!");
+            JOptionPane.showMessageDialog(null, "Empty Data Can't Be Stored!");
         } else {
         int rowsAffected =0;
         int count = 0;
