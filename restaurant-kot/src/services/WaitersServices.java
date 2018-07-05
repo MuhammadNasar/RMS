@@ -45,4 +45,10 @@ public class WaitersServices {
             sql.disconnect();
         }
     }
+    public int updateWaiters(Waiters waiters){
+    waitersDAO.updateWaiters(waiters);
+    
+    
+    return 0;
+    }
 }

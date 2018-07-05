@@ -6,7 +6,7 @@ public class Waiters {
     private String  name;
     private String fatherName;
     private String waiterNumber;
-    private int phoneNumber;
+    private String phoneNumber;
     private String cnic;
     private String address;
 
@@ -42,11 +42,11 @@ public class Waiters {
         this.waiterNumber = waiterNumber;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 

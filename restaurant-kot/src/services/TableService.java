@@ -73,7 +73,7 @@ public class TableService {
         sql.connect(false);
         
         if (tables.getTableNumber().equals("")) {
-            JOptionPane.showMessageDialog(null, "Empty Data Cant Be Stored!");
+            JOptionPane.showMessageDialog(null, "Empty Data Can't Be Stored!");
         } else {
         int rowsAffected =0;
         int count = 0;
@@ -125,7 +125,7 @@ public class TableService {
             //create items to add into pdf
             //create a table to display items into tabular form
             
-            Table table = new Table(UnitValue.createPointArray(new float[]{60f,180f,50f}));
+            Table table = new Table(UnitValue.createPointArray(new float[]{60f,180f,60f}));
             
             //headers
             table.addCell(new Paragraph("S.N.O").setBold());
@@ -135,8 +135,8 @@ public class TableService {
             //Now Add Data Into these table Columns 
             for (Tables tables : tablesNumber) {
                 table.addCell(new Paragraph(tables.getTableId()+""));
-                //table.addCell(new Paragraph(tables.getMenuName());
-                //table.addCell(new Paragraph(tables.getPrice()+""));
+                table.addCell(new Paragraph(tables.getTableNumber()+""));
+                table.addCell(new Paragraph(tables.getAsAvailable()+""));
             }
             
             // add table to pdf
@@ -147,7 +147,7 @@ public class TableService {
             
             //now opening it in browser to print
             
-            File pdfFile =  new File("./all_menu_items.pdf");
+            File pdfFile =  new File("./all_tables_number.pdf");
             if (pdfFile.exists()) {
                 if (Desktop.isDesktopSupported()) {
                     Desktop.getDesktop().open(pdfFile);
