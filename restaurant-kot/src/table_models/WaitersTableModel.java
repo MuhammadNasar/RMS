@@ -8,8 +8,7 @@ import javax.swing.table.AbstractTableModel;
 public class WaitersTableModel extends AbstractTableModel{
     private Vector<Waiters> vectorwaiters;
 
-    public WaitersTableModel() {
-    }
+   
     
     public WaitersTableModel(Vector<Waiters> vectorwaiter) {
         this.vectorwaiters = vectorwaiter;

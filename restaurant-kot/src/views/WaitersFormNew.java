@@ -556,6 +556,11 @@ public class WaitersFormNew extends javax.swing.JInternalFrame {
             waiterService.waiter(waiters);
 
         }
+        
+        vectorWaiter = commonService.getVectorWaiters();
+        WaitersTableModel waitersTableModel=new WaitersTableModel(vectorWaiter);
+        tbleWaiter.setModel(waitersTableModel);
+        
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void txtWaiterNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtWaiterNumberActionPerformed
@@ -738,6 +743,10 @@ public class WaitersFormNew extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(rootPane, "data Upadated");
             
         }
+        
+        vectorWaiter = commonService.getVectorWaiters();
+        WaitersTableModel waitersTableModel=new WaitersTableModel(vectorWaiter);
+        tbleWaiter.setModel(waitersTableModel);
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void txtUpdateWaiterNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUpdateWaiterNameFocusLost
