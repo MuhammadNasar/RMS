@@ -740,7 +740,7 @@ public class WaitersFormNew extends javax.swing.JInternalFrame {
            waiters.setCnic(txtUpdateCnic.getText());
          
            waiterService.updateWaiters(waiters);
-            JOptionPane.showMessageDialog(rootPane, "data Upadated");
+            JOptionPane.showMessageDialog(rootPane, "data Upadated successfully");
             
         }
         
