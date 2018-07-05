@@ -71,7 +71,7 @@ public class CommonService {
                 waiters.setName(resultSet.getString("full_name"));
                 waiters.setFatherName(resultSet.getString("father_name"));
                 waiters.setWaiterNumber(resultSet.getString("waiter_number"));
-                waiters.setPhoneNumber(resultSet.getInt("phone_number"));
+                waiters.setPhoneNumber(resultSet.getString("phone_number"));
                 waiters.setCnic(resultSet.getString("cnic"));
                 waiters.setAddress(resultSet.getString("address"));
                 
