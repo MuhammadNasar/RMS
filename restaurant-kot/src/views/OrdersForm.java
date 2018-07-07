@@ -7,6 +7,7 @@ package views;
 
 import com.itextpdf.layout.element.Table;
 import entity.Menu;
+import entity.Order;
 import entity.Tables;
 import entity.Waiters;
 import java.awt.Color;
@@ -14,6 +15,7 @@ import java.util.Vector;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
 import services.CommonService;
+import table_models.OrderTableModel;
 
 
 
@@ -26,6 +28,7 @@ public class OrdersForm extends javax.swing.JInternalFrame {
     private Vector<Tables> vectorTable;
     private Vector<Menu> vectorMenu;
     private Vector<Waiters> vectorWaiter;
+    private Vector<Order> vectorOrder;
     
     public OrdersForm() {
         initComponents();
@@ -40,6 +43,7 @@ public class OrdersForm extends javax.swing.JInternalFrame {
         vectorTable = new Vector<>();
         vectorMenu = new Vector<>();
         vectorWaiter = new Vector<>();
+        vectorOrder = new Vector<>();
         
         
         vectorTable = commonService.getVectorTables();
@@ -76,8 +80,8 @@ public class OrdersForm extends javax.swing.JInternalFrame {
         totalPrice = new javax.swing.JLabel();
         cmbWaiter = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
-        jButton1 = new javax.swing.JButton();
+        spnrQuantity = new javax.swing.JSpinner();
+        btnAddToList = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -130,10 +134,10 @@ public class OrdersForm extends javax.swing.JInternalFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel5.setText("Quantity");
 
-        jButton1.setText("+");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnAddToList.setText("+");
+        btnAddToList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnAddToListActionPerformed(evt);
             }
         });
 
@@ -173,9 +177,9 @@ public class OrdersForm extends javax.swing.JInternalFrame {
                                                 .addComponent(cmbWaiter, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addGroup(jPanel1Layout.createSequentialGroup()
                                             .addGap(15, 15, 15)
-                                            .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(spnrQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                            .addComponent(btnAddToList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 543, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(175, 175, 175))
@@ -207,8 +211,8 @@ public class OrdersForm extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(cmbMenuItem, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(btnAddToList, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(spnrQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(jLabel5))
                         .addGap(56, 56, 56)
                         .addComponent(jLabel6))
@@ -238,16 +242,31 @@ public class OrdersForm extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbMenuItemActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnAddToListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddToListActionPerformed
+        Tables table = (Tables) cmbTable.getSelectedItem();
+        Waiters waiter = (Waiters) cmbWaiter.getSelectedItem();
+        Menu menuItem = (Menu) cmbMenuItem.getSelectedItem();
+        int quantity = Integer.parseInt(spnrQuantity.getValue().toString());
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+        Order order = new Order();
+        order.setTable(table);
+        order.setWaiter(waiter);
+        order.setMenuItem(menuItem);
+        order.setQuantity(quantity);
+        
+        vectorOrder.add(order);
+        
+        OrderTableModel orderModel = new OrderTableModel(vectorOrder);
+        
+        orderTable.setModel(orderModel);
+    }//GEN-LAST:event_btnAddToListActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAddToList;
     private javax.swing.JComboBox<String> cmbMenuItem;
     private javax.swing.JComboBox<String> cmbTable;
     private javax.swing.JComboBox<String> cmbWaiter;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -257,8 +276,8 @@ public class OrdersForm extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTable orderTable;
+    private javax.swing.JSpinner spnrQuantity;
     private javax.swing.JLabel totalPrice;
     // End of variables declaration//GEN-END:variables
 }
