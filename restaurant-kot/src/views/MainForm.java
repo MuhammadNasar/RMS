@@ -418,8 +418,9 @@ public class MainForm extends javax.swing.JFrame {
 
     private void btnUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUserMouseClicked
      userForm=new UserForm();
-     userForm.setVisible(true);
+     
      desktopPane.add(userForm);
+     userForm.setVisible(true);
         try {
             userForm.setMaximum(true);
         } catch (PropertyVetoException ex) {
