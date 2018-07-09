@@ -346,14 +346,11 @@ public class UserForm extends javax.swing.JInternalFrame {
 
         rowAffacted = userService.registerUser(user);
 
-        if (rowAffacted == 0) {
-            JOptionPane.showMessageDialog(this, " Please Choos Another Admin Name .");
-        } else {
-            JOptionPane.showMessageDialog(null, " New Admin  added successfully!");
+       
             txtDisplayName.setText("");
             txtUserName.setText("");
             txtPassword.setText("");
-        }
+        
         vectorUsers = commonService.getVectorUser();
         UserTableModel userTableModel = new UserTableModel(vectorUsers);
         tbluser.setModel(userTableModel);
