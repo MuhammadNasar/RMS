@@ -57,6 +57,11 @@ public class UserService {
                 if (count == 0) {
 
                     rowAffected = userDAO.registerUser(user);
+                    if (rowAffected == 0) {
+                        JOptionPane.showMessageDialog(null, " Please Choos Another Admin Name .");
+                    } else {
+                        JOptionPane.showMessageDialog(null, " New Admin  added successfully!");
+                    }
                 } else {
                     JOptionPane.showMessageDialog(null, user.getUserName() + " Already exists.");
                 }
@@ -81,7 +86,7 @@ public class UserService {
             JOptionPane.showMessageDialog(null, " Empty data can not to be save");
 
         } else {
-            String query = "SELECT COUNT(*) AS `count` FROM  `users` WHERE `user_name` LIKE ('" + user.getUserName()+ "');";
+            String query = "SELECT COUNT(*) AS `count` FROM  `users` WHERE `user_name` LIKE ('" + user.getUserName() + "');";
             try {
                 int rowAffected = 0;
                 int count = 0;
