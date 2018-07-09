@@ -181,6 +181,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtPrice">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtPriceKeyTyped"/>
+          </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
           <AuxValues>
@@ -336,6 +339,9 @@
                   <Font name="Tahoma" size="24" style="0"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNewPriceKeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnUpdate">
               <Properties>

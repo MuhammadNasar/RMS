@@ -7,6 +7,7 @@ package views;
 
 import entity.Menu;
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import java.util.Vector;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
@@ -108,6 +109,12 @@ public class MenuForm extends javax.swing.JInternalFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Price");
 
+        txtPrice.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPriceKeyTyped(evt);
+            }
+        });
+
         tblMenuItems.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -157,6 +164,11 @@ public class MenuForm extends javax.swing.JInternalFrame {
         jLabel7.setText("New Price");
 
         txtNewPrice.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        txtNewPrice.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNewPriceKeyTyped(evt);
+            }
+        });
 
         btnUpdate.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnUpdate.setText("Update");
@@ -282,6 +294,9 @@ public class MenuForm extends javax.swing.JInternalFrame {
         String price = txtPrice.getText().trim();
 
             int rowsAffected = 0;
+            if (menuItemName.equals("") || price.equals("")) {
+            JOptionPane.showMessageDialog(null, "Empty data can not be saved.");
+        } else {
             Menu menu = new Menu();
             menu.setMenuName(menuItemName);
             
@@ -299,7 +314,7 @@ public class MenuForm extends javax.swing.JInternalFrame {
 
             MenuTableModel menuTableModel = new MenuTableModel(vectorMenuitem);
             tblMenuItems.setModel(menuTableModel);
-
+            }
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
@@ -344,6 +359,23 @@ public class MenuForm extends javax.swing.JInternalFrame {
         txtNewMenuName.setText("");
         txtNewPrice.setText("");
     }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void txtPriceKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPriceKeyTyped
+        char c = evt.getKeyChar();
+        if (! (Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE)) ) {
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtPriceKeyTyped
+
+    private void txtNewPriceKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNewPriceKeyTyped
+        char c = evt.getKeyChar();
+        if (! (Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE)) ) {
+            getToolkit().beep();
+            evt.consume();
+            
+        }
+    }//GEN-LAST:event_txtNewPriceKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
