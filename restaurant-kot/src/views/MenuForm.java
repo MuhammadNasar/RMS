@@ -284,7 +284,9 @@ public class MenuForm extends javax.swing.JInternalFrame {
             int rowsAffected = 0;
             Menu menu = new Menu();
             menu.setMenuName(menuItemName);
+            
             menu.setPrice(Integer.parseInt(price));
+            
             rowsAffected = menuService.registerMenuItem(menu);
             txtDishName.setText("");
             txtPrice.setText("");
