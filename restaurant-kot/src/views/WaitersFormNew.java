@@ -26,6 +26,7 @@ public class WaitersFormNew extends javax.swing.JInternalFrame {
         setBorder(BorderFactory.createLineBorder(new Color(201, 201, 201)));
         javax.swing.plaf.InternalFrameUI ifu = this.getUI();
         ((javax.swing.plaf.basic.BasicInternalFrameUI) ifu).setNorthPane(null);
+        
 
         commonService = new CommonService();
 
