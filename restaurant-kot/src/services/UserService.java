@@ -86,7 +86,8 @@ public class UserService {
             JOptionPane.showMessageDialog(null, " Empty data can not to be save");
 
         } else {
-            String query = "SELECT COUNT(*) AS `count` FROM  `users` WHERE `id` !='" + user.getUserId() + "' AND `user_name`!='" + user.getUserName() + "';";
+            String query = "SELECT COUNT(*) AS `count` FROM  `users` WHERE `id` !=" + user.getUserId()
+                    + " AND `user_name`='" + user.getUserName() + "';";
             try {
                 int rowAffected = 0;
                 int count = 0;
@@ -96,17 +97,14 @@ public class UserService {
 
                 count = rs.getInt("count");
 
-                if (count == 1) {
-
+                if (count == 0) {
                     rowAffected = userDAO.updateUser(user);
-
                     if (rowAffected > 0) {
                         JOptionPane.showMessageDialog(null, "User Detail Update Successsful ");
                     } else if (rowAffected == 0 || rowAffected < 0) {
                         JOptionPane.showMessageDialog(null, "Operation field");
                     }
                 } else {
-
                     JOptionPane.showMessageDialog(null, "  This User information Already Existed");
 
                 }
