@@ -16,6 +16,7 @@ import dao.TablesDAO;
 import entity.Tables;
 import java.awt.Desktop;
 import java.io.File;
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Vector;
@@ -112,9 +113,7 @@ public class TableService {
              PdfDocument pdfDocument = new PdfDocument(new PdfWriter("./all_tables_number.pdf"));
              Document layoutDocument = new Document(pdfDocument);
             
-             //title
-             layoutDocument.add(new Paragraph("ALL Tables Number").setBold().setUnderline()
-                    .setTextAlignment(TextAlignment.CENTER));
+            
             
             //other reference information
             layoutDocument.add(new Paragraph("THE WAITERS RESTAURANT")
@@ -122,15 +121,19 @@ public class TableService {
             layoutDocument.add(new Paragraph("PESHAWAR").setMultipliedLeading(.2f));
             layoutDocument.add(new Paragraph("Phone# 091-123456789").setMultipliedLeading(.2f));
             
+            //title
+             layoutDocument.add(new Paragraph("ALL Tables Number").setBold().setUnderline()
+                    .setTextAlignment(TextAlignment.CENTER));
+             
             //create items to add into pdf
             //create a table to display items into tabular form
             
-            Table table = new Table(UnitValue.createPointArray(new float[]{60f,180f,60f}));
+            Table table = new Table(UnitValue.createPointArray(new float[]{100f,180f,100f}));
             
             //headers
             table.addCell(new Paragraph("S.N.O").setBold());
             table.addCell(new Paragraph("Tables Number").setBold());
-            table.addCell(new Paragraph("Is Available").setBold());
+            table.addCell(new Paragraph("Is Available")) ;
             
             //Now Add Data Into these table Columns 
             for (Tables tables : tablesNumber) {
@@ -159,8 +162,8 @@ public class TableService {
                 System.out.println("File Is Not Generated Successfully");
             }
             
-        } catch (Throwable th) {
-            th.printStackTrace();
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
     }        
        
