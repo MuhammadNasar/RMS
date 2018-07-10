@@ -11,10 +11,15 @@ import entity.Order;
 import entity.Tables;
 import entity.Waiters;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
 import java.util.Vector;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.JTableHeader;
 import services.CommonService;
 import table_models.OrderTableModel;
 
@@ -54,10 +59,13 @@ public class OrdersForm extends javax.swing.JInternalFrame {
         
         DefaultComboBoxModel tableModel = new DefaultComboBoxModel(vectorTable);
         cmbTable.setModel(tableModel);
+        
         DefaultComboBoxModel waiterModel = new DefaultComboBoxModel(vectorWaiter);
         cmbWaiter.setModel(waiterModel);
+        
         DefaultComboBoxModel menuModel = new DefaultComboBoxModel(vectorMenu);
         cmbMenuItem.setModel(menuModel);
+        tableDesin();
     }
 
     /**
@@ -317,4 +325,25 @@ public class OrdersForm extends javax.swing.JInternalFrame {
     private javax.swing.JSpinner spnrQuantity;
     private javax.swing.JLabel totalPrice;
     // End of variables declaration//GEN-END:variables
-}
+
+public void tableDesin(){
+        JTableHeader header = orderTable.getTableHeader();
+        header.setPreferredSize(new Dimension(150, 50));
+        //  header.setBorder(new DropShadowBorder());
+        header.setBounds(20, 20, 30, 30);
+        header.setFont(new Font("Tahoma", Font.BOLD, 15));
+        header.setBackground(Color.red);
+
+        orderTable.setBackground(Color.red);
+        ((DefaultTableCellRenderer) orderTable.getDefaultRenderer(Object.class)).setBackground(new Color(255, 255, 204));
+
+        orderTable.setGridColor(Color.red);
+        orderTable.setForeground(Color.black);
+        jScrollPane1.setBackground(Color.red);
+        orderTable.setOpaque(false);
+        ((DefaultTableCellRenderer) header.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
+        orderTable.setFont(new Font("Tahome", Font.PLAIN, 20));
+
+        jScrollPane1.getViewport().setOpaque(false);
+        orderTable.setShowGrid(true);
+    }}
