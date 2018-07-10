@@ -340,14 +340,16 @@ public class MenuForm extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tblMenuItemsMouseClicked
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        if ( txtNewMenuName.equals("") || txtNewPrice.equals("")) {
+        
+        
+        if ( txtNewMenuName.getText().equals("") || txtNewPrice.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Empty Data Cant Be Updated");
         } else {
             Menu menu = new Menu();
-        
         int id = Integer.parseInt(lblID.getText().trim());
         String menuName = txtNewMenuName.getText().trim();
         int price = Integer.parseInt(txtNewPrice.getText().trim());
+        
         
         menu.setMenuId(id);
         menu.setMenuName(menuName);
