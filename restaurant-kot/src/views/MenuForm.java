@@ -56,7 +56,7 @@ public class MenuForm extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         tblMenu = new javax.swing.JPanel();
-        txtDishName = new javax.swing.JTextField();
+        txtMenuName = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         btnSave = new javax.swing.JButton();
         btnReset = new javax.swing.JButton();
@@ -252,7 +252,7 @@ public class MenuForm extends javax.swing.JInternalFrame {
                                         .addGap(18, 18, 18)
                                         .addGroup(tblMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtDishName))))))
+                                            .addComponent(txtMenuName))))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -263,7 +263,7 @@ public class MenuForm extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(tblMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDishName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtMenuName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(tblMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -290,7 +290,7 @@ public class MenuForm extends javax.swing.JInternalFrame {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
 
-        String menuItemName = txtDishName.getText().trim();
+        String menuItemName = txtMenuName.getText().trim();
         String price = txtPrice.getText().trim();
 
             int rowsAffected = 0;
@@ -303,7 +303,7 @@ public class MenuForm extends javax.swing.JInternalFrame {
             menu.setPrice(Integer.parseInt(price));
             
             rowsAffected = menuService.registerMenuItem(menu);
-            txtDishName.setText("");
+            txtMenuName.setText("");
             txtPrice.setText("");
             if (rowsAffected == 0) {
                 JOptionPane.showMessageDialog(this, "No Data Inserted!");
@@ -318,7 +318,7 @@ public class MenuForm extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
-        txtDishName.setText("");
+        txtMenuName.setText("");
         txtPrice.setText("");
     }//GEN-LAST:event_btnResetActionPerformed
 
@@ -340,7 +340,11 @@ public class MenuForm extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tblMenuItemsMouseClicked
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        Menu menu = new Menu();
+        if ( txtNewMenuName.equals("") || txtNewPrice.equals("")) {
+            JOptionPane.showMessageDialog(this, "Empty Data Cant Be Updated");
+        } else {
+            Menu menu = new Menu();
+        
         int id = Integer.parseInt(lblID.getText().trim());
         String menuName = txtNewMenuName.getText().trim();
         int price = Integer.parseInt(txtNewPrice.getText().trim());
@@ -348,6 +352,7 @@ public class MenuForm extends javax.swing.JInternalFrame {
         menu.setMenuId(id);
         menu.setMenuName(menuName);
         menu.setPrice(price);
+        
         menuService.updateMenuItem(menu);
         
         vectorMenuitem = commonService.getVectorMenuItem();
@@ -358,6 +363,7 @@ public class MenuForm extends javax.swing.JInternalFrame {
         
         txtNewMenuName.setText("");
         txtNewPrice.setText("");
+        }
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void txtPriceKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPriceKeyTyped
@@ -395,7 +401,7 @@ public class MenuForm extends javax.swing.JInternalFrame {
     private javax.swing.JLabel tblLebel;
     private javax.swing.JPanel tblMenu;
     private javax.swing.JTable tblMenuItems;
-    private javax.swing.JTextField txtDishName;
+    private javax.swing.JTextField txtMenuName;
     private javax.swing.JTextField txtNewMenuName;
     private javax.swing.JTextField txtNewPrice;
     private javax.swing.JTextField txtPrice;

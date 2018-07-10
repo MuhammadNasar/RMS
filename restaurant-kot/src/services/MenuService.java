@@ -62,8 +62,6 @@ public class MenuService {
             } finally {
                 sqlutil.disconnect();
             }
-        
-
         return rowsAffected;
         
     }
