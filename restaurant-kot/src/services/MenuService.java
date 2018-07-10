@@ -45,17 +45,13 @@ public class MenuService {
         int rowsAffected = 0;
         int count = 0;
         
-        if (menu.getMenuName().equals("") || menu.getPrice() < 0) {
-            JOptionPane.showMessageDialog(null, "Empty data can not be saved.");
-        } else {
-
             String queryCheck = "SELECT COUNT(*) AS `count` FROM `menu_items` WHERE `item_name` LIKE('" + menu.getMenuName() + "');";
             try {
                 ResultSet resultSet = sqlutil.executeQuery(queryCheck);
                 resultSet.next();
 
                 count = resultSet.getInt("count");
-
+                System.out.print("\n Count is =" +count);
                 if (count == 0) {
                     rowsAffected = menuDao.registerMenuItem(menu);
                 } else {
@@ -66,7 +62,7 @@ public class MenuService {
             } finally {
                 sqlutil.disconnect();
             }
-        }
+        
 
         return rowsAffected;
         
@@ -81,8 +77,7 @@ public class MenuService {
         } else {
         int rowsAffected =0;
         int count = 0;
-        String queryCheck = "SELECT COUNT(*) AS `count` FROM `menu_items` WHERE `item_name` LIKE('" + menu.getMenuName() + "');";
-        
+        String queryCheck = "SELECT COUNT(*) AS `count` FROM `menu_items` WHERE `item_name` LIKE('" + menu.getMenuName() + "') AND `price` LIKE(" + menu.getPrice() + ");";
         try {
             ResultSet resultSet = sql.executeQuery(queryCheck);
             resultSet.next();

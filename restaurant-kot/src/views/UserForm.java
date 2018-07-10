@@ -132,7 +132,7 @@ public class UserForm extends javax.swing.JInternalFrame {
 
         txtPassword.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtPassword.setForeground(new java.awt.Color(153, 153, 153));
-        txtPassword.setText("Passworde");
+        txtPassword.setText("Password");
         txtPassword.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtPasswordFocusLost(evt);
@@ -186,10 +186,10 @@ public class UserForm extends javax.swing.JInternalFrame {
                 .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(chekpas)
-                    .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -212,7 +212,7 @@ public class UserForm extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3"
             }
         ));
-        tbluser.setRowHeight(20);
+        tbluser.setRowHeight(28);
         tbluser.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbluserMouseClicked(evt);
@@ -226,7 +226,7 @@ public class UserForm extends javax.swing.JInternalFrame {
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipadx = 554;
-        gridBagConstraints.ipady = 245;
+        gridBagConstraints.ipady = 256;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
@@ -281,7 +281,7 @@ public class UserForm extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jSeparator3)
-                    .addComponent(txtUpdateUserName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(txtUpdateUserName, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtUpdateDisplayName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
                     .addComponent(txtupdatePassword)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
@@ -299,7 +299,7 @@ public class UserForm extends javax.swing.JInternalFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(33, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblId, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -323,7 +323,6 @@ public class UserForm extends javax.swing.JInternalFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipadx = 146;
         gridBagConstraints.ipady = 22;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -347,9 +346,12 @@ public class UserForm extends javax.swing.JInternalFrame {
         rowAffacted = userService.registerUser(user);
 
        
-            txtDisplayName.setText("");
-            txtUserName.setText("");
-            txtPassword.setText("");
+            txtDisplayName.setText("Display Name");
+            txtDisplayName.setForeground(Color.gray);
+            txtUserName.setText("User Name");
+            txtUserName.setForeground(Color.gray);
+            txtPassword.setText("Password");
+            txtPassword.setForeground(Color.gray);
         
         vectorUsers = commonService.getVectorUser();
         UserTableModel userTableModel = new UserTableModel(vectorUsers);
@@ -469,7 +471,7 @@ public class UserForm extends javax.swing.JInternalFrame {
         txtupdatePassword.setText("Update Password");
         txtupdatePassword.setForeground(Color.gray);
         }catch(Exception E){
-            JOptionPane.showMessageDialog(lblId,E+ "Please Select data in Table");
+            JOptionPane.showMessageDialog(lblId, " Empty  Data Can't Update Please Select data in Table");
         }
 
 
