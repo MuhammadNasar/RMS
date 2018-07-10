@@ -11,10 +11,15 @@ import entity.Order;
 import entity.Tables;
 import entity.Waiters;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
 import java.util.Vector;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.JTableHeader;
 import services.CommonService;
 import table_models.OrderTableModel;
 
@@ -54,10 +59,13 @@ public class OrdersForm extends javax.swing.JInternalFrame {
         
         DefaultComboBoxModel tableModel = new DefaultComboBoxModel(vectorTable);
         cmbTable.setModel(tableModel);
+        
         DefaultComboBoxModel waiterModel = new DefaultComboBoxModel(vectorWaiter);
         cmbWaiter.setModel(waiterModel);
+        
         DefaultComboBoxModel menuModel = new DefaultComboBoxModel(vectorMenu);
         cmbMenuItem.setModel(menuModel);
+        tableDesin();
     }
 
     /**
@@ -166,43 +174,44 @@ public class OrdersForm extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(338, 338, 338)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(222, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel2)
-                                .addComponent(cmbTable, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cmbMenuItem, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel4))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jLabel5))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(18, 18, 18)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel7)
-                                        .addComponent(cmbWaiter, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(15, 15, 15)
-                                    .addComponent(spnrQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(btnAddToList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 543, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel3)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel6)
-                            .addGap(18, 18, 18)
-                            .addComponent(totalPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(14, 14, 14)))
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(175, 175, 175))
+                            .addGap(116, 116, 116)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel2)
+                                    .addComponent(cmbTable, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cmbMenuItem, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel4))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel5))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel7)
+                                            .addComponent(cmbWaiter, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(15, 15, 15)
+                                        .addComponent(spnrQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(btnAddToList, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 543, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel6)
+                                .addGap(18, 18, 18)
+                                .addComponent(totalPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(14, 14, 14)))))
+                .addContainerGap(241, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -236,9 +245,9 @@ public class OrdersForm extends javax.swing.JInternalFrame {
                     .addComponent(totalPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -316,4 +325,25 @@ public class OrdersForm extends javax.swing.JInternalFrame {
     private javax.swing.JSpinner spnrQuantity;
     private javax.swing.JLabel totalPrice;
     // End of variables declaration//GEN-END:variables
-}
+
+public void tableDesin(){
+        JTableHeader header = orderTable.getTableHeader();
+        header.setPreferredSize(new Dimension(150, 50));
+        //  header.setBorder(new DropShadowBorder());
+        header.setBounds(20, 20, 30, 30);
+        header.setFont(new Font("Tahoma", Font.BOLD, 15));
+        header.setBackground(Color.red);
+
+        orderTable.setBackground(Color.red);
+        ((DefaultTableCellRenderer) orderTable.getDefaultRenderer(Object.class)).setBackground(new Color(255, 255, 204));
+
+        orderTable.setGridColor(Color.red);
+        orderTable.setForeground(Color.black);
+        jScrollPane1.setBackground(Color.red);
+        orderTable.setOpaque(false);
+        ((DefaultTableCellRenderer) header.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
+        orderTable.setFont(new Font("Tahome", Font.PLAIN, 20));
+
+        jScrollPane1.getViewport().setOpaque(false);
+        orderTable.setShowGrid(true);
+    }}

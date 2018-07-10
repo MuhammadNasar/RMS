@@ -57,6 +57,11 @@ public class UserService {
                 if (count == 0) {
 
                     rowAffected = userDAO.registerUser(user);
+                    if (rowAffected == 0) {
+                        JOptionPane.showMessageDialog(null, " Please Choos Another Admin Name .");
+                    } else {
+                        JOptionPane.showMessageDialog(null, " New Admin  added successfully!");
+                    }
                 } else {
                     JOptionPane.showMessageDialog(null, user.getUserName() + " Already exists.");
                 }
@@ -75,13 +80,13 @@ public class UserService {
     public void updateUser(User user) {
         SQLQueryUtil sql = new SQLQueryUtil();
         sql.connect(false);
-        if (user.getDisplayName().equals("Display Name") || user.getDisplayName().equals("")
-                || user.getUserName().equals("User Name") || user.getUserName().equals("")
-                || user.getPassword().equals("Password") || user.getPassword().equals("")) {
+        if (user.getDisplayName().equals("Update Display Name") || user.getDisplayName().equals("")
+                || user.getUserName().equals("Update User Name") || user.getUserName().equals("")
+                || user.getPassword().equals("Update Password") || user.getPassword().equals("")) {
             JOptionPane.showMessageDialog(null, " Empty data can not to be save");
 
         } else {
-            String query = "SELECT COUNT(*) AS `count` FROM  `users` WHERE `user_name` LIKE ('" + user.getUserName()+ "');";
+            String query = "SELECT COUNT(*) AS `count` FROM  `users` WHERE `id` !='" + user.getUserId() + "' AND `user_name`!='" + user.getUserName() + "';";
             try {
                 int rowAffected = 0;
                 int count = 0;
@@ -91,7 +96,7 @@ public class UserService {
 
                 count = rs.getInt("count");
 
-                if (count == 0) {
+                if (count == 1) {
 
                     rowAffected = userDAO.updateUser(user);
 
@@ -101,6 +106,7 @@ public class UserService {
                         JOptionPane.showMessageDialog(null, "Operation field");
                     }
                 } else {
+
                     JOptionPane.showMessageDialog(null, "  This User information Already Existed");
 
                 }

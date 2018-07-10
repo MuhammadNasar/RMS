@@ -1,4 +1,3 @@
-
 package views;
 
 import java.awt.Graphics;
@@ -275,26 +274,26 @@ public class MainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDishesMouseEntered
 
     private void btnDishesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDishesMouseExited
-       ImageIcon btnimage = new ImageIcon(getClass().getResource("/images/btn_dishes_normal.png"));
+        ImageIcon btnimage = new ImageIcon(getClass().getResource("/images/btn_dishes_normal.png"));
         btnDishes.setIcon(btnimage);
     }//GEN-LAST:event_btnDishesMouseExited
 
     private void btnDishesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDishesMouseClicked
-        
+
         dish = new MenuForm();
         desktopPane.add(dish);
-            dish.setVisible(true);
-            try {
+        dish.setVisible(true);
+        try {
             dish.setMaximum(true);
         } catch (Exception ex) {
-            
+
         }
         System.out.print("Am here 1");
         ImageIcon btnimage = new ImageIcon(getClass().getResource("/images/btn_dishes_clicked.png"));
         btnDishes.setIcon(btnimage);
         ImageIcon btnimage2 = new ImageIcon(getClass().getResource("/images/dishes_icon.png"));
         activeTab.setIcon(btnimage2);
-        
+
     }//GEN-LAST:event_btnDishesMouseClicked
 
     private void btnWaitersMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnWaitersMouseEntered
@@ -308,16 +307,16 @@ public class MainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnWaitersMouseExited
 
     private void btnWaitersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnWaitersMouseClicked
-       
+
         waiters = new WaitersFormNew();
         desktopPane.add(waiters);
         waiters.setVisible(true);
-             try {
+        try {
             waiters.setMaximum(true);
         } catch (Exception ex) {
-            
+
         }
-        
+
         ImageIcon btnimage = new ImageIcon(getClass().getResource("/images/btn_waiters_clicked.png"));
         btnWaiters.setIcon(btnimage);
         ImageIcon activeTabicon = new ImageIcon(getClass().getResource("/images/waiters_icon.png"));
@@ -335,13 +334,13 @@ public class MainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnReportsMouseExited
 
     private void btnReportsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReportsMouseClicked
-        reports= new ReportsForm();
+        reports = new ReportsForm();
         desktopPane.add(reports);
         reports.setVisible(true);
-           try {
+        try {
             reports.setMaximum(true);
         } catch (Exception ex) {
-            
+
         }
 
         ImageIcon btnimage = new ImageIcon(getClass().getResource("/images/btn_reports_clicked.png"));
@@ -362,21 +361,20 @@ public class MainForm extends javax.swing.JFrame {
 
     private void btnOrdersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOrdersMouseClicked
 
-        
         orders = new OrdersForm();
         desktopPane.add(orders);
         orders.setVisible(true);
-          try {
+        try {
             orders.setMaximum(true);
         } catch (Exception ex) {
-            
+
         }
-        
+
         ImageIcon btnimage = new ImageIcon(getClass().getResource("/images/btn_orders_clicked.png"));
         btnOrders.setIcon(btnimage);
         ImageIcon activeTabicon = new ImageIcon(getClass().getResource("/images/orders_icon.png"));
         activeTab.setIcon(activeTabicon);
-        
+
     }//GEN-LAST:event_btnOrdersMouseClicked
 
     private void btnTableMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTableMouseEntered
@@ -390,16 +388,16 @@ public class MainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTableMouseExited
 
     private void btnTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTableMouseClicked
-        
+
         tables = new TablesForm();
         desktopPane.add(tables);
         tables.setVisible(true);
-          try {
+        try {
             tables.setMaximum(true);
         } catch (Exception ex) {
-            
+
         }
-        
+
         ImageIcon btnimage = new ImageIcon(getClass().getResource("/images/btn_table_clicked.png"));
         btnTable.setIcon(btnimage);
         ImageIcon activeTabicon = new ImageIcon(getClass().getResource("/images/table_icon.png"));
@@ -417,14 +415,15 @@ public class MainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUserMouseExited
 
     private void btnUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUserMouseClicked
-     userForm=new UserForm();
-     userForm.setVisible(true);
-     desktopPane.add(userForm);
+        userForm = new UserForm();
+
+        desktopPane.add(userForm);
+        userForm.setVisible(true);
         try {
             userForm.setMaximum(true);
         } catch (PropertyVetoException ex) {
             ex.printStackTrace();
-      }
+        }
         ImageIcon btnimage = new ImageIcon(getClass().getResource("/images/btn_user_clicked.png"));
         btnUser.setIcon(btnimage);
         ImageIcon activeTabicon = new ImageIcon(getClass().getResource("/images/user_icon.png"));
