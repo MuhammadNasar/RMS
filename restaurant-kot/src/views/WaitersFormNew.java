@@ -568,7 +568,7 @@ public class WaitersFormNew extends javax.swing.JInternalFrame {
                 || txtCnic.getText().equals("") || txtAddress.getText().equals("")) {
 
             JOptionPane.showMessageDialog(rootPane, "empty data can not be inserted");
-            JOptionPane.showMessageDialog(rootPane, "please insert data");
+           // JOptionPane.showMessageDialog(rootPane, "please insert data");
 
         } else {
             waiters = new Waiters();
@@ -767,7 +767,7 @@ public class WaitersFormNew extends javax.swing.JInternalFrame {
            waiters.setCnic(txtUpdateCnic.getText());
          
            waiterService.updateWaiters(waiters);
-            JOptionPane.showMessageDialog(rootPane, "data Upadated successfully");
+            //JOptionPane.showMessageDialog(rootPane, "data Upadated successfully");
             
         }
         

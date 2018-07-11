@@ -14,15 +14,18 @@ public class WaitersDAO {
         sql.connect(false);
 
         int dataInserted = 0;
-        String query = " INSERT INTO `waiters`(`full_name`, `father_name`, `waiter_number`, `phone_number`, `cnic`, `address`)"
-                + " VALUES ('" + waiters.getName()
-                + "','" + waiters.getFatherName()
-                + "','" + waiters.getWaiterNumber()
-                + "','" + waiters.getPhoneNumber()
-                + "','" + waiters.getCnic() + "','"
-                + waiters.getAddress() + "');";
-
         try {
+            String queryCheckCnic =";";
+            
+            
+            String query = " INSERT INTO waiters(full_name, father_name, waiter_number, phone_number, cnic, address)"
+                    + " VALUES ('" + waiters.getName()
+                    + "','" + waiters.getFatherName()
+                    + "','" + waiters.getWaiterNumber()
+                    + "','" + waiters.getPhoneNumber()
+                    + "','" + waiters.getCnic() + "','"
+                    + waiters.getAddress() + "');";
+
             dataInserted = sql.executeUpdate(query);
             sql.commit();
         } catch (SQLException ex) {
@@ -43,7 +46,7 @@ public class WaitersDAO {
             updateQuery = " UPDATE waiters  SET "
                     + " full_name ='" + waiters.getName() + "',"
                     + " father_name ='" + waiters.getFatherName() + "',"
-                    + " waiter_number ='" + waiters.getWaiterNumber() + "',"
+                    + " waiter_number =" + waiters.getWaiterNumber() + ","
                     + " phone_number = " + waiters.getPhoneNumber() + ","
                     + " cnic = '" + waiters.getCnic() + "',"
                     + " address = '" + waiters.getAddress() + "',"
