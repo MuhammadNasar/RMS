@@ -18,9 +18,11 @@ import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JSpinner;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 import services.CommonService;
+import services.OrderService;
 import table_models.OrderTableModel;
 
 
@@ -35,6 +37,7 @@ public class OrdersForm extends javax.swing.JInternalFrame {
     private Vector<Menu> vectorMenu;
     private Vector<Waiters> vectorWaiter;
     private Vector<Order> vectorOrder;
+    private OrderService orderService;
     
     public OrdersForm() {
         initComponents();
@@ -51,11 +54,13 @@ public class OrdersForm extends javax.swing.JInternalFrame {
         vectorWaiter = new Vector<>();
         vectorOrder = new Vector<>();
         
+        orderService = new OrderService();
+        
         
         vectorTable = commonService.getVectorTables();
         vectorMenu = commonService.getVectorMenuItem();
         vectorWaiter = commonService.getVectorWaiters();
-        
+        orderService = new OrderService();
         
         DefaultComboBoxModel tableModel = new DefaultComboBoxModel(vectorTable);
         cmbTable.setModel(tableModel);
@@ -66,6 +71,8 @@ public class OrdersForm extends javax.swing.JInternalFrame {
         DefaultComboBoxModel menuModel = new DefaultComboBoxModel(vectorMenu);
         cmbMenuItem.setModel(menuModel);
         tableDesin();
+        
+        
     }
 
     /**
@@ -78,7 +85,7 @@ public class OrdersForm extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
+        saveOrder = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         cmbMenuItem = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
@@ -89,7 +96,7 @@ public class OrdersForm extends javax.swing.JInternalFrame {
         totalPrice = new javax.swing.JLabel();
         cmbWaiter = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
-        spnrQuantity = new javax.swing.JSpinner();
+        jsQuantity = new javax.swing.JSpinner();
         btnAddToList = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -100,11 +107,11 @@ public class OrdersForm extends javax.swing.JInternalFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 217, 151));
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton3.setText("Save");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        saveOrder.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        saveOrder.setText("Save");
+        saveOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                saveOrderActionPerformed(evt);
             }
         });
 
@@ -154,6 +161,8 @@ public class OrdersForm extends javax.swing.JInternalFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel5.setText("Quantity");
 
+        jsQuantity.setValue(1);
+
         btnAddToList.setText("+");
         btnAddToList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -176,7 +185,7 @@ public class OrdersForm extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(saveOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGap(116, 116, 116)
@@ -200,7 +209,7 @@ public class OrdersForm extends javax.swing.JInternalFrame {
                                             .addComponent(cmbWaiter, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(15, 15, 15)
-                                        .addComponent(spnrQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jsQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(btnAddToList, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 543, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -236,7 +245,7 @@ public class OrdersForm extends javax.swing.JInternalFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(cmbMenuItem, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(btnAddToList, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(spnrQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jsQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(jLabel5))
                         .addGap(56, 56, 56)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -246,7 +255,7 @@ public class OrdersForm extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(saveOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
@@ -272,8 +281,8 @@ public class OrdersForm extends javax.swing.JInternalFrame {
         Tables table = (Tables) cmbTable.getSelectedItem();
         Waiters waiter = (Waiters) cmbWaiter.getSelectedItem();
         Menu menuItem = (Menu) cmbMenuItem.getSelectedItem();
-        int quantity = Integer.parseInt(spnrQuantity.getValue().toString());
-        
+        int quantity = Integer.parseInt(jsQuantity.getValue().toString());
+        if (!(quantity < 0 || quantity == 0)) {
         Order order = new Order();
         order.setTable(table);
         order.setWaiter(waiter);
@@ -285,6 +294,9 @@ public class OrdersForm extends javax.swing.JInternalFrame {
         OrderTableModel orderModel = new OrderTableModel(vectorOrder);
         
         orderTable.setModel(orderModel);
+        } else {
+            JOptionPane.showMessageDialog(this, "Quantity Cant be 0 or Less then 0");
+        }
     }//GEN-LAST:event_btnAddToListActionPerformed
 
     private void orderTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_orderTableMouseClicked
@@ -298,12 +310,12 @@ public class OrdersForm extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_orderTableMouseClicked
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void saveOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveOrderActionPerformed
         int choice = JOptionPane.showConfirmDialog(this, "Are You Sure The Order Is Confirmed?");
         if( choice == 0) {
-            JOptionPane.showMessageDialog(this, "Order Confirmed!");
+            orderService.ConfirmOrder(vectorOrder);
         }
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_saveOrderActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -311,7 +323,6 @@ public class OrdersForm extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> cmbMenuItem;
     private javax.swing.JComboBox<String> cmbTable;
     private javax.swing.JComboBox<String> cmbWaiter;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -321,8 +332,9 @@ public class OrdersForm extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSpinner jsQuantity;
     private javax.swing.JTable orderTable;
-    private javax.swing.JSpinner spnrQuantity;
+    private javax.swing.JButton saveOrder;
     private javax.swing.JLabel totalPrice;
     // End of variables declaration//GEN-END:variables
 
@@ -346,4 +358,5 @@ public void tableDesin(){
 
         jScrollPane1.getViewport().setOpaque(false);
         orderTable.setShowGrid(true);
-    }}
+    }
+}
