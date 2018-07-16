@@ -343,7 +343,7 @@ public class MenuForm extends javax.swing.JInternalFrame {
         
         
         if ( txtNewMenuName.getText().equals("") || txtNewPrice.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "Empty Data Cant Be Updated");
+            JOptionPane.showMessageDialog(this, "Empty Data Can't Be Updated");
         } else {
             Menu menu = new Menu();
         int id = Integer.parseInt(lblID.getText().trim());
