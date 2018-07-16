@@ -24,9 +24,6 @@ public class OrderService {
         int rowsAffected =0;
         int count = 0;
         
-       // String queryCheck = "SELECT COUNT(*) AS `count` FROM `restaurant_kot` WHERE `table_id` LIKE("001") AND `payment_method` LIKE('PENDING') AND `waiter_id` LIKE(001);";
-        
-        
         
     }
 }
