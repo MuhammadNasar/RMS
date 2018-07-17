@@ -29,7 +29,7 @@ public class OrderTableModel extends AbstractTableModel{
 
     @Override
     public int getColumnCount() {
-        return 2;
+        return 3;
     }
 @Override
     public String getColumnName(int columnIndex) {
@@ -41,6 +41,9 @@ public class OrderTableModel extends AbstractTableModel{
                     break;
             case 1:
                     columnName = "Quantity";
+                    break;
+            case 2: 
+                    columnName = "Price";
                     break;
         } 
         return columnName;
@@ -54,7 +57,10 @@ public class OrderTableModel extends AbstractTableModel{
                     break;
                 case 1:
                     object = vectorOrder.get(rowsIndex).getQuantity();
-                    
+                    break;
+                case 2: 
+                    object = vectorOrder.get(rowsIndex).getMenuItem().getPrice();
+                    break;
             }
         return object;
     }
