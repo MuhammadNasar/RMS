@@ -157,7 +157,7 @@ public class OrdersForm extends javax.swing.JInternalFrame {
 
         totalPrice.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         totalPrice.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        totalPrice.setText("1");
+        totalPrice.setText("0");
         totalPrice.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
         cmbWaiter.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -340,7 +340,7 @@ public class OrdersForm extends javax.swing.JInternalFrame {
             totalPrice.setText(newPrice+"");
             
             
-            System.out.println(selectItemPrice);
+            //System.out.println(selectItemPrice);
             vectorOrder.removeElementAt(selectedRow);
             OrderTableModel orderModel = new OrderTableModel(vectorOrder);
             orderTable.setModel(orderModel);
