@@ -33,7 +33,8 @@ public class OrderDAO {
                 + "`total_amount_receivable`, `total_received_amount`, `discount_percentage`, "
                 + "`discount_amount`, `net_amount`, `payment_method`, `waiter_id`) "
                 + "VALUES (" + vectorOrder.get(0).getTable().getTableId() + ", 0, 0, "
-                + "0, 0, 0, 'PENDING', " + vectorOrder.get(0).getWaiter().getWaiterId() + ")";
+                + "0, 0, 0, 'PENDING', " + vectorOrder.get(0).getWaiter().getWaiterId() + ");";
+        System.out.println(queryKot);
         String queryKotDetails = "";
         String queryBulkId = "";
 
@@ -50,6 +51,7 @@ public class OrderDAO {
                     + "`restaurant_kot` WHERE `table_id`="
                     + vectorOrder.get(0).getTable().getTableId() + " AND `is_transfered_to_pending_payments`"
                     + " = 0 AND `is_pending_payment_closed`=0;";
+            System.out.println(queryKotId);
             resultMaxId = sql.executeQuery(queryKotId);
             resultMaxId.next();
             kotId = resultMaxId.getInt("max_kot_id");
@@ -57,18 +59,26 @@ public class OrderDAO {
 
             //details
             queryBulkId = "SELECT IFNULL(MAX(`bulk_id`), 0) AS `max_bulk_id` "
-                    + "WHERE `kot_id`=" + kotId + ";";
+                    + "FROM `restaurant_kot_details` WHERE `kot_id`=" + kotId + ";";
+            System.out.println(queryBulkId);
             resultBulkId = sql.executeQuery(queryBulkId);
             resultBulkId.next();
             bulkId = resultBulkId.getInt("max_bulk_id");
-            
+            bulkId = bulkId + 1;
             for(int i = 0; i < vectorOrder.size(); i++) {
-                queryKotDetails = "";
+                queryKotDetails = "INSERT INTO `restaurant_kot_details`(`kot_id`, "
+                        + "`item_id`, `quantity`, `rate`, `bulk_id`, "
+                        + "`insertion_date_time`) VALUES ("
+                        + kotId +", " +vectorOrder.get(i).getMenuItem().getMenuId()
+                        +", " + vectorOrder.get(i).getQuantity() + ", "
+                        + vectorOrder.get(i).getMenuItem().getPrice() + ", "
+                        + bulkId + ", `getCurrentDateTime`()"+ ");";
+                System.out.println(queryKotDetails);
                 sql.executeUpdate(queryKotDetails);
             }
             
             sql.commit();
-            
+            JOptionPane.showMessageDialog(null, "Kot generated successfully");
         } catch (SQLException ex) {
             ex.printStackTrace();
         } finally {
