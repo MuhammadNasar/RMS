@@ -352,6 +352,11 @@ public class OrdersForm extends javax.swing.JInternalFrame {
         int choice = JOptionPane.showConfirmDialog(this, "Are You Sure The Order Is Confirmed?");
         if( choice == 0) {
             orderService.ConfirmOrder(vectorOrder);
+            vectorOrder.removeAllElements();
+            
+            OrderTableModel orderModel = new OrderTableModel(vectorOrder);
+            orderTable.setModel(orderModel);
+            
         }
     }//GEN-LAST:event_saveOrderActionPerformed
 
