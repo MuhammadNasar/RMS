@@ -34,7 +34,7 @@ public class OrderService {
                 + "WHERE `table_id`=" + vectorOrder.get(0).getTable().getTableId()
                 + " AND `is_transfered_to_pending_payments`=0 AND `is_pending_payment_closed`=0;";
         ResultSet rs;
-
+        System.out.println(query);
         if (vectorOrder.size() <= 0) {
             JOptionPane.showMessageDialog(null, "Empty order can not be placed.");
         } else {
