@@ -52,4 +52,7 @@ public class OrderService {
 
         }
     }
+    public void printCurrentKOT (Vector<Order> vectorOrder) {
+        
+    }
 }
