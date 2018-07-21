@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Vector;
 import javax.swing.JOptionPane;
+import services.OrderService;
 import util.SQLQueryUtil;
 
 /**
@@ -18,8 +19,9 @@ import util.SQLQueryUtil;
  */
 public class OrderDAO {
 
+    
     public OrderDAO() {
-
+        
     }
 
     public void ConfirmOrder(Vector<Order> vectorOrder, int isNewKot) {
@@ -79,6 +81,9 @@ public class OrderDAO {
             
             sql.commit();
             JOptionPane.showMessageDialog(null, "Kot generated successfully");
+             OrderService orderService = new OrderService();
+            orderService.printCurrentKOT(vectorOrder,kotId);
+            
         } catch (SQLException ex) {
             ex.printStackTrace();
         } finally {

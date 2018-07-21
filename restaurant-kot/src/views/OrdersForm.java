@@ -26,57 +26,54 @@ import services.CommonService;
 import services.OrderService;
 import table_models.OrderTableModel;
 
-
-
 /**
  *
  * @author ehsas
  */
 public class OrdersForm extends javax.swing.JInternalFrame {
+
     private CommonService commonService;
     private Vector<Tables> vectorTable;
     private Vector<Menu> vectorMenu;
     private Vector<Waiters> vectorWaiter;
     private Vector<Order> vectorOrder;
     private OrderService orderService;
-    
+
     private TotalPrice totalPriceSave;
-    
+
     public OrdersForm() {
         initComponents();
-        
+
         this.getContentPane().setBackground(Color.WHITE);
         setBorder(BorderFactory.createLineBorder(new Color(201, 201, 201)));
         javax.swing.plaf.InternalFrameUI ifu = this.getUI();
         ((javax.swing.plaf.basic.BasicInternalFrameUI) ifu).setNorthPane(null);
-        
+
         commonService = new CommonService();
-        
+
         vectorTable = new Vector<>();
         vectorMenu = new Vector<>();
         vectorWaiter = new Vector<>();
         vectorOrder = new Vector<>();
-        
+
         orderService = new OrderService();
         totalPriceSave = new TotalPrice();
-        
-        
+
         vectorTable = commonService.getVectorTables();
         vectorMenu = commonService.getVectorMenuItem();
         vectorWaiter = commonService.getVectorWaiters();
         orderService = new OrderService();
-        
+
         DefaultComboBoxModel tableModel = new DefaultComboBoxModel(vectorTable);
         cmbTable.setModel(tableModel);
-        
+
         DefaultComboBoxModel waiterModel = new DefaultComboBoxModel(vectorWaiter);
         cmbWaiter.setModel(waiterModel);
-        
+
         DefaultComboBoxModel menuModel = new DefaultComboBoxModel(vectorMenu);
         cmbMenuItem.setModel(menuModel);
         //tableDesin();
-        
-        
+
     }
 
     /**
@@ -290,57 +287,55 @@ public class OrdersForm extends javax.swing.JInternalFrame {
         Menu menuItem = (Menu) cmbMenuItem.getSelectedItem();
         int quantity = Integer.parseInt(jsQuantity.getValue().toString());
         if (!(quantity < 0 || quantity == 0)) {
-        Order order = new Order();
-        order.setTable(table);
-        order.setWaiter(waiter);
-        order.setMenuItem(menuItem);
-        order.setQuantity(quantity);
-        if (quantity > 1) {
-            int counted1 =0;
-            counted1 = totalPriceSave.getTotalPrice()+ menuItem.getPrice() * quantity;
-            totalPriceSave.setTotalPrice(counted1);
-            totalPrice.setText(totalPriceSave.getTotalPrice()+"");
+            Order order = new Order();
+            order.setTable(table);
+            order.setWaiter(waiter);
+            order.setMenuItem(menuItem);
+            order.setQuantity(quantity);
+            if (quantity > 1) {
+                int counted1 = 0;
+                counted1 = totalPriceSave.getTotalPrice() + menuItem.getPrice() * quantity;
+                totalPriceSave.setTotalPrice(counted1);
+                totalPrice.setText(totalPriceSave.getTotalPrice() + "");
+            } else {
+                int counted2 = 0;
+                counted2 = menuItem.getPrice() + totalPriceSave.getTotalPrice();
+                totalPriceSave.setTotalPrice(counted2);
+                totalPrice.setText(counted2 + "");
+            }
+            vectorOrder.add(order);
+
+            OrderTableModel orderModel = new OrderTableModel(vectorOrder);
+            orderTable.setModel(orderModel);
         } else {
-            int counted2 =0;
-            counted2 = menuItem.getPrice()+totalPriceSave.getTotalPrice();
-            totalPriceSave.setTotalPrice(counted2);
-            totalPrice.setText(counted2+"");
-        }
-        vectorOrder.add(order);
-        
-        OrderTableModel orderModel = new OrderTableModel(vectorOrder);
-        orderTable.setModel(orderModel);   
-        } else {
-            JOptionPane.showMessageDialog(this, "Quantity Cant be 0 or Less then 0");
+            JOptionPane.showMessageDialog(this, "Quality Can't Be 0 or Less Then 0");
         }
     }//GEN-LAST:event_btnAddToListActionPerformed
 
     private void orderTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_orderTableMouseClicked
         int selectedRow = orderTable.getSelectedRow();
         int choice = JOptionPane.showConfirmDialog(this, "Are You Sure You want To Remove This Item?");
-        
-        if ( choice == 0) {
-            int minus =0;
-            int newPrice =0;
+
+        if (choice == 0) {
+            int minus = 0;
+            int newPrice = 0;
             int selectItemPrice = vectorOrder.get(selectedRow).getMenuItem().getPrice();
             int quantity = vectorOrder.get(selectedRow).getQuantity();
-            
-            if(quantity > 1) {
+
+            if (quantity > 1) {
                 int quantityMultiplyselectItemPrice = 0;
                 quantityMultiplyselectItemPrice = selectItemPrice * quantity;
                 newPrice = totalPriceSave.getTotalPrice() - quantityMultiplyselectItemPrice;
                 totalPriceSave.setTotalPrice(newPrice);
-                totalPrice.setText(newPrice+"");
-                
-            }else {
-                newPrice = totalPriceSave.getTotalPrice()- selectItemPrice;
+                totalPrice.setText(newPrice + "");
+
+            } else {
+                newPrice = totalPriceSave.getTotalPrice() - selectItemPrice;
             }
-            
-            
+
             totalPriceSave.setTotalPrice(newPrice);
-            totalPrice.setText(newPrice+"");
-            
-            
+            totalPrice.setText(newPrice + "");
+
             //System.out.println(selectItemPrice);
             vectorOrder.removeElementAt(selectedRow);
             OrderTableModel orderModel = new OrderTableModel(vectorOrder);
@@ -349,15 +344,23 @@ public class OrdersForm extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_orderTableMouseClicked
 
     private void saveOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveOrderActionPerformed
-        int choice = JOptionPane.showConfirmDialog(this, "Are You Sure The Order Is Confirmed?");
-        if( choice == 0) {
-            orderService.ConfirmOrder(vectorOrder);
-            vectorOrder.removeAllElements();
-            
-            OrderTableModel orderModel = new OrderTableModel(vectorOrder);
-            orderTable.setModel(orderModel);
-            
+        if (vectorOrder.size() > 0) {
+            int choice = JOptionPane.showConfirmDialog(this, "Are You Sure The Order Is Confirmed?");
+            if (choice == 0) {
+                orderService.ConfirmOrder(vectorOrder);
+                //orderService.printCurrentKOT(vectorOrder);
+                vectorOrder.removeAllElements();
+
+                OrderTableModel orderModel = new OrderTableModel(vectorOrder);
+                orderTable.setModel(orderModel);
+                totalPriceSave.setTotalPrice(0);
+                totalPrice.setText(0 + "");
+
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "No data Inserted");
         }
+
     }//GEN-LAST:event_saveOrderActionPerformed
 
 
@@ -381,7 +384,7 @@ public class OrdersForm extends javax.swing.JInternalFrame {
     private javax.swing.JLabel totalPrice;
     // End of variables declaration//GEN-END:variables
 
-public void tableDesin(){
+    public void tableDesin() {
         JTableHeader header = orderTable.getTableHeader();
         header.setPreferredSize(new Dimension(150, 50));
         //  header.setBorder(new DropShadowBorder());
@@ -391,7 +394,7 @@ public void tableDesin(){
 
         orderTable.setBackground(Color.red);
         ((DefaultTableCellRenderer) orderTable.getDefaultRenderer(Object.class)).setBackground(new Color(255, 255, 204));
-        
+
         orderTable.setRowHeight(1, 30);
         orderTable.setGridColor(Color.red);
         orderTable.setForeground(Color.black);
