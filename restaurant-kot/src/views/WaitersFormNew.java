@@ -256,8 +256,8 @@ public class WaitersFormNew extends javax.swing.JInternalFrame {
 
         txtUpdateWaiterName.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtUpdateWaiterName.setForeground(new java.awt.Color(204, 204, 204));
-        txtUpdateWaiterName.setText("Waiter Name");
-        txtUpdateWaiterName.setToolTipText("Waiter Name");
+        txtUpdateWaiterName.setText("Update Waiter Name");
+        txtUpdateWaiterName.setToolTipText("Update Waiter Name");
         txtUpdateWaiterName.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtUpdateWaiterNameFocusLost(evt);
@@ -271,8 +271,8 @@ public class WaitersFormNew extends javax.swing.JInternalFrame {
 
         txtUpdateFatherName.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtUpdateFatherName.setForeground(new java.awt.Color(204, 204, 204));
-        txtUpdateFatherName.setText("Father Name");
-        txtUpdateFatherName.setToolTipText("Father Name");
+        txtUpdateFatherName.setText("Update Father Name");
+        txtUpdateFatherName.setToolTipText("Update Father Name");
         txtUpdateFatherName.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtUpdateFatherNameFocusLost(evt);
@@ -291,8 +291,8 @@ public class WaitersFormNew extends javax.swing.JInternalFrame {
 
         txtUpdateWaiterNumber.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtUpdateWaiterNumber.setForeground(new java.awt.Color(204, 204, 204));
-        txtUpdateWaiterNumber.setText("Waiter Number");
-        txtUpdateWaiterNumber.setToolTipText("Waiter Number");
+        txtUpdateWaiterNumber.setText("Update Waiter Number");
+        txtUpdateWaiterNumber.setToolTipText("Update Waiter Number");
         txtUpdateWaiterNumber.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtUpdateWaiterNumberFocusLost(evt);
@@ -306,8 +306,8 @@ public class WaitersFormNew extends javax.swing.JInternalFrame {
 
         txtUpdatePhoneNumber.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtUpdatePhoneNumber.setForeground(new java.awt.Color(204, 204, 204));
-        txtUpdatePhoneNumber.setText("Phone Number");
-        txtUpdatePhoneNumber.setToolTipText("Phone Number");
+        txtUpdatePhoneNumber.setText("Update Phone Number");
+        txtUpdatePhoneNumber.setToolTipText("Update Phone Number");
         txtUpdatePhoneNumber.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtUpdatePhoneNumberFocusLost(evt);
@@ -321,8 +321,8 @@ public class WaitersFormNew extends javax.swing.JInternalFrame {
 
         txtUpdateCnic.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtUpdateCnic.setForeground(new java.awt.Color(204, 204, 204));
-        txtUpdateCnic.setText("Cnic");
-        txtUpdateCnic.setToolTipText("Cnic");
+        txtUpdateCnic.setText("Update Cnic");
+        txtUpdateCnic.setToolTipText("Update Cnic");
         txtUpdateCnic.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtUpdateCnicFocusLost(evt);
@@ -336,8 +336,8 @@ public class WaitersFormNew extends javax.swing.JInternalFrame {
 
         txtUpdateAddress.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtUpdateAddress.setForeground(new java.awt.Color(204, 204, 204));
-        txtUpdateAddress.setText("Address");
-        txtUpdateAddress.setToolTipText("Address");
+        txtUpdateAddress.setText("Update Address");
+        txtUpdateAddress.setToolTipText("Update Address");
         txtUpdateAddress.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtUpdateAddressFocusLost(evt);
@@ -377,8 +377,8 @@ public class WaitersFormNew extends javax.swing.JInternalFrame {
 
         txtUpdateId.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtUpdateId.setForeground(new java.awt.Color(204, 204, 204));
-        txtUpdateId.setText("Id");
-        txtUpdateId.setToolTipText("Id");
+        txtUpdateId.setText("Update Id");
+        txtUpdateId.setToolTipText("Update Id");
         txtUpdateId.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtUpdateIdFocusLost(evt);
@@ -399,28 +399,24 @@ public class WaitersFormNew extends javax.swing.JInternalFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtUpdateId, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtUpdateWaiterName)
-                    .addComponent(txtUpdateFatherName)
-                    .addComponent(txtUpdateWaiterNumber, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtUpdatePhoneNumber, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtUpdateCnic, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtUpdateAddress, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 152, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(txtUpdateAddress, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtUpdateCnic, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtUpdatePhoneNumber, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtUpdateWaiterNumber, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                        .addComponent(txtUpdateFatherName, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtUpdateWaiterName, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtUpdateId, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -455,7 +451,7 @@ public class WaitersFormNew extends javax.swing.JInternalFrame {
                 .addComponent(txtUpdateAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(139, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -469,35 +465,32 @@ public class WaitersFormNew extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(272, 272, 272))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(txtWaiterName, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(87, 87, 87)))
+                                    .addComponent(txtWaiterName, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(87, 87, 87)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtFatherName, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(txtWaiterNumber, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtCnic, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(txtCnic, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGap(87, 87, 87)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                        .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 725, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(101, Short.MAX_VALUE))
+                .addContainerGap(143, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -34,7 +34,7 @@ public class WaitersServices {
             if (data == 0) {
                 
                 waitersDAO.registerWaiters(waiters);
-                JOptionPane.showMessageDialog(null,"Waiter register successfully");
+                JOptionPane.showMessageDialog(null,"Waiter registered successfully");
             } else {
                 JOptionPane.showMessageDialog(null, "Already exists.");
             }
