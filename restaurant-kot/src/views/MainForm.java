@@ -84,6 +84,9 @@ public class MainForm extends javax.swing.JFrame {
         btnOrders = new javax.swing.JLabel();
         btnTable = new javax.swing.JLabel();
         btnUser = new javax.swing.JLabel();
+        btnPendingPayments = new javax.swing.JLabel();
+        btnPendingBills = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         desktopPane = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -186,6 +189,34 @@ public class MainForm extends javax.swing.JFrame {
             }
         });
 
+        btnPendingPayments.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/btn_pending_payments_normal.png"))); // NOI18N
+        btnPendingPayments.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPendingPaymentsMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnPendingPaymentsMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnPendingPaymentsMouseExited(evt);
+            }
+        });
+
+        btnPendingBills.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/btn_pending_bills_normal.png"))); // NOI18N
+        btnPendingBills.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPendingBillsMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnPendingBillsMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnPendingBillsMouseExited(evt);
+            }
+        });
+
+        jLabel1.setText("jLabel1");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -200,6 +231,8 @@ public class MainForm extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnPendingBills, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnPendingPayments, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnUser)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(btnHome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -207,7 +240,9 @@ public class MainForm extends javax.swing.JFrame {
                                 .addComponent(btnWaiters, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnOrders, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnDishes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                .addGap(0, 60, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 198, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -215,7 +250,9 @@ public class MainForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(activeTab, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnHome)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnHome)
+                    .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnDishes, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -228,6 +265,10 @@ public class MainForm extends javax.swing.JFrame {
                 .addComponent(btnTable)
                 .addGap(18, 18, 18)
                 .addComponent(btnUser, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnPendingPayments)
+                .addGap(18, 18, 18)
+                .addComponent(btnPendingBills)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -470,6 +511,40 @@ public class MainForm extends javax.swing.JFrame {
         activeTab.setIcon(activeTabicon);
     }//GEN-LAST:event_btnUserMouseClicked
 
+    private void btnPendingPaymentsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPendingPaymentsMouseEntered
+        ImageIcon btnimage = new ImageIcon(getClass().getResource("/images/btn_pending_payments_mhover.png"));
+        btnPendingPayments.setIcon(btnimage);
+    }//GEN-LAST:event_btnPendingPaymentsMouseEntered
+
+    private void btnPendingPaymentsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPendingPaymentsMouseClicked
+        ImageIcon btnimage = new ImageIcon(getClass().getResource("/images/btn_pending_payments_clicked.png"));
+        btnPendingPayments.setIcon(btnimage);
+        ImageIcon activeTabicon = new ImageIcon(getClass().getResource("/images/pendingpayments_icon.png"));
+        activeTab.setIcon(activeTabicon);
+    }//GEN-LAST:event_btnPendingPaymentsMouseClicked
+
+    private void btnPendingPaymentsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPendingPaymentsMouseExited
+        ImageIcon btnimage = new ImageIcon(getClass().getResource("/images/btn_pending_payments_normal.png"));
+        btnPendingPayments.setIcon(btnimage);
+    }//GEN-LAST:event_btnPendingPaymentsMouseExited
+
+    private void btnPendingBillsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPendingBillsMouseClicked
+        ImageIcon btnimage = new ImageIcon(getClass().getResource("/images/btn_pending_bills_clicked.png"));
+        btnPendingBills.setIcon(btnimage);
+        ImageIcon activeTabicon = new ImageIcon(getClass().getResource("/images/pendingbills_icon.png"));
+        activeTab.setIcon(activeTabicon);
+    }//GEN-LAST:event_btnPendingBillsMouseClicked
+
+    private void btnPendingBillsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPendingBillsMouseEntered
+        ImageIcon btnimage = new ImageIcon(getClass().getResource("/images/btn_pending_bills_mhover.png"));
+        btnPendingBills.setIcon(btnimage);
+    }//GEN-LAST:event_btnPendingBillsMouseEntered
+
+    private void btnPendingBillsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPendingBillsMouseExited
+        ImageIcon btnimage = new ImageIcon(getClass().getResource("/images/btn_pending_bills_normal.png"));
+        btnPendingBills.setIcon(btnimage);
+    }//GEN-LAST:event_btnPendingBillsMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -511,11 +586,14 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JLabel btnDishes;
     private javax.swing.JLabel btnHome;
     private javax.swing.JLabel btnOrders;
+    private javax.swing.JLabel btnPendingBills;
+    private javax.swing.JLabel btnPendingPayments;
     private javax.swing.JLabel btnReports;
     private javax.swing.JLabel btnTable;
     private javax.swing.JLabel btnUser;
     private javax.swing.JLabel btnWaiters;
     private javax.swing.JDesktopPane desktopPane;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
