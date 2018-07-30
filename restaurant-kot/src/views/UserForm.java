@@ -5,7 +5,6 @@
  */
 package views;
 
-import dao.UserDAO;
 import entity.User;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -14,7 +13,6 @@ import java.util.Vector;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPopupMenu;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 import services.CommonService;
@@ -483,6 +481,7 @@ public class UserForm extends javax.swing.JInternalFrame {
 
     
     public void tableDesin(){
+        
         JTableHeader header = tbluser.getTableHeader();
         header.setPreferredSize(new Dimension(150, 50));
         //  header.setBorder(new DropShadowBorder());
