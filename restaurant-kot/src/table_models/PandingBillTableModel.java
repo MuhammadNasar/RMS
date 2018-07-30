@@ -42,7 +42,7 @@ public class PandingBillTableModel extends AbstractTableModel {
                 name = "Table Number";
                 break;
             case 2:
-                name = "Waiter Number";
+                name = "Waiter Name";
                 break;
         }
         return name;
@@ -56,10 +56,10 @@ public class PandingBillTableModel extends AbstractTableModel {
                 object = vectorPandingBills.get(rowIndex).getId();
                 break;
             case 1:
-                object = vectorPandingBills.get(rowIndex).getTables().getTableId();
+                object = vectorPandingBills.get(rowIndex).getTables().getTableNumber();
                 break;
             case 2:
-                object = vectorPandingBills.get(rowIndex).getWaiter().getWaiterId();
+                object = vectorPandingBills.get(rowIndex).getWaiter().getName();
                 break;
         }
         return object;

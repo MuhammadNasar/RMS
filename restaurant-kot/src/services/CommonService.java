@@ -150,17 +150,24 @@ public class CommonService {
         Waiters waiters;
         Tables tables;
         ResultSet rs;
-        String Qurey = "SELECT `id`,`table_id`,`waiter_id`FROM restaurant_kot WHERE "
-                + "`is_transfered_to_pending_payments`=0 and`is_pending_payment_closed`=0;";
+        
+        String qurey = "SELECT rk.`id`, t.table_number,w.full_name FROM "
+                + "`restaurant_kot` AS rk, waiters as w,tables as t WHERE"
+                + " rk.`is_transfered_to_pending_payments`=0 AND "
+                + "rk.`is_pending_payment_closed`=0 and rk.`table_id`=t.id and "
+                + "rk.`waiter_id`=w.id;";
+       ;
         try {
-            rs = sql.executeQuery(Qurey);
-            while (rs.next()) {
+           rs = sql.executeQuery(qurey);
+           
+            while (rs.next() ) {
+              
                 waiters = new Waiters();
                 tables = new Tables();
                 pandingBill = new PandingBill();
-                waiters.setWaiterId(rs.getInt("waiter_id"));
-                tables.setTableId(rs.getInt("table_id"));
-                pandingBill.setId(rs.getInt("id"));
+                waiters.setName(rs.getString("w.full_name"));
+                tables.setTableNumber(rs.getString("t.table_number"));
+                pandingBill.setId(rs.getInt("rk.id"));
                 pandingBill.setTables(tables);
                 pandingBill.setWaiter(waiters);
                 vectorPandingBills.add(pandingBill);

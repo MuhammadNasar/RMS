@@ -8,8 +8,10 @@ package views;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.LineSeparator;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.property.HorizontalAlignment;
 import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.layout.property.UnitValue;
 import entity.Menu;
@@ -391,26 +393,26 @@ public void printAllMenuItems () {
             Document layoutDocument = new Document(pdfDocument);
             
             //title
-            layoutDocument.add(new Paragraph("Bill").setBold().setUnderline()
+            layoutDocument.add(new Paragraph("THE WAITERS RESTAURANT").setBold().setUnderline()
                     .setTextAlignment(TextAlignment.CENTER));
             
             //other reference information
-            layoutDocument.add(new Paragraph("THE WAITERS RESTAURANT")
+            layoutDocument.add(new Paragraph("Bill")
                     .setTextAlignment(TextAlignment.LEFT).setMultipliedLeading(0.2f).setBold());
-             layoutDocument.add(new Paragraph("Bill Number    :"+pandingBillTableModel.getValueAt(index, 0).toString())
-                    .setTextAlignment(TextAlignment.LEFT).setMultipliedLeading(0.2f).setBold());
-               layoutDocument.add(new Paragraph("Table Name    :"+pandingBillTableModel.getValueAt(index, 1).toString())
-                    .setTextAlignment(TextAlignment.LEFT).setMultipliedLeading(0.2f).setBold());
+             layoutDocument.add(new Paragraph("Bill Number       :"+pandingBillTableModel.getValueAt(index, 0).toString())
+                    .setTextAlignment(TextAlignment.LEFT).setMultipliedLeading(0.2f));
+               layoutDocument.add(new Paragraph("Table Name      :"+pandingBillTableModel.getValueAt(index, 1).toString())
+                    .setTextAlignment(TextAlignment.LEFT).setMultipliedLeading(0.2f));
                layoutDocument.add(new Paragraph("Wainter Name    :"+pandingBillTableModel.getValueAt(index, 2).toString())
-                    .setTextAlignment(TextAlignment.LEFT).setMultipliedLeading(0.2f).setBold());
-            layoutDocument.add(new Paragraph("PESHAWAR").setMultipliedLeading(.2f));
-            layoutDocument.add(new Paragraph("Phone# 091-123456789").setMultipliedLeading(.2f));
+                    .setTextAlignment(TextAlignment.LEFT).setMultipliedLeading(0.2f));
+            
             
             //create items to add into pdf
             //create a table to display items into tabular form
             
-            Table table = new Table(UnitValue.createPointArray(new float[]{60f,180f,50f,50f,50f}));
-            
+            Table table = new Table(UnitValue.createPointArray(new float[]{80f,180f,100f,100f,100f}));
+            table.setTextAlignment(TextAlignment.CENTER);
+            table.setHorizontalAlignment(HorizontalAlignment.CENTER);
             //headers
             table.addCell(new Paragraph("S.N.O").setBold());
             table.addCell(new Paragraph("Item Name").setBold());
@@ -420,19 +422,30 @@ public void printAllMenuItems () {
             String kot_id=pandingBillTableModel.getValueAt(index, 0).toString();
             
             //Now Add Data Into these table Columns
+            int a=1;
             Vector <PandigBillUpdate>pandigBillUpdates=commonService.getVectorPandingBill(kot_id+"");
             for (PandigBillUpdate menu : pandigBillUpdates) {
-                int a=1;
+               
                 table.addCell(new Paragraph(a+""));
                 table.addCell(new Paragraph(menu.getMenu().getMenuName()+""));
                 table.addCell(new Paragraph(menu.getQuantity()+""));
                 table.addCell(new Paragraph(menu.getMenu().getPrice()+""));
                  table.addCell(new Paragraph(menu.getSum()+""));
-                 a++;
+                a=a+1;
             }
             
             // add table to pdf
             layoutDocument.add(table);
+            
+            String totalAmmount = "Total =      "+txtTotal.getText().trim();
+            String discounRate = "Discount Rate =      "+txtDiscount.getText().trim();
+            String discountAmmount = "Discount Ammount =      "+txtDiscountAmount.getText().trim();
+            String netToPay = "Net To Pay =      "+txtNetToPay.getText().trim();
+            layoutDocument.add(new Paragraph("    ").setTextAlignment(TextAlignment.RIGHT));
+           layoutDocument.add(new Paragraph(totalAmmount).setTextAlignment(TextAlignment.RIGHT));
+           layoutDocument.add(new Paragraph(discounRate).setTextAlignment(TextAlignment.RIGHT));
+           layoutDocument.add(new Paragraph(discountAmmount).setTextAlignment(TextAlignment.RIGHT));
+           layoutDocument.add(new Paragraph(netToPay).setTextAlignment(TextAlignment.RIGHT));
            
             
             //close document
