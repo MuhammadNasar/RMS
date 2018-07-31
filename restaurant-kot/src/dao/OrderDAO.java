@@ -70,11 +70,11 @@ public class OrderDAO {
             for(int i = 0; i < vectorOrder.size(); i++) {
                 queryKotDetails = "INSERT INTO `restaurant_kot_details`(`kot_id`, "
                         + "`item_id`, `quantity`, `rate`, `bulk_id`, "
-                        + "`insertion_date_time`,`inserted_by_user_id`) VALUES ("
+                        + "`insertion_date_time`) VALUES ("
                         + kotId +", " +vectorOrder.get(i).getMenuItem().getMenuId()
                         +", " + vectorOrder.get(i).getQuantity() + ", "
                         + vectorOrder.get(i).getMenuItem().getPrice() + ", "
-                        + bulkId + ", `getCurrentDateTime`()"+",'1');";
+                        + bulkId + ", `getCurrentDateTime`());";
                 System.out.println(queryKotDetails);
                 sql.executeUpdate(queryKotDetails);
             }
