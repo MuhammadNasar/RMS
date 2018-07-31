@@ -21,6 +21,7 @@ import java.awt.Color;
 import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.util.Vector;
 import javax.swing.BorderFactory;
@@ -41,21 +42,20 @@ public class PendingBillsForm extends javax.swing.JInternalFrame {
 
     private Vector<PendingBill> vectorPandingBills;
     private CommonService commonService;
-    private Vector<PendigBillUpdate> pandigBillUpdate;
-    private PandingBillService pandingBillService;
+    private Vector<PendigBillUpdate> pendigBillUpdate;
+    private PandingBillService pendingBillService;
 
     /**
      * Creates new form PandingBills
      */
     public PendingBillsForm() {
         initComponents();
-       
 
         design();
         commonService = new CommonService();
         vectorPandingBills = commonService.getVectorPangdingBill();
         PendingBillTableModel pandingBillTableModel = new PendingBillTableModel(vectorPandingBills);
-        tblPandingBill.setModel(pandingBillTableModel);
+        tblPendingBill.setModel(pandingBillTableModel);
     }
 
     /**
@@ -70,10 +70,10 @@ public class PendingBillsForm extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblPandingBill = new javax.swing.JTable();
+        tblPendingBill = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tblPandingBill1 = new javax.swing.JTable();
+        tblPendingBill1 = new javax.swing.JTable();
         btnSave = new javax.swing.JButton();
         txtDiscount = new javax.swing.JTextField();
         txtTotal = new javax.swing.JTextField();
@@ -89,7 +89,7 @@ public class PendingBillsForm extends javax.swing.JInternalFrame {
         jPanel1.setBackground(new java.awt.Color(255, 217, 151));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder("")));
 
-        tblPandingBill.setModel(new javax.swing.table.DefaultTableModel(
+        tblPendingBill.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -100,13 +100,13 @@ public class PendingBillsForm extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tblPandingBill.setRowHeight(20);
-        tblPandingBill.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblPendingBill.setRowHeight(20);
+        tblPendingBill.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblPandingBillMouseClicked(evt);
+                tblPendingBillMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tblPandingBill);
+        jScrollPane1.setViewportView(tblPendingBill);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -135,7 +135,7 @@ public class PendingBillsForm extends javax.swing.JInternalFrame {
         jPanel2.setBackground(new java.awt.Color(255, 217, 151));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder("")));
 
-        tblPandingBill1.setModel(new javax.swing.table.DefaultTableModel(
+        tblPendingBill1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -146,8 +146,8 @@ public class PendingBillsForm extends javax.swing.JInternalFrame {
                 "Item Name", "Quantity", "Price", "Total"
             }
         ));
-        tblPandingBill1.setRowHeight(20);
-        jScrollPane2.setViewportView(tblPandingBill1);
+        tblPendingBill1.setRowHeight(20);
+        jScrollPane2.setViewportView(tblPendingBill1);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -191,6 +191,7 @@ public class PendingBillsForm extends javax.swing.JInternalFrame {
         getContentPane().add(btnSave, gridBagConstraints);
 
         txtDiscount.setText("0");
+        txtDiscount.setToolTipText("Enter Only Digit Data");
         txtDiscount.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 txtDiscountMouseExited(evt);
@@ -300,68 +301,55 @@ public class PendingBillsForm extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tblPandingBillMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPandingBillMouseClicked
-        int index = tblPandingBill.getSelectedRow();
-        PendingBillTableModel pandingBillTableModel = (PendingBillTableModel) tblPandingBill.getModel();
+    private void tblPendingBillMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPendingBillMouseClicked
+        int index = tblPendingBill.getSelectedRow();
+        PendingBillTableModel pandingBillTableModel = (PendingBillTableModel) tblPendingBill.getModel();
         String kot_id = pandingBillTableModel.getValueAt(index, 0).toString();
-       pandigBillUpdate = pandigBillUpdate = commonService.getVectorPandingBill(kot_id);
-        PendingBillDetailTableModel billDetailTableModel=new PendingBillDetailTableModel(pandigBillUpdate);
-        tblPandingBill1.setModel(billDetailTableModel);
-   txtTotal.setText(commonService.total+"");
-    try{   int total=Integer.parseInt(txtTotal.getText());
-        int discount =Integer.parseInt(txtDiscount.getText());
-        int discAmount=total*discount/100;
-        total=total-discAmount;
-        txtDiscountAmount.setText(discAmount+"");
-        txtNetToPay.setText(total+"");
-      }catch(Exception e){
-          
-      }
-  
-   
-   
-    
-    }//GEN-LAST:event_tblPandingBillMouseClicked
+        pendigBillUpdate = pendigBillUpdate = commonService.getVectorPandingBill(kot_id);
+        PendingBillDetailTableModel billDetailTableModel = new PendingBillDetailTableModel(pendigBillUpdate);
+        tblPendingBill1.setModel(billDetailTableModel);
+        txtTotal.setText(commonService.total + "");
+        devision();
+
+
+    }//GEN-LAST:event_tblPendingBillMouseClicked
 
     private void txtDiscountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDiscountActionPerformed
-      try{   int total=Integer.parseInt(txtTotal.getText());
-        int discount =Integer.parseInt(txtDiscount.getText());
-        int discAmount=total*discount/100;
-        total=total-discAmount;
-        txtDiscountAmount.setText(discAmount+"");
-        txtNetToPay.setText(total+"");
-      }catch(Exception e){
-          
-      }
+        devision();
     }//GEN-LAST:event_txtDiscountActionPerformed
 
     private void txtDiscountKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDiscountKeyTyped
-       
+        char c = evt.getKeyChar();
+        if (!(Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE))) {
+            getToolkit().beep();
+            evt.consume();
+        }
     }//GEN-LAST:event_txtDiscountKeyTyped
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
- try{      int choic=JOptionPane.showConfirmDialog(null, "Are you Sure to Generate Bill");
-      if(choic==0){
-          int index=tblPandingBill.getSelectedRow();
-          PendingBillTableModel billTableModel=(PendingBillTableModel)tblPandingBill.getModel();
-          String kot_id=billTableModel.getValueAt(index, 0).toString();
-          
-        PendigBillUpdate billUpdate=new PendigBillUpdate();
-        billUpdate.setId(Integer.parseInt(kot_id));
-       billUpdate.setTotal(Integer.parseInt(txtTotal.getText()));
-       billUpdate.setTotalRecievabelAmount(Integer.parseInt(txtNetToPay.getText()));
-       billUpdate.setDiscount(Integer.parseInt(txtDiscount.getText()));
-       billUpdate.setDiscountAmount(Integer.parseInt(txtDiscountAmount.getText()));
-       billUpdate.setNetAmount(Integer.parseInt(txtNetToPay.getText()));
-       pandingBillService=new PandingBillService();
-       pandingBillService.generatePandingbill(billUpdate);
-       printAllMenuItems();
-       
+        try {
+            int choic = JOptionPane.showConfirmDialog(null, "Are you Sure to Generate Bill");
+            if (choic == 0) {
+                int index = tblPendingBill.getSelectedRow();
+                PendingBillTableModel billTableModel = (PendingBillTableModel) tblPendingBill.getModel();
+                String kot_id = billTableModel.getValueAt(index, 0).toString();
 
-      }}catch(Exception e){
-          JOptionPane.showMessageDialog(null, "Empty Result");
-      }
-       
+                PendigBillUpdate billUpdate = new PendigBillUpdate();
+                billUpdate.setId(Integer.parseInt(kot_id));
+                billUpdate.setTotal(Integer.parseInt(txtTotal.getText()));
+                billUpdate.setTotalRecievabelAmount(Integer.parseInt(txtNetToPay.getText()));
+                billUpdate.setDiscount(Integer.parseInt(txtDiscount.getText()));
+                billUpdate.setDiscountAmount(Integer.parseInt(txtDiscountAmount.getText()));
+                billUpdate.setNetAmount(Integer.parseInt(txtNetToPay.getText()));
+                pendingBillService = new PandingBillService();
+                pendingBillService.generatePandingbill(billUpdate);
+                printAllMenuItems();
+
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Empty Result");
+        }
+
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void txtDiscountKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDiscountKeyReleased
@@ -369,17 +357,20 @@ public class PendingBillsForm extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtDiscountKeyReleased
 
     private void txtDiscountMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDiscountMouseExited
-       try{  int total=Integer.parseInt(txtTotal.getText());
-        int discount =Integer.parseInt(txtDiscount.getText());
-        int discAmount=total*discount/100;
-        total=total-discAmount;
-        txtDiscountAmount.setText(discAmount+"");
-        txtNetToPay.setText(total+"");
-       }catch(Exception e){
-           
-       }
+        devision();
     }//GEN-LAST:event_txtDiscountMouseExited
+    public void devision() {
+        try {
+            int total = Integer.parseInt(txtTotal.getText());
+            int discount = Integer.parseInt(txtDiscount.getText());
+            int discAmount = total * discount / 100;
+            total = total - discAmount;
+            txtDiscountAmount.setText(discAmount + "");
+            txtNetToPay.setText(total + "");
+        } catch (Exception e) {
 
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSave;
@@ -391,8 +382,8 @@ public class PendingBillsForm extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable tblPandingBill;
-    private javax.swing.JTable tblPandingBill1;
+    private javax.swing.JTable tblPendingBill;
+    private javax.swing.JTable tblPendingBill1;
     private javax.swing.JTextField txtDiscount;
     private javax.swing.JTextField txtDiscountAmount;
     private javax.swing.JTextField txtNetToPay;
@@ -404,76 +395,72 @@ private void design() {
         setBorder(BorderFactory.createLineBorder(new Color(235, 163, 91)));
         javax.swing.plaf.InternalFrameUI ifu = this.getUI();
         ((javax.swing.plaf.basic.BasicInternalFrameUI) ifu).setNorthPane(null);
-        JTableHeader header = tblPandingBill.getTableHeader();
+        JTableHeader header = tblPendingBill.getTableHeader();
         header.setPreferredSize(new Dimension(150, 50));
         //  header.setBorder(new DropShadowBorder());
         header.setBounds(20, 20, 30, 30);
         header.setFont(new Font("Tahoma", Font.BOLD, 15));
         header.setBackground(Color.red);
 
-        tblPandingBill.setBackground(Color.red);
-        ((DefaultTableCellRenderer) tblPandingBill.getDefaultRenderer(Object.class)).setBackground(new Color(255, 255, 204));
+        tblPendingBill.setBackground(Color.red);
+        ((DefaultTableCellRenderer) tblPendingBill.getDefaultRenderer(Object.class)).setBackground(new Color(255, 255, 204));
 
-        tblPandingBill.setGridColor(Color.red);
-        tblPandingBill.setForeground(Color.black);
+        tblPendingBill.setGridColor(Color.red);
+        tblPendingBill.setForeground(Color.black);
         jScrollPane1.setBackground(Color.red);
-        tblPandingBill.setOpaque(false);
+        tblPendingBill.setOpaque(false);
         ((DefaultTableCellRenderer) header.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
-        tblPandingBill.setFont(new Font("Tahome", Font.PLAIN, 20));
+        tblPendingBill.setFont(new Font("Tahome", Font.PLAIN, 20));
 
         jScrollPane1.getViewport().setOpaque(false);
-        tblPandingBill.setShowGrid(true);
-        
-        
-        
-          JTableHeader heade = tblPandingBill1.getTableHeader();
+        tblPendingBill.setShowGrid(true);
+
+        JTableHeader heade = tblPendingBill1.getTableHeader();
         heade.setPreferredSize(new Dimension(150, 50));
         //  header.setBorder(new DropShadowBorder());
         heade.setBounds(20, 20, 30, 30);
         heade.setFont(new Font("Tahoma", Font.BOLD, 15));
         heade.setBackground(Color.red);
 
-        tblPandingBill1.setBackground(Color.red);
-        ((DefaultTableCellRenderer) tblPandingBill1.getDefaultRenderer(Object.class)).setBackground(new Color(255, 255, 204));
+        tblPendingBill1.setBackground(Color.red);
+        ((DefaultTableCellRenderer) tblPendingBill1.getDefaultRenderer(Object.class)).setBackground(new Color(255, 255, 204));
 
-        tblPandingBill1.setGridColor(Color.red);
-        tblPandingBill1.setForeground(Color.black);
+        tblPendingBill1.setGridColor(Color.red);
+        tblPendingBill1.setForeground(Color.black);
         jScrollPane1.setBackground(Color.red);
-        tblPandingBill1.setOpaque(false);
+        tblPendingBill1.setOpaque(false);
         ((DefaultTableCellRenderer) heade.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
-        tblPandingBill1.setFont(new Font("Tahome", Font.ITALIC, 12));
+        tblPendingBill1.setFont(new Font("Tahome", Font.ITALIC, 12));
 
         jScrollPane1.getViewport().setOpaque(false);
-        tblPandingBill1.setShowGrid(true);
+        tblPendingBill1.setShowGrid(true);
 
     }
 
-public void printAllMenuItems () {
-         int index=tblPandingBill.getSelectedRow();
-         PendingBillTableModel pandingBillTableModel=(PendingBillTableModel)tblPandingBill.getModel();
+    public void printAllMenuItems() {
+        int index = tblPendingBill.getSelectedRow();
+        PendingBillTableModel pandingBillTableModel = (PendingBillTableModel) tblPendingBill.getModel();
         try {
             PdfDocument pdfDocument = new PdfDocument(new PdfWriter("./panding_bill.pdf"));
             Document layoutDocument = new Document(pdfDocument);
-            
+
             //title
             layoutDocument.add(new Paragraph("THE WAITERS RESTAURANT").setBold().setUnderline()
                     .setTextAlignment(TextAlignment.CENTER));
-            
+
             //other reference information
             layoutDocument.add(new Paragraph("Bill")
                     .setTextAlignment(TextAlignment.LEFT).setMultipliedLeading(0.2f).setBold());
-             layoutDocument.add(new Paragraph("Bill Number       :"+pandingBillTableModel.getValueAt(index, 0).toString())
+            layoutDocument.add(new Paragraph("Bill Number       :" + pandingBillTableModel.getValueAt(index, 0).toString())
                     .setTextAlignment(TextAlignment.LEFT).setMultipliedLeading(0.2f));
-               layoutDocument.add(new Paragraph("Table Name      :"+pandingBillTableModel.getValueAt(index, 1).toString())
+            layoutDocument.add(new Paragraph("Table Name      :" + pandingBillTableModel.getValueAt(index, 1).toString())
                     .setTextAlignment(TextAlignment.LEFT).setMultipliedLeading(0.2f));
-               layoutDocument.add(new Paragraph("Wainter Name    :"+pandingBillTableModel.getValueAt(index, 2).toString())
+            layoutDocument.add(new Paragraph("Wainter Name    :" + pandingBillTableModel.getValueAt(index, 2).toString())
                     .setTextAlignment(TextAlignment.LEFT).setMultipliedLeading(0.2f));
-            
-            
+
             //create items to add into pdf
             //create a table to display items into tabular form
-            
-            Table table = new Table(UnitValue.createPointArray(new float[]{80f,180f,100f,100f,100f}));
+            Table table = new Table(UnitValue.createPointArray(new float[]{80f, 180f, 100f, 100f, 100f}));
             table.setTextAlignment(TextAlignment.CENTER);
             table.setHorizontalAlignment(HorizontalAlignment.CENTER);
             //headers
@@ -482,52 +469,50 @@ public void printAllMenuItems () {
             table.addCell(new Paragraph("Quantity").setBold());
             table.addCell(new Paragraph("Rate").setBold());
             table.addCell(new Paragraph("Total").setBold());
-            String kot_id=pandingBillTableModel.getValueAt(index, 0).toString();
-            
+            String kot_id = pandingBillTableModel.getValueAt(index, 0).toString();
+
             //Now Add Data Into these table Columns
-            int a=1;
-            Vector <PendigBillUpdate>pandigBillUpdates=commonService.getVectorPandingBill(kot_id+"");
+            int a = 1;
+            Vector<PendigBillUpdate> pandigBillUpdates = commonService.getVectorPandingBill(kot_id + "");
             for (PendigBillUpdate menu : pandigBillUpdates) {
-               
-                table.addCell(new Paragraph(a+""));
-                table.addCell(new Paragraph(menu.getMenu().getMenuName()+""));
-                table.addCell(new Paragraph(menu.getQuantity()+""));
-                table.addCell(new Paragraph(menu.getMenu().getPrice()+""));
-                 table.addCell(new Paragraph(menu.getSum()+""));
-                a=a+1;
+
+                table.addCell(new Paragraph(a + ""));
+                table.addCell(new Paragraph(menu.getMenu().getMenuName() + ""));
+                table.addCell(new Paragraph(menu.getQuantity() + ""));
+                table.addCell(new Paragraph(menu.getMenu().getPrice() + ""));
+                table.addCell(new Paragraph(menu.getSum() + ""));
+                a = a + 1;
             }
-            
+
             // add table to pdf
             layoutDocument.add(table);
-            
-            String totalAmmount = "Total =      "+txtTotal.getText().trim();
-            String discounRate = "Discount Rate =      "+txtDiscount.getText().trim();
-            String discountAmmount = "Discount Ammount =      "+txtDiscountAmount.getText().trim();
-            String netToPay = "Net To Pay =      "+txtNetToPay.getText().trim();
+
+            String totalAmmount = "Total =      " + txtTotal.getText().trim();
+            String discounRate = "Discount Rate =      " + txtDiscount.getText().trim();
+            String discountAmmount = "Discount Ammount =      " + txtDiscountAmount.getText().trim();
+            String netToPay = "Net To Pay =      " + txtNetToPay.getText().trim();
             layoutDocument.add(new Paragraph("    ").setTextAlignment(TextAlignment.RIGHT));
-           layoutDocument.add(new Paragraph(totalAmmount).setTextAlignment(TextAlignment.RIGHT));
-           layoutDocument.add(new Paragraph(discounRate).setTextAlignment(TextAlignment.RIGHT));
-           layoutDocument.add(new Paragraph(discountAmmount).setTextAlignment(TextAlignment.RIGHT));
-           layoutDocument.add(new Paragraph(netToPay).setTextAlignment(TextAlignment.RIGHT));
-           
-            
+            layoutDocument.add(new Paragraph(totalAmmount).setTextAlignment(TextAlignment.RIGHT));
+            layoutDocument.add(new Paragraph(discounRate).setTextAlignment(TextAlignment.RIGHT));
+            layoutDocument.add(new Paragraph(discountAmmount).setTextAlignment(TextAlignment.RIGHT));
+            layoutDocument.add(new Paragraph(netToPay).setTextAlignment(TextAlignment.RIGHT));
+
             //close document
             layoutDocument.close();
-            
+
             //now opening it in browser to print
-            
-            File pdfFile =  new File("./panding_bill.pdf");
+            File pdfFile = new File("./panding_bill.pdf");
             if (pdfFile.exists()) {
                 if (Desktop.isDesktopSupported()) {
                     Desktop.getDesktop().open(pdfFile);
-                    System.out.println("File Has Been Opened Successfully!");   
+                    System.out.println("File Has Been Opened Successfully!");
                 } else {
                     System.out.println("Desktop Not Supported!");
                 }
             } else {
                 System.out.println("File Is Not Generated Successfully");
             }
-            
+
         } catch (Throwable th) {
             th.printStackTrace();
         }
