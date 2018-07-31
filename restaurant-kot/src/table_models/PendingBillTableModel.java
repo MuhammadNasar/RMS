@@ -5,7 +5,7 @@
  */
 package table_models;
 
-import entity.PandingBill;
+import entity.PendingBill;
 import java.util.Vector;
 import javax.swing.table.AbstractTableModel;
 
@@ -13,11 +13,11 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author ibrar
  */
-public class PandingBillTableModel extends AbstractTableModel {
+public class PendingBillTableModel extends AbstractTableModel {
 
-    private Vector<PandingBill> vectorPandingBills;
+    private Vector<PendingBill> vectorPandingBills;
 
-    public PandingBillTableModel(Vector<PandingBill> vectorPandingBills) {
+    public PendingBillTableModel(Vector<PendingBill> vectorPandingBills) {
         this.vectorPandingBills = vectorPandingBills;
     }
 
@@ -42,7 +42,7 @@ public class PandingBillTableModel extends AbstractTableModel {
                 name = "Table Number";
                 break;
             case 2:
-                name = "Waiter Number";
+                name = "Waiter Name";
                 break;
         }
         return name;
@@ -56,10 +56,10 @@ public class PandingBillTableModel extends AbstractTableModel {
                 object = vectorPandingBills.get(rowIndex).getId();
                 break;
             case 1:
-                object = vectorPandingBills.get(rowIndex).getTables().getTableId();
+                object = vectorPandingBills.get(rowIndex).getTables().getTableNumber();
                 break;
             case 2:
-                object = vectorPandingBills.get(rowIndex).getWaiter().getWaiterId();
+                object = vectorPandingBills.get(rowIndex).getWaiter().getName();
                 break;
         }
         return object;

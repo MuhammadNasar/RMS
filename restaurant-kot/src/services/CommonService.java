@@ -6,8 +6,8 @@
 package services;
 
 import entity.Menu;
-import entity.PandigBillUpdate;
-import entity.PandingBill;
+import entity.PendigBillUpdate;
+import entity.PendingBill;
 import entity.Tables;
 import entity.User;
 import entity.Waiters;
@@ -142,25 +142,32 @@ public class CommonService {
         return vectorUsers;
     }
 
-    public Vector<PandingBill> getVectorPangdingBill() {
+    public Vector<PendingBill> getVectorPangdingBill() {
         SQLQueryUtil sql = new SQLQueryUtil();
         sql.connect(false);
-        Vector<PandingBill> vectorPandingBills = new Vector<>();
-        PandingBill pandingBill;
+        Vector<PendingBill> vectorPandingBills = new Vector<>();
+        PendingBill pandingBill;
         Waiters waiters;
         Tables tables;
         ResultSet rs;
-        String Qurey = "SELECT `id`,`table_id`,`waiter_id`FROM restaurant_kot WHERE "
-                + "`is_transfered_to_pending_payments`=0 and`is_pending_payment_closed`=0;";
+        
+        String qurey = "SELECT rk.`id`, t.table_number,w.full_name FROM "
+                + "`restaurant_kot` AS rk, waiters as w,tables as t WHERE"
+                + " rk.`is_transfered_to_pending_payments`=0 AND "
+                + "rk.`is_pending_payment_closed`=0 and rk.`table_id`=t.id and "
+                + "rk.`waiter_id`=w.id;";
+       ;
         try {
-            rs = sql.executeQuery(Qurey);
-            while (rs.next()) {
+           rs = sql.executeQuery(qurey);
+           
+            while (rs.next() ) {
+              
                 waiters = new Waiters();
                 tables = new Tables();
-                pandingBill = new PandingBill();
-                waiters.setWaiterId(rs.getInt("waiter_id"));
-                tables.setTableId(rs.getInt("table_id"));
-                pandingBill.setId(rs.getInt("id"));
+                pandingBill = new PendingBill();
+                waiters.setName(rs.getString("w.full_name"));
+                tables.setTableNumber(rs.getString("t.table_number"));
+                pandingBill.setId(rs.getInt("rk.id"));
                 pandingBill.setTables(tables);
                 pandingBill.setWaiter(waiters);
                 vectorPandingBills.add(pandingBill);
@@ -175,12 +182,12 @@ public class CommonService {
         return vectorPandingBills;
     }
 
-    public Vector<PandigBillUpdate> getVectorPandingBill(String kot_id) {
+    public Vector<PendigBillUpdate> getVectorPandingBill(String kot_id) {
         SQLQueryUtil sql = new SQLQueryUtil();
         sql.connect(false);
-        Vector<PandigBillUpdate> vector = new Vector<>();
+        Vector<PendigBillUpdate> vector = new Vector<>();
         Menu menu;
-        PandigBillUpdate pandigBillUpdate;
+        PendigBillUpdate pandigBillUpdate;
         ResultSet rs;
         String query = "Select i.item_name ,i.price,d.`quantity`,d.`rate`,d.quantity*d.rate as summ"
                 + " from menu_items as i "
@@ -194,7 +201,7 @@ public class CommonService {
 
             while (rs.next()) {
                 menu = new Menu();
-                pandigBillUpdate = new PandigBillUpdate();
+                pandigBillUpdate = new PendigBillUpdate();
                 menu.setMenuName(rs.getString("i.item_name"));
                 menu.setPrice(rs.getInt("i.price"));
                 pandigBillUpdate.setQuantity(rs.getInt("quantity"));

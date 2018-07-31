@@ -5,16 +5,16 @@
  */
 package dao;
 
-import entity.PandigBillUpdate;
+import entity.PendigBillUpdate;
 import util.SQLQueryUtil;
 
 /**
  *
  * @author ibrar
  */
-public class PandingBillDAO {
+public class PendingBillDAO {
 
-    public int generatPandingBill(PandigBillUpdate billUpdate) {
+    public int generatPandingBill(PendigBillUpdate billUpdate) {
         SQLQueryUtil sql = new SQLQueryUtil();
         sql.connect(false);
         int rowAffected = 0;
