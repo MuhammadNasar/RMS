@@ -5,7 +5,7 @@
  */
 package table_models;
 
-import entity.PandingBill;
+import entity.PendingBill;
 import java.util.Vector;
 import javax.swing.table.AbstractTableModel;
 
@@ -13,11 +13,11 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author ibrar
  */
-public class PandingBillTableModel extends AbstractTableModel {
+public class PendingBillTableModel extends AbstractTableModel {
 
-    private Vector<PandingBill> vectorPandingBills;
+    private Vector<PendingBill> vectorPandingBills;
 
-    public PandingBillTableModel(Vector<PandingBill> vectorPandingBills) {
+    public PendingBillTableModel(Vector<PendingBill> vectorPandingBills) {
         this.vectorPandingBills = vectorPandingBills;
     }
 

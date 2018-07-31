@@ -10,7 +10,7 @@ package entity;
  *
  * @author ibrar
  */
-public class PandingBill {
+public class PendingBill {
     private int id;
     private Tables table;
     private Waiters waiter;

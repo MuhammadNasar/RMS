@@ -6,8 +6,8 @@
 package services;
 
 import entity.Menu;
-import entity.PandigBillUpdate;
-import entity.PandingBill;
+import entity.PendigBillUpdate;
+import entity.PendingBill;
 import entity.Tables;
 import entity.User;
 import entity.Waiters;
@@ -142,11 +142,11 @@ public class CommonService {
         return vectorUsers;
     }
 
-    public Vector<PandingBill> getVectorPangdingBill() {
+    public Vector<PendingBill> getVectorPangdingBill() {
         SQLQueryUtil sql = new SQLQueryUtil();
         sql.connect(false);
-        Vector<PandingBill> vectorPandingBills = new Vector<>();
-        PandingBill pandingBill;
+        Vector<PendingBill> vectorPandingBills = new Vector<>();
+        PendingBill pandingBill;
         Waiters waiters;
         Tables tables;
         ResultSet rs;
@@ -164,7 +164,7 @@ public class CommonService {
               
                 waiters = new Waiters();
                 tables = new Tables();
-                pandingBill = new PandingBill();
+                pandingBill = new PendingBill();
                 waiters.setName(rs.getString("w.full_name"));
                 tables.setTableNumber(rs.getString("t.table_number"));
                 pandingBill.setId(rs.getInt("rk.id"));
@@ -182,12 +182,12 @@ public class CommonService {
         return vectorPandingBills;
     }
 
-    public Vector<PandigBillUpdate> getVectorPandingBill(String kot_id) {
+    public Vector<PendigBillUpdate> getVectorPandingBill(String kot_id) {
         SQLQueryUtil sql = new SQLQueryUtil();
         sql.connect(false);
-        Vector<PandigBillUpdate> vector = new Vector<>();
+        Vector<PendigBillUpdate> vector = new Vector<>();
         Menu menu;
-        PandigBillUpdate pandigBillUpdate;
+        PendigBillUpdate pandigBillUpdate;
         ResultSet rs;
         String query = "Select i.item_name ,i.price,d.`quantity`,d.`rate`,d.quantity*d.rate as summ"
                 + " from menu_items as i "
@@ -201,7 +201,7 @@ public class CommonService {
 
             while (rs.next()) {
                 menu = new Menu();
-                pandigBillUpdate = new PandigBillUpdate();
+                pandigBillUpdate = new PendigBillUpdate();
                 menu.setMenuName(rs.getString("i.item_name"));
                 menu.setPrice(rs.getInt("i.price"));
                 pandigBillUpdate.setQuantity(rs.getInt("quantity"));

@@ -527,14 +527,7 @@ public class MainForm extends javax.swing.JFrame {
         btnPendingPayments.setIcon(btnimage);
         ImageIcon activeTabicon = new ImageIcon(getClass().getResource("/images/pendingpayments_icon.png"));
         activeTab.setIcon(activeTabicon);
-       pandingBillsForm=new PendingBillsForm();
-       desktopPane.add(pandingBillsForm);
-       pandingBillsForm.setVisible(true);
-        try {
-            pandingBillsForm.setMaximum(true);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+      
     }//GEN-LAST:event_btnPendingPaymentsMouseClicked
 
     private void btnPendingPaymentsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPendingPaymentsMouseExited
@@ -547,6 +540,14 @@ public class MainForm extends javax.swing.JFrame {
         btnPendingBills.setIcon(btnimage);
         ImageIcon activeTabicon = new ImageIcon(getClass().getResource("/images/pendingbills_icon.png"));
         activeTab.setIcon(activeTabicon);
+         pandingBillsForm=new PendingBillsForm();
+       desktopPane.add(pandingBillsForm);
+       pandingBillsForm.setVisible(true);
+        try {
+            pandingBillsForm.setMaximum(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_btnPendingBillsMouseClicked
 
     private void btnPendingBillsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPendingBillsMouseEntered

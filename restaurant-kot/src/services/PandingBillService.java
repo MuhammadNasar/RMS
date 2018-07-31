@@ -5,8 +5,8 @@
  */
 package services;
 
-import dao.PandingBillDAO;
-import entity.PandigBillUpdate;
+import dao.PendingBillDAO;
+import entity.PendigBillUpdate;
 import javax.swing.JOptionPane;
 import util.SQLQueryUtil;
 
@@ -15,14 +15,14 @@ import util.SQLQueryUtil;
  * @author ibrar
  */
 public class PandingBillService {
-    private PandingBillDAO pandingBillDAO;
+    private PendingBillDAO pandingBillDAO;
 
     public PandingBillService() {
-        pandingBillDAO=new PandingBillDAO();
+        pandingBillDAO=new PendingBillDAO();
     }
     
 
-    public void generatePandingbill(PandigBillUpdate billUpdate) {
+    public void generatePandingbill(PendigBillUpdate billUpdate) {
         int rowAffect=0;
       rowAffect=  pandingBillDAO.generatPandingBill(billUpdate);
       if(rowAffect>0){
