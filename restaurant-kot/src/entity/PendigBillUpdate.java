@@ -9,17 +9,17 @@ package entity;
  *
  * @author ibrar
  */
-public class PendigBillUpdate extends PendingBill{
+public class PendigBillUpdate extends PendingBill {
+
     private Menu menu;
     private int quantity;
     private int amount;
     private int sum;
     private int total;
-     private int totalRecievabelAmount;
+    private int totalRecievabelAmount;
     private int discount;
     private int discountAmount;
     private int NetAmount;
-    
 
     public int getTotalRecievabelAmount() {
         return totalRecievabelAmount;
@@ -52,9 +52,6 @@ public class PendigBillUpdate extends PendingBill{
     public void setNetAmount(int NetAmount) {
         this.NetAmount = NetAmount;
     }
-    
-   
-    
 
     public int getTotal() {
         return total;
@@ -95,5 +92,5 @@ public class PendigBillUpdate extends PendingBill{
     public void setAmount(int amount) {
         this.amount = amount;
     }
-    
+
 }
