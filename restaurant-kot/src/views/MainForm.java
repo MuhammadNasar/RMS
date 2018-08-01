@@ -15,6 +15,7 @@ public class MainForm extends javax.swing.JFrame {
     private TablesForm tables;
     private UserForm userForm;
     private PendingBillsForm pandingBillsForm;
+    private PendingPaymentsForm pendingPaymentsForm;
 
     /**
      * Creates new form MainForm
@@ -527,6 +528,15 @@ public class MainForm extends javax.swing.JFrame {
         btnPendingPayments.setIcon(btnimage);
         ImageIcon activeTabicon = new ImageIcon(getClass().getResource("/images/pendingpayments_icon.png"));
         activeTab.setIcon(activeTabicon);
+        
+        pendingPaymentsForm = new PendingPaymentsForm();
+        desktopPane.add(pendingPaymentsForm);
+        pendingPaymentsForm.setVisible(true);
+            try {
+              pendingPaymentsForm.setMaximum(true);
+            } catch (Exception e) {
+               e.printStackTrace();
+            }
       
     }//GEN-LAST:event_btnPendingPaymentsMouseClicked
 

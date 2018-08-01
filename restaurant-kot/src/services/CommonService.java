@@ -222,5 +222,43 @@ public class CommonService {
         }
         return vector;
     }
+    public Vector<PendingBill> getVectorPendingPayment() {
+        SQLQueryUtil sql = new SQLQueryUtil();
+        sql.connect(false);
+        Vector<PendingBill> vectorPandingBills = new Vector<>();
+        PendingBill pandingBill;
+        Waiters waiters;
+        Tables tables;
+        ResultSet rs;
+        
+        String qurey = "SELECT rk.`id`, t.table_number,w.full_name FROM "
+                + "`restaurant_kot` AS rk, waiters as w,tables as t WHERE"
+                + " rk.`is_transfered_to_pending_payments`=1 AND "
+                + "rk.`is_pending_payment_closed`=0 and rk.`table_id`=t.id and "
+                + "rk.`waiter_id`=w.id;";
+       ;
+        try {
+           rs = sql.executeQuery(qurey);
+           
+            while (rs.next() ) {
+              
+                waiters = new Waiters();
+                tables = new Tables();
+                pandingBill = new PendingBill();
+                waiters.setName(rs.getString("w.full_name"));
+                tables.setTableNumber(rs.getString("t.table_number"));
+                pandingBill.setId(rs.getInt("rk.id"));
+                pandingBill.setTables(tables);
+                pandingBill.setWaiter(waiters);
+                vectorPandingBills.add(pandingBill);
 
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            sql.disconnect();
+        }
+        return vectorPandingBills;
+    }
 }
