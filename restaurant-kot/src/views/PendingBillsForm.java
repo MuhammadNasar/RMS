@@ -15,7 +15,7 @@ import com.itextpdf.layout.property.HorizontalAlignment;
 import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.layout.property.UnitValue;
 import entity.Menu;
-import entity.PendigBillUpdate;
+import entity.PendingBillUpdate;
 import entity.PendingBill;
 import java.awt.Color;
 import java.awt.Desktop;
@@ -42,7 +42,7 @@ public class PendingBillsForm extends javax.swing.JInternalFrame {
 
     private Vector<PendingBill> vectorPandingBills;
     private CommonService commonService;
-    private Vector<PendigBillUpdate> pendigBillUpdate;
+    private Vector<PendingBillUpdate> pendigBillUpdate;
     private PandingBillService pendingBillService;
 
     /**
@@ -334,7 +334,7 @@ public class PendingBillsForm extends javax.swing.JInternalFrame {
                 PendingBillTableModel billTableModel = (PendingBillTableModel) tblPendingBill.getModel();
                 String kot_id = billTableModel.getValueAt(index, 0).toString();
 
-                PendigBillUpdate billUpdate = new PendigBillUpdate();
+                PendingBillUpdate billUpdate = new PendingBillUpdate();
                 billUpdate.setId(Integer.parseInt(kot_id));
                 billUpdate.setTotal(Integer.parseInt(txtTotal.getText()));
                 billUpdate.setTotalRecievabelAmount(Integer.parseInt(txtNetToPay.getText()));
@@ -473,8 +473,8 @@ private void design() {
 
             //Now Add Data Into these table Columns
             int a = 1;
-            Vector<PendigBillUpdate> pandigBillUpdates = commonService.getVectorPandingBill(kot_id + "");
-            for (PendigBillUpdate menu : pandigBillUpdates) {
+            Vector<PendingBillUpdate> pandigBillUpdates = commonService.getVectorPandingBill(kot_id + "");
+            for (PendingBillUpdate menu : pandigBillUpdates) {
 
                 table.addCell(new Paragraph(a + ""));
                 table.addCell(new Paragraph(menu.getMenu().getMenuName() + ""));

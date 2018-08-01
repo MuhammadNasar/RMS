@@ -6,7 +6,7 @@
 package services;
 
 import dao.PendingBillDAO;
-import entity.PendigBillUpdate;
+import entity.PendingBillUpdate;
 import javax.swing.JOptionPane;
 import util.SQLQueryUtil;
 
@@ -22,7 +22,7 @@ public class PandingBillService {
     }
     
 
-    public void generatePandingbill(PendigBillUpdate billUpdate) {
+    public void generatePandingbill(PendingBillUpdate billUpdate) {
         int rowAffect=0;
       rowAffect=  pandingBillDAO.generatPandingBill(billUpdate);
       if(rowAffect>0){

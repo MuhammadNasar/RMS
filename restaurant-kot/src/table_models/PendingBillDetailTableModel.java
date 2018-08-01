@@ -5,7 +5,7 @@
  */
 package table_models;
 
-import entity.PendigBillUpdate;
+import entity.PendingBillUpdate;
 import java.util.Vector;
 import javax.swing.table.AbstractTableModel;
 
@@ -15,9 +15,9 @@ import javax.swing.table.AbstractTableModel;
  */
 public class PendingBillDetailTableModel extends AbstractTableModel {
 
-    private Vector<PendigBillUpdate> vectorpPandigBillUpdates;
+    private Vector<PendingBillUpdate> vectorpPandigBillUpdates;
 
-    public PendingBillDetailTableModel(Vector<PendigBillUpdate> vectorpPandigBillUpdates) {
+    public PendingBillDetailTableModel(Vector<PendingBillUpdate> vectorpPandigBillUpdates) {
         this.vectorpPandigBillUpdates = vectorpPandigBillUpdates;
     }
 

@@ -6,7 +6,7 @@
 package services;
 
 import entity.Menu;
-import entity.PendigBillUpdate;
+import entity.PendingBillUpdate;
 import entity.PendingBill;
 import entity.Tables;
 import entity.User;
@@ -182,12 +182,12 @@ public class CommonService {
         return vectorPandingBills;
     }
 
-    public Vector<PendigBillUpdate> getVectorPandingBill(String kot_id) {
+    public Vector<PendingBillUpdate> getVectorPandingBill(String kot_id) {
         SQLQueryUtil sql = new SQLQueryUtil();
         sql.connect(false);
-        Vector<PendigBillUpdate> vector = new Vector<>();
+        Vector<PendingBillUpdate> vector = new Vector<>();
         Menu menu;
-        PendigBillUpdate pandigBillUpdate;
+        PendingBillUpdate pandigBillUpdate;
         ResultSet rs;
         String query = "Select i.item_name ,i.price,d.`quantity`,d.`rate`,d.quantity*d.rate as summ"
                 + " from menu_items as i "
@@ -201,7 +201,7 @@ public class CommonService {
 
             while (rs.next()) {
                 menu = new Menu();
-                pandigBillUpdate = new PendigBillUpdate();
+                pandigBillUpdate = new PendingBillUpdate();
                 menu.setMenuName(rs.getString("i.item_name"));
                 menu.setPrice(rs.getInt("i.price"));
                 pandigBillUpdate.setQuantity(rs.getInt("quantity"));
@@ -260,5 +260,38 @@ public class CommonService {
             sql.disconnect();
         }
         return vectorPandingBills;
+    }
+
+    public Vector<PendingBillUpdate> getVectorOfSelectedDetails(String kot_id) {
+        SQLQueryUtil sql = new SQLQueryUtil();
+        sql.connect(false);
+        
+        Vector<PendingBillUpdate> vectorPandingPayments = new Vector<>();
+        PendingBillUpdate pendingPayment; 
+        ResultSet resultSet;
+        
+        String query = "SELECT `total_amount_receivable` AS `totalamount` "
+                         + ", `total_received_amount` AS `nextToPay`,"
+                         + " `discount_percentage` AS `discountP` ,"
+                         + " `discount_amount` AS `discountA` "
+                         + "FROM `restaurant_kot` WHERE `id` = "+ kot_id +";";
+        
+        try {
+            resultSet = sql.executeQuery(query);
+            while(resultSet.next()) {
+            pendingPayment = new PendingBillUpdate();
+            pendingPayment.setTotal(resultSet.getInt("totalamount"));
+            pendingPayment.setNetAmount(resultSet.getInt("nextToPay"));
+            pendingPayment.setDiscount(resultSet.getInt("discountP"));
+            pendingPayment.setDiscountAmount(resultSet.getInt("discountA"));
+            
+            vectorPandingPayments.add(pendingPayment);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally{
+            sql.disconnect();
+        }
+        return vectorPandingPayments;
     }
 }

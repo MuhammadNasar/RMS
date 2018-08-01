@@ -9,7 +9,7 @@ package entity;
  *
  * @author ibrar
  */
-public class PendigBillUpdate extends PendingBill {
+public class PendingBillUpdate extends PendingBill {
 
     private Menu menu;
     private int quantity;
