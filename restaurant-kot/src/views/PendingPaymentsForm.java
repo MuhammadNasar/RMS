@@ -8,7 +8,9 @@ package views;
 import entity.PendingBill;
 import entity.PendingBillUpdate;
 import java.util.Vector;
+import javax.swing.JOptionPane;
 import services.CommonService;
+import services.PendingPaymentService;
 import table_models.PendingPaymentTableModel;
 
 /**
@@ -19,6 +21,7 @@ public class PendingPaymentsForm extends javax.swing.JInternalFrame {
     private CommonService commonService;
     private Vector<PendingBill> vectorPendingPayments;
     private Vector<PendingBillUpdate> vectorSelectedDetails;
+    private PendingPaymentService pendingPaymentService;
     /**
      * Creates new form PendingPaymentsForm
      */
@@ -30,6 +33,12 @@ public class PendingPaymentsForm extends javax.swing.JInternalFrame {
         
         PendingPaymentTableModel pendingPaymentModel = new PendingPaymentTableModel(vectorPendingPayments);
         tblPendingPayments.setModel(pendingPaymentModel);
+        
+        
+        rbtnCash.setActionCommand("CASH");
+        rbtnCheque.setActionCommand("CHEQUE");
+        rbtnCreditCard.setActionCommand("CREDIT_CARD");
+        
     }
 
     /**
@@ -41,15 +50,14 @@ public class PendingPaymentsForm extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup4 = new javax.swing.ButtonGroup();
-        buttonGroup5 = new javax.swing.ButtonGroup();
+        radioButtonGrp = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblPendingPayments = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnSave = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -57,9 +65,11 @@ public class PendingPaymentsForm extends javax.swing.JInternalFrame {
         txtDiscount = new javax.swing.JTextField();
         txtDiscountedAmount = new javax.swing.JTextField();
         txtNextToPay = new javax.swing.JTextField();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
+        rbtnCash = new javax.swing.JRadioButton();
+        rbtnCreditCard = new javax.swing.JRadioButton();
+        rbtnCheque = new javax.swing.JRadioButton();
+        jLabel6 = new javax.swing.JLabel();
+        lblKotID = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 217, 151));
 
@@ -92,7 +102,12 @@ public class PendingPaymentsForm extends javax.swing.JInternalFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setText("Total Amount");
 
-        jButton1.setText("Save");
+        btnSave.setText("Save");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("Discount %");
@@ -119,14 +134,20 @@ public class PendingPaymentsForm extends javax.swing.JInternalFrame {
         txtNextToPay.setBackground(new java.awt.Color(255, 255, 255));
         txtNextToPay.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
 
-        buttonGroup4.add(jRadioButton1);
-        jRadioButton1.setText("Cash");
+        radioButtonGrp.add(rbtnCash);
+        rbtnCash.setText("Cash");
 
-        buttonGroup4.add(jRadioButton2);
-        jRadioButton2.setText("Credit Card");
+        radioButtonGrp.add(rbtnCreditCard);
+        rbtnCreditCard.setText("Credit Card");
 
-        buttonGroup4.add(jRadioButton3);
-        jRadioButton3.setText("Cheque");
+        radioButtonGrp.add(rbtnCheque);
+        rbtnCheque.setText("Cheque");
+
+        jLabel6.setFont(new java.awt.Font("Open Sans", 0, 18)); // NOI18N
+        jLabel6.setText("Bill ID#");
+
+        lblKotID.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblKotID.setText("001");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -134,28 +155,37 @@ public class PendingPaymentsForm extends javax.swing.JInternalFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(76, 76, 76)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jRadioButton1)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
                         .addGap(18, 18, 18)
-                        .addComponent(jRadioButton2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jRadioButton3))
-                    .addComponent(txtNextToPay)
-                    .addComponent(txtDiscount)
-                    .addComponent(txtDiscountedAmount)
-                    .addComponent(txtTotalAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(92, Short.MAX_VALUE))
+                        .addComponent(lblKotID))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel5)
+                        .addComponent(jLabel4)
+                        .addComponent(jLabel3)
+                        .addComponent(jLabel2)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                            .addComponent(rbtnCash)
+                            .addGap(18, 18, 18)
+                            .addComponent(rbtnCreditCard)
+                            .addGap(18, 18, 18)
+                            .addComponent(rbtnCheque))
+                        .addComponent(txtNextToPay)
+                        .addComponent(txtDiscount)
+                        .addComponent(txtDiscountedAmount)
+                        .addComponent(txtTotalAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnSave, javax.swing.GroupLayout.Alignment.TRAILING)))
+                .addContainerGap(134, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(55, 55, 55)
+                .addGap(16, 16, 16)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(lblKotID))
+                .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtTotalAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -171,14 +201,14 @@ public class PendingPaymentsForm extends javax.swing.JInternalFrame {
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtNextToPay, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jRadioButton3))
+                    .addComponent(rbtnCash)
+                    .addComponent(rbtnCreditCard)
+                    .addComponent(rbtnCheque))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(btnSave)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -195,7 +225,7 @@ public class PendingPaymentsForm extends javax.swing.JInternalFrame {
                         .addComponent(jLabel1)))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(200, Short.MAX_VALUE))
+                .addContainerGap(158, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -237,26 +267,45 @@ public class PendingPaymentsForm extends javax.swing.JInternalFrame {
         txtDiscountedAmount.setText(vectorSelectedDetails.get(0).getDiscountAmount()+"");
         txtTotalAmount.setText(vectorSelectedDetails.get(0).getTotal()+"");
         txtNextToPay.setText(vectorSelectedDetails.get(0).getNetAmount()+"");
+        lblKotID.setText(kot_id);
         
         
     }//GEN-LAST:event_tblPendingPaymentsMouseClicked
 
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        
+        pendingPaymentService = new PendingPaymentService();
+        
+        String paymentMethod = radioButtonGrp.getSelection().getActionCommand();
+        int selectedBill_ID = Integer.parseInt(lblKotID.getText());
+        
+        pendingPaymentService.confirmPaymentMethod(paymentMethod,selectedBill_ID);
+        
+        //Table Refresh
+        vectorPendingPayments = commonService.getVectorPendingPayment();
+        PendingPaymentTableModel pendingPaymentModel = new PendingPaymentTableModel(vectorPendingPayments);
+        tblPendingPayments.setModel(pendingPaymentModel);
+        
+        
+    }//GEN-LAST:event_btnSaveActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup buttonGroup4;
-    private javax.swing.ButtonGroup buttonGroup5;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnSave;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblKotID;
+    private javax.swing.ButtonGroup radioButtonGrp;
+    private javax.swing.JRadioButton rbtnCash;
+    private javax.swing.JRadioButton rbtnCheque;
+    private javax.swing.JRadioButton rbtnCreditCard;
     private javax.swing.JTable tblPendingPayments;
     private javax.swing.JTextField txtDiscount;
     private javax.swing.JTextField txtDiscountedAmount;
