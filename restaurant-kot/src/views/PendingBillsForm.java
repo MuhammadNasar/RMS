@@ -31,6 +31,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 import services.CommonService;
 import services.PandingBillService;
+import sun.security.pkcs11.P11TlsKeyMaterialGenerator;
 import table_models.PendingBillDetailTableModel;
 import table_models.PendingBillTableModel;
 
@@ -305,7 +306,7 @@ public class PendingBillsForm extends javax.swing.JInternalFrame {
         int index = tblPendingBill.getSelectedRow();
         PendingBillTableModel pandingBillTableModel = (PendingBillTableModel) tblPendingBill.getModel();
         String kot_id = pandingBillTableModel.getValueAt(index, 0).toString();
-        pendigBillUpdate = pendigBillUpdate = commonService.getVectorPandingBill(kot_id);
+        pendigBillUpdate = commonService.getVectorPandingBill(kot_id);
         PendingBillDetailTableModel billDetailTableModel = new PendingBillDetailTableModel(pendigBillUpdate);
         tblPendingBill1.setModel(billDetailTableModel);
         txtTotal.setText(commonService.total + "");
@@ -343,12 +344,26 @@ public class PendingBillsForm extends javax.swing.JInternalFrame {
                 billUpdate.setNetAmount(Integer.parseInt(txtNetToPay.getText()));
                 pendingBillService = new PandingBillService();
                 pendingBillService.generatePandingbill(billUpdate);
-                printAllMenuItems();
+                printPedingBill();
 
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Empty Result");
         }
+
+        txtDiscount.setText("0");
+        txtDiscountAmount.setText("");
+        txtNetToPay.setText("");
+        txtTotal.setText("");
+        commonService = new CommonService();
+        vectorPandingBills = commonService.getVectorPangdingBill();
+        PendingBillTableModel pandingBillTableModel = new PendingBillTableModel(vectorPandingBills);
+        tblPendingBill.setModel(pandingBillTableModel); 
+       
+        pendigBillUpdate = commonService.getVectorPandingBill("0");
+        PendingBillDetailTableModel billDetailTableModel = new PendingBillDetailTableModel(pendigBillUpdate);
+        tblPendingBill1.setModel(billDetailTableModel);
+        
 
     }//GEN-LAST:event_btnSaveActionPerformed
 
@@ -437,7 +452,7 @@ private void design() {
 
     }
 
-    public void printAllMenuItems() {
+    public void printPedingBill() {
         int index = tblPendingBill.getSelectedRow();
         PendingBillTableModel pandingBillTableModel = (PendingBillTableModel) tblPendingBill.getModel();
         try {
