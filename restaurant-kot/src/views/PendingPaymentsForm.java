@@ -38,6 +38,10 @@ public class PendingPaymentsForm extends javax.swing.JInternalFrame {
         rbtnCash.setActionCommand("CASH");
         rbtnCheque.setActionCommand("CHEQUE");
         rbtnCreditCard.setActionCommand("CREDIT_CARD");
+        radioButtonGrp.add(rbtnCash);
+        radioButtonGrp.add(rbtnCheque);
+        radioButtonGrp.add(rbtnCreditCard);
+        rbtnCash.setSelected(true);
         
     }
 
@@ -168,9 +172,9 @@ public class PendingPaymentsForm extends javax.swing.JInternalFrame {
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                             .addComponent(rbtnCash)
                             .addGap(18, 18, 18)
-                            .addComponent(rbtnCreditCard)
+                            .addComponent(rbtnCheque)
                             .addGap(18, 18, 18)
-                            .addComponent(rbtnCheque))
+                            .addComponent(rbtnCreditCard))
                         .addComponent(txtNextToPay)
                         .addComponent(txtDiscount)
                         .addComponent(txtDiscountedAmount)
@@ -204,8 +208,8 @@ public class PendingPaymentsForm extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rbtnCash)
-                    .addComponent(rbtnCreditCard)
-                    .addComponent(rbtnCheque))
+                    .addComponent(rbtnCheque)
+                    .addComponent(rbtnCreditCard))
                 .addGap(18, 18, 18)
                 .addComponent(btnSave)
                 .addContainerGap())
@@ -221,11 +225,11 @@ public class PendingPaymentsForm extends javax.swing.JInternalFrame {
                         .addGap(22, 22, 22)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(102, 102, 102)
+                        .addGap(132, 132, 132)
                         .addComponent(jLabel1)))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(158, Short.MAX_VALUE))
+                .addContainerGap(258, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -244,9 +248,7 @@ public class PendingPaymentsForm extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 100, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -268,16 +270,18 @@ public class PendingPaymentsForm extends javax.swing.JInternalFrame {
         txtTotalAmount.setText(vectorSelectedDetails.get(0).getTotal()+"");
         txtNextToPay.setText(vectorSelectedDetails.get(0).getNetAmount()+"");
         lblKotID.setText(kot_id);
-        
-        
     }//GEN-LAST:event_tblPendingPaymentsMouseClicked
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        
+        int confirm = JOptionPane.showConfirmDialog(this, "Are You Sure? To Confirm The Payment? ");
+        if (confirm == 0){
         pendingPaymentService = new PendingPaymentService();
         
-        String paymentMethod = radioButtonGrp.getSelection().getActionCommand();
-        int selectedBill_ID = Integer.parseInt(lblKotID.getText());
+        String paymentMethod = "";
+        int selectedBill_ID = 0;
+        
+        paymentMethod = radioButtonGrp.getSelection().getActionCommand();
+        selectedBill_ID = Integer.parseInt(lblKotID.getText());
         
         pendingPaymentService.confirmPaymentMethod(paymentMethod,selectedBill_ID);
         
@@ -287,6 +291,7 @@ public class PendingPaymentsForm extends javax.swing.JInternalFrame {
         tblPendingPayments.setModel(pendingPaymentModel);
         
         JOptionPane.showMessageDialog(this, "Payment Confirmed Successfully Through: "+paymentMethod);
+        }
     }//GEN-LAST:event_btnSaveActionPerformed
 
 
