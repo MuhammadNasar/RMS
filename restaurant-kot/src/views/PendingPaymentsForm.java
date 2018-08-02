@@ -286,7 +286,7 @@ public class PendingPaymentsForm extends javax.swing.JInternalFrame {
         PendingPaymentTableModel pendingPaymentModel = new PendingPaymentTableModel(vectorPendingPayments);
         tblPendingPayments.setModel(pendingPaymentModel);
         
-        
+        JOptionPane.showMessageDialog(this, "Payment Confirmed Successfully Through: "+paymentMethod);
     }//GEN-LAST:event_btnSaveActionPerformed
 
 

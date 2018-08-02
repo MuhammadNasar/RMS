@@ -83,19 +83,19 @@ public class OrderService {
 
             String serial = "Serial :       " + KotID;
 
-            Paragraph paragraph1 = new Paragraph(serial).setBold().setTextAlignment(TextAlignment.LEFT);
+            Paragraph paragraph1 = new Paragraph(serial).setTextAlignment(TextAlignment.LEFT);
             layoutDocument.add(paragraph1);
 
             //Date
             String dateDisplay = "Date : " + formatter.format(date);
-            layoutDocument.add(new Paragraph(dateDisplay).setTextAlignment(TextAlignment.LEFT)).setBold();
+            layoutDocument.add(new Paragraph(dateDisplay).setTextAlignment(TextAlignment.LEFT));
 
             //Table Number
             String tableName = "Table : " + vectorOrder.get(0).getTable().getTableNumber();
-            layoutDocument.add(new Paragraph(tableName).setTextAlignment(TextAlignment.LEFT)).setBold();
+            layoutDocument.add(new Paragraph(tableName).setTextAlignment(TextAlignment.LEFT));
 
             String waiterName = "Waiter : " + vectorOrder.get(0).getWaiter().getName() + " ( " + vectorOrder.get(0).getWaiter().getWaiterNumber() + " ) ";
-            layoutDocument.add(new Paragraph(waiterName).setTextAlignment(TextAlignment.LEFT)).setBold();
+            layoutDocument.add(new Paragraph(waiterName).setTextAlignment(TextAlignment.LEFT));
 
             Table table = new Table(UnitValue.createPointArray(new float[]{60f, 180f, 50f}));
 
