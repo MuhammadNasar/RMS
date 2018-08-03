@@ -33,7 +33,7 @@ public class PaymentMethod {
     
     @Override
     public String toString() {
-        return paymentMethod;
+        return id;
     }
 
     

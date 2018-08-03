@@ -7,10 +7,15 @@ package views;
 
 import entity.PaymentMethod;
 import java.awt.Color;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Vector;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import services.PaymentMethodtService;
+import services.ReportService;
 
 /**
  *
@@ -19,6 +24,8 @@ import services.PaymentMethodtService;
 public class ReportsForm extends javax.swing.JInternalFrame {
     private PaymentMethodtService paymentMethodService;
     private Vector<PaymentMethod> vectorPaymentMethod;
+    private boolean status = false;
+    private ReportService reportService;
     /**
      * Creates new form ReportsForm
      */
@@ -33,9 +40,13 @@ public class ReportsForm extends javax.swing.JInternalFrame {
         paymentMethodService = new PaymentMethodtService();
         vectorPaymentMethod = paymentMethodService.getvectorPaymentMethod();
         
+        vectorPaymentMethod.remove(3);
+        
         DefaultComboBoxModel paymentMothodModel = new DefaultComboBoxModel(vectorPaymentMethod);
         cmbType.setModel(paymentMothodModel);
-        
+        Date date = new Date();
+        jdpFrom.setDate(date);
+        jdpTo.setDate(date);
     }
 
     /**
@@ -52,9 +63,9 @@ public class ReportsForm extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         cmbType = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
-        jXDatePicker1 = new org.jdesktop.swingx.JXDatePicker();
-        jXDatePicker2 = new org.jdesktop.swingx.JXDatePicker();
+        btnGenerate = new javax.swing.JButton();
+        jdpFrom = new org.jdesktop.swingx.JXDatePicker();
+        jdpTo = new org.jdesktop.swingx.JXDatePicker();
 
         setBackground(new java.awt.Color(255, 217, 151));
 
@@ -73,12 +84,22 @@ public class ReportsForm extends javax.swing.JInternalFrame {
         cmbType.setFont(new java.awt.Font("Open Sans", 0, 24)); // NOI18N
         cmbType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jButton1.setFont(new java.awt.Font("Open Sans", 1, 24)); // NOI18N
-        jButton1.setText("Generate");
+        btnGenerate.setFont(new java.awt.Font("Open Sans", 1, 24)); // NOI18N
+        btnGenerate.setText("Generate");
+        btnGenerate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGenerateActionPerformed(evt);
+            }
+        });
 
-        jXDatePicker1.setFont(new java.awt.Font("Open Sans", 0, 18)); // NOI18N
+        jdpFrom.setFont(new java.awt.Font("Open Sans", 0, 18)); // NOI18N
 
-        jXDatePicker2.setFont(new java.awt.Font("Open Sans", 0, 18)); // NOI18N
+        jdpTo.setFont(new java.awt.Font("Open Sans", 0, 18)); // NOI18N
+        jdpTo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jdpToActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -88,14 +109,14 @@ public class ReportsForm extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(jXDatePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jdpFrom, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(86, 86, 86)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
-                    .addComponent(jXDatePicker2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jdpTo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(93, 93, 93)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                    .addComponent(btnGenerate, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                     .addComponent(jLabel3)
                     .addComponent(cmbType, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(200, Short.MAX_VALUE))
@@ -112,13 +133,13 @@ public class ReportsForm extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cmbType, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jXDatePicker2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jdpTo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jXDatePicker1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jdpFrom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 210, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnGenerate, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -142,15 +163,53 @@ public class ReportsForm extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnGenerateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerateActionPerformed
+       
+        reportService = new ReportService();
+        String paymentMethid ="";
+       //From Date
+       Date date1 = jdpFrom.getDate();
+       DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+       String fromDate = dateFormat.format(date1);
+       //To Date
+       Date date2 = jdpTo.getDate();
+       String toDate = dateFormat.format(date2);
+       
+       paymentMethid = cmbType.getSelectedItem().toString();
+       
+       if (status == true) {
+          switch (paymentMethid) {
+              case "CASH":
+                  reportService.printCashMethod(fromDate,toDate,paymentMethid);
+                  System.out.println(paymentMethid);
+                  break;
+              case "CHEQUE":
+                  reportService.printChequeMethod(fromDate,toDate,paymentMethid);
+                  System.out.println(paymentMethid);
+                  break;
+              case "CREDIT_CARD":
+                  reportService.printCreditCardMethod(fromDate,toDate,paymentMethid);
+                  System.out.println(paymentMethid);
+                  break;
+          }
+       }else {
+           JOptionPane.showMessageDialog(jdpTo, "Please Select Date!");
+       }
+    }//GEN-LAST:event_btnGenerateActionPerformed
+
+    private void jdpToActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jdpToActionPerformed
+        status = true;
+    }//GEN-LAST:event_jdpToActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnGenerate;
     private javax.swing.JComboBox<String> cmbType;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
-    private org.jdesktop.swingx.JXDatePicker jXDatePicker1;
-    private org.jdesktop.swingx.JXDatePicker jXDatePicker2;
+    private org.jdesktop.swingx.JXDatePicker jdpFrom;
+    private org.jdesktop.swingx.JXDatePicker jdpTo;
     // End of variables declaration//GEN-END:variables
 }
