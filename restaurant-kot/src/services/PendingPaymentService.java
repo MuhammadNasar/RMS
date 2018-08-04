@@ -20,11 +20,12 @@ public class PendingPaymentService {
     }
     
     public void confirmPaymentMethod(String paymentMethod, int selectedBill_ID) {
-        if (paymentMethod.equals("") || selectedBill_ID < 0){
-            JOptionPane.showMessageDialog(null, "Something Went Wrong!");
+        if (paymentMethod.equals("") || selectedBill_ID == 0){
+            JOptionPane.showMessageDialog(null, "No Bill Selected");
         } else {
             pendingPaymentDAO = new PendingPaymentDAO();
             pendingPaymentDAO.confirmPaymentMethod( paymentMethod,selectedBill_ID);
+            JOptionPane.showMessageDialog(null, "Payment Confirmed Successfully Through: "+paymentMethod);
         }
     }
     

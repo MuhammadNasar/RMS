@@ -9,7 +9,8 @@ import util.SQLQueryUtil;
 
 /**
  *
- * @author itsSa
+ * @author Salman Khan
+ * 
  */
 public class ReportService {
 
@@ -23,6 +24,11 @@ public class ReportService {
                 + "FROM `restaurant_kot` WHERE DATE_FORMAT(`bill_date_time`, '%Y-%m-%d')"
                 + " BETWEEN '2018-07-25' AND '2018-08-03' AND `payment_method` ='CASH'" +
                     "ORDER BY `id` ASC;";
+        
+        
+        
+        
+        
         
     }
 

@@ -151,7 +151,7 @@ public class PendingPaymentsForm extends javax.swing.JInternalFrame {
         jLabel6.setText("Bill ID#");
 
         lblKotID.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        lblKotID.setText("001");
+        lblKotID.setText("0");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -289,8 +289,6 @@ public class PendingPaymentsForm extends javax.swing.JInternalFrame {
         vectorPendingPayments = commonService.getVectorPendingPayment();
         PendingPaymentTableModel pendingPaymentModel = new PendingPaymentTableModel(vectorPendingPayments);
         tblPendingPayments.setModel(pendingPaymentModel);
-        
-        JOptionPane.showMessageDialog(this, "Payment Confirmed Successfully Through: "+paymentMethod);
         }
     }//GEN-LAST:event_btnSaveActionPerformed
 

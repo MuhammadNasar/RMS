@@ -13,7 +13,8 @@ import util.SQLQueryUtil;
 
 /**
  *
- * @author itsSa
+ * @author Salman Khan
+ * 
  */
 public class PaymentMethodtService {
     public Vector<PaymentMethod> getvectorPaymentMethod () {
