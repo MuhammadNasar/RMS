@@ -180,12 +180,13 @@ public class ReportsForm extends javax.swing.JInternalFrame {
        if (status == true) {
           switch (paymentMethid) {
               case "CASH":
-                  reportService.printCashMethod(fromDate,toDate,paymentMethid);
+                  reportService.getCashReportVector(fromDate,toDate,paymentMethid);
                   System.out.println(paymentMethid);
                   break;
               case "CHEQUE":
                   reportService.printChequeMethod(fromDate,toDate,paymentMethid);
                   System.out.println(paymentMethid);
+                  System.out.println(fromDate);
                   break;
               case "CREDIT_CARD":
                   reportService.printCreditCardMethod(fromDate,toDate,paymentMethid);

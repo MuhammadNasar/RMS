@@ -96,7 +96,8 @@ public class OrderService {
 
             String waiterName = "Waiter : " + vectorOrder.get(0).getWaiter().getName() + " ( " + vectorOrder.get(0).getWaiter().getWaiterNumber() + " ) ";
             layoutDocument.add(new Paragraph(waiterName).setTextAlignment(TextAlignment.LEFT));
-
+            
+            //New Table
             Table table = new Table(UnitValue.createPointArray(new float[]{60f, 180f, 50f}));
 
             //headers
