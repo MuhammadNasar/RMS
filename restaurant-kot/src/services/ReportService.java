@@ -100,7 +100,45 @@ public class ReportService {
     }
 
     public void printChequeMethod(String fromDate, String toDate, String paymentMethid) {
+        SQLQueryUtil sql = new SQLQueryUtil() ;
+        sql.connect(false);
+        Vector<Report> vectorChequeReport = new Vector<>() ;
+        
+        String chequeQuery = "SELECT `id` AS `bill_number`, `total_amount_receivable`, `discount_amount`, "
+                + "`net_amount`, `payment_method`, "
+                + "DATE_FORMAT(`bill_date_time`, '%d %b %Y') AS `bill_date` "
+                + "FROM `restaurant_kot` WHERE DATE_FORMAT(`bill_date_time`, '%Y-%m-%d')"
+                + " BETWEEN '" + fromDate + "' AND '" + toDate + "' AND `payment_method` ='" + paymentMethid + "'"
+                + "ORDER BY `id` ASC;";
+        
+        ResultSet resultSet;
+        Report report;
 
+        try {
+            resultSet = sql.executeQuery(chequeQuery);
+
+            while (resultSet.next()) {
+                report = new Report();
+                report.setBillNumber(resultSet.getString("bill_number"));
+                report.setTotalAmountReceivable(resultSet.getString("total_amount_receivable"));
+                report.setDiscountAmount(resultSet.getString("discount_amount"));
+                report.setNetAmount(resultSet.getString("net_amount"));
+                report.setPaymentMethod(resultSet.getString("payment_method"));
+                report.setBillDate(resultSet.getString("bill_date"));
+
+                vectorChequeReport.add(report);
+            }
+            if (vectorChequeReport.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "No Results found!");
+            } else {
+                reportDAO.printChequeReport(vectorChequeReport, toDate, fromDate);
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            sql.disconnect();
+        }
     }
 
     public void printCreditCardMethod(String fromDate, String toDate, String paymentMethid) {
