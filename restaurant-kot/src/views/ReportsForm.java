@@ -190,7 +190,6 @@ public class ReportsForm extends javax.swing.JInternalFrame {
                   break;
               case "CREDIT_CARD":
                   reportService.printCreditCardMethod(fromDate,toDate,paymentMethid);
-                  System.out.println(paymentMethid);
                   break;
           }
        }else {
