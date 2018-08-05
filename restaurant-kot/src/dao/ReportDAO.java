@@ -208,7 +208,7 @@ public class ReportDAO {
 
     public void printChequeReport(Vector<Report> vectorChequeReport, String toDate, String fromDate) {
          reportService = new ReportService();
-            Vector<Report> vectorOfTotalCash = reportService.getOfTotalCreditCardVector(fromDate, toDate);
+            Vector<Report> vectorOfTotalCheque = reportService.getOfTotalChequeVector(fromDate, toDate);
         try {
             PdfWriter writer = new PdfWriter("./from " + fromDate + " To " + toDate + " Sales On Cheque Report.pdf");
             PdfDocument pdfDocument = new PdfDocument(writer);
@@ -225,7 +225,7 @@ public class ReportDAO {
             layoutDocument.add(new Paragraph("Sales Report").setTextAlignment(TextAlignment.CENTER));
             layoutDocument.add(new Paragraph("THE WAITERS RESTAURENT").setBold().setTextAlignment(TextAlignment.CENTER));
             layoutDocument.add(new Paragraph("Deans Trade Centre Peshawar").setTextAlignment(TextAlignment.CENTER));
-            layoutDocument.add(new Paragraph("Cheaque Sales").setTextAlignment(TextAlignment.CENTER).setUnderline().setBold());
+            layoutDocument.add(new Paragraph("Cheque Sales").setTextAlignment(TextAlignment.CENTER).setUnderline().setBold());
 
             //New Table
             Table table = new Table(UnitValue.createPointArray(new float[]{60f, 160f, 110f, 80f, 80f}));
@@ -251,10 +251,11 @@ public class ReportDAO {
                 table.addCell(new Paragraph(report.getBillDate()));
                 serial++;
             }
+            
             table.addCell(new Cell().add(new Paragraph("Total:")).setTextAlignment(TextAlignment.RIGHT).setBold().setBorder(Border.NO_BORDER));
-            table.addCell(new Cell().add(new Paragraph(vectorOfTotalCash.get(0).getTotalOf_recieveable())).setTextAlignment(TextAlignment.CENTER).setBold().setBorder(Border.NO_BORDER));
-            table.addCell(new Cell().add(new Paragraph(vectorOfTotalCash.get(0).getTotalOf_discountAmount())).setTextAlignment(TextAlignment.CENTER).setBold().setBorder(Border.NO_BORDER));
-            table.addCell(new Cell().add(new Paragraph(vectorOfTotalCash.get(0).getTotalOf_netAmount())).setTextAlignment(TextAlignment.CENTER).setBold().setBorder(Border.NO_BORDER));
+            table.addCell(new Cell().add(new Paragraph(vectorOfTotalCheque.get(0).getTotalOf_recieveable())).setTextAlignment(TextAlignment.CENTER).setBold().setBorder(Border.NO_BORDER));
+            table.addCell(new Cell().add(new Paragraph(vectorOfTotalCheque.get(0).getTotalOf_discountAmount())).setTextAlignment(TextAlignment.CENTER).setBold().setBorder(Border.NO_BORDER));
+            table.addCell(new Cell().add(new Paragraph(vectorOfTotalCheque.get(0).getTotalOf_netAmount())).setTextAlignment(TextAlignment.CENTER).setBold().setBorder(Border.NO_BORDER));
             table.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
             layoutDocument.add(table);
             

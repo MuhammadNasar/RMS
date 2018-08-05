@@ -140,6 +140,36 @@ public class ReportService {
             sql.disconnect();
         }
     }
+    
+     public Vector<Report> getOfTotalChequeVector(String fromDate, String toDate) {
+        SQLQueryUtil sql = new SQLQueryUtil();
+        sql.connect(false);
+
+        Vector<Report> vectorTotalCash = new Vector<>();
+
+        String queryTotal = "SELECT SUM(`total_amount_receivable`) AS `totalOf_revceivable`,"
+                + " SUM(`discount_amount`) AS `totalOf_discountAmount`, "
+                + "SUM(`net_amount`) AS `totalOf_netAmount` "
+                + "FROM `restaurant_kot` WHERE DATE_FORMAT(`bill_date_time`, '%Y-%m-%d') " +
+                    " BETWEEN '"+fromDate+"' AND '"+toDate+"' AND `payment_method` = 'CREDIT_CARD' ORDER BY `id` ASC;;";
+        
+        ResultSet resultSet;
+        Report report;
+        try {
+            resultSet = sql.executeQuery(queryTotal);
+            while (resultSet.next()) {
+                report = new Report();
+                report.setTotalOf_recieveable(resultSet.getString("totalOf_revceivable"));
+                report.setTotalOf_discountAmount(resultSet.getString("totalOf_discountAmount"));
+                report.setTotalOf_netAmount(resultSet.getString("totalOf_netAmount"));
+                vectorTotalCash.add(report);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return vectorTotalCash;
+    }
 
     public void printCreditCardMethod(String fromDate, String toDate, String paymentMethid) {
         SQLQueryUtil sql = new SQLQueryUtil();
