@@ -62,39 +62,46 @@ public class ReportDAO {
             layoutDocument.add(new Paragraph("Sales Report").setTextAlignment(TextAlignment.CENTER));
             layoutDocument.add(new Paragraph("THE WAITERS RESTAURENT").setBold().setTextAlignment(TextAlignment.CENTER));
             layoutDocument.add(new Paragraph("Deans Trade Centre Peshawar").setTextAlignment(TextAlignment.CENTER));
-            layoutDocument.add(new Paragraph("CASH Sales").setTextAlignment(TextAlignment.CENTER));
-
+            layoutDocument.add(new Paragraph("Cash Sales").setTextAlignment(TextAlignment.CENTER).setUnderline().setBold());
+            layoutDocument.add(new Paragraph("From: "+ fromDate).setTextAlignment(TextAlignment.LEFT).setUnderline());
+            layoutDocument.add(new Paragraph("To: "+ toDate).setTextAlignment(TextAlignment.LEFT).setUnderline());
             //New Table
-            Table table = new Table(UnitValue.createPointArray(new float[]{60f, 160f, 110f, 80f, 80f}));
+            Table table = new Table(UnitValue.createPointArray(new float[]{60f, 60f , 100f ,180f, 110f, 80f}));
             table.setTextAlignment(TextAlignment.CENTER);
             table.setHorizontalAlignment(HorizontalAlignment.CENTER);
             table.setBorder(new SolidBorder(2));
             
             //headers
             table.addCell(new Paragraph("S.N.O").setBold());
+            table.addCell(new Paragraph("Bill #").setBold());
+            table.addCell(new Paragraph("Date").setBold());
             table.addCell(new Paragraph("Total Amount Receivable").setBold());
             table.addCell(new Paragraph("Discount Amount").setBold());
             table.addCell(new Paragraph("Net Amount").setBold());
-            table.addCell(new Paragraph("Date").setBold());
+            
             int serial =1;
             //Now Add Data Into these table Columns 
             for (Report report : vectorCashReport) {
                 
                 table.addCell(new Paragraph(serial+""));
+                table.addCell(new Paragraph(report.getBillNumber()));
+                table.addCell(new Paragraph(report.getBillDate()));
                 table.addCell(new Paragraph(report.getTotalAmountReceivable()));
                 table.addCell(new Paragraph(report.getDiscountAmount()));
                 table.addCell(new Paragraph(report.getNetAmount()));
-                table.addCell(new Paragraph(report.getBillDate()));
+                
                 serial++;
             }
+            table.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
+            table.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
             table.addCell(new Cell().add(new Paragraph("Total:")).setTextAlignment(TextAlignment.RIGHT).setBold().setBorder(Border.NO_BORDER));
             table.addCell(new Cell().add(new Paragraph(vectorOfTotalCash.get(0).getTotalOf_recieveable())).setTextAlignment(TextAlignment.CENTER).setBold().setBorder(Border.NO_BORDER));
             table.addCell(new Cell().add(new Paragraph(vectorOfTotalCash.get(0).getTotalOf_discountAmount())).setTextAlignment(TextAlignment.CENTER).setBold().setBorder(Border.NO_BORDER));
             table.addCell(new Cell().add(new Paragraph(vectorOfTotalCash.get(0).getTotalOf_netAmount())).setTextAlignment(TextAlignment.CENTER).setBold().setBorder(Border.NO_BORDER));
-            table.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
+            
             layoutDocument.add(table);
             
-            layoutDocument.add(new Paragraph("\n Bill Number: _____________").setTextAlignment(TextAlignment.RIGHT));
+            
             layoutDocument.add(new Paragraph("\n\n\n"));
             layoutDocument.add(new Paragraph("Signature: _________________").setBold());
             
@@ -139,14 +146,16 @@ public class ReportDAO {
             canvas.moveTo(0, 780);
             // Drawing the line 1      
             canvas.lineTo(700, 780);
-
+            
             layoutDocument.add(new Paragraph("Sales Report").setTextAlignment(TextAlignment.CENTER));
             layoutDocument.add(new Paragraph("THE WAITERS RESTAURENT").setBold().setTextAlignment(TextAlignment.CENTER));
             layoutDocument.add(new Paragraph("Deans Trade Centre Peshawar").setTextAlignment(TextAlignment.CENTER));
             layoutDocument.add(new Paragraph("Credit-Card Sales").setTextAlignment(TextAlignment.CENTER).setUnderline().setBold());
+            layoutDocument.add(new Paragraph("From: "+ fromDate).setTextAlignment(TextAlignment.LEFT).setUnderline());
+            layoutDocument.add(new Paragraph("To: "+ toDate).setTextAlignment(TextAlignment.LEFT).setUnderline());
 
             //New Table
-            Table table = new Table(UnitValue.createPointArray(new float[]{60f, 160f, 110f, 80f, 80f}));
+            Table table = new Table(UnitValue.createPointArray(new float[]{60f, 60f , 100f ,180f, 110f, 80f}));
             table.setTextAlignment(TextAlignment.CENTER);
             table.setHorizontalAlignment(HorizontalAlignment.CENTER);
             table.setBorder(new SolidBorder(2));
@@ -154,29 +163,35 @@ public class ReportDAO {
             
             //headers
             table.addCell(new Paragraph("S.N.O").setBold());
+            table.addCell(new Paragraph("Bill #").setBold());
+            table.addCell(new Paragraph("Date").setBold());
             table.addCell(new Paragraph("Total Amount Receivable").setBold());
             table.addCell(new Paragraph("Discount Amount").setBold());
             table.addCell(new Paragraph("Net Amount").setBold());
-            table.addCell(new Paragraph("Date").setBold());
+            
             int serial =1;
             //Now Add Data Into these table Columns 
             for (Report report : vectorCreditCardReport) {
                 
                 table.addCell(new Paragraph(serial+""));
+                table.addCell(new Paragraph(report.getBillNumber()));
+                table.addCell(new Paragraph(report.getBillDate()));
                 table.addCell(new Paragraph(report.getTotalAmountReceivable()));
                 table.addCell(new Paragraph(report.getDiscountAmount()));
                 table.addCell(new Paragraph(report.getNetAmount()));
-                table.addCell(new Paragraph(report.getBillDate()));
+                
                 serial++;
             }
+            table.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
+            table.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
             table.addCell(new Cell().add(new Paragraph("Total:")).setTextAlignment(TextAlignment.RIGHT).setBold().setBorder(Border.NO_BORDER));
             table.addCell(new Cell().add(new Paragraph(vectorOfTotalCash.get(0).getTotalOf_recieveable())).setTextAlignment(TextAlignment.CENTER).setBold().setBorder(Border.NO_BORDER));
             table.addCell(new Cell().add(new Paragraph(vectorOfTotalCash.get(0).getTotalOf_discountAmount())).setTextAlignment(TextAlignment.CENTER).setBold().setBorder(Border.NO_BORDER));
             table.addCell(new Cell().add(new Paragraph(vectorOfTotalCash.get(0).getTotalOf_netAmount())).setTextAlignment(TextAlignment.CENTER).setBold().setBorder(Border.NO_BORDER));
-            table.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
+            
             layoutDocument.add(table);
             
-            layoutDocument.add(new Paragraph("\n Bill Number: _____________").setTextAlignment(TextAlignment.RIGHT));
+            
             layoutDocument.add(new Paragraph("\n\n\n"));
             layoutDocument.add(new Paragraph("Signature: _________________").setBold());
             
@@ -226,9 +241,12 @@ public class ReportDAO {
             layoutDocument.add(new Paragraph("THE WAITERS RESTAURENT").setBold().setTextAlignment(TextAlignment.CENTER));
             layoutDocument.add(new Paragraph("Deans Trade Centre Peshawar").setTextAlignment(TextAlignment.CENTER));
             layoutDocument.add(new Paragraph("Cheque Sales").setTextAlignment(TextAlignment.CENTER).setUnderline().setBold());
-
+            layoutDocument.add(new Paragraph("From: "+ fromDate).setTextAlignment(TextAlignment.LEFT).setUnderline());
+            layoutDocument.add(new Paragraph("To: "+ toDate).setTextAlignment(TextAlignment.LEFT).setUnderline());
+            
+            
             //New Table
-            Table table = new Table(UnitValue.createPointArray(new float[]{60f, 160f, 110f, 80f, 80f}));
+            Table table = new Table(UnitValue.createPointArray(new float[]{60f, 60f , 100f ,180f, 110f, 80f}));
             table.setTextAlignment(TextAlignment.CENTER);
             table.setHorizontalAlignment(HorizontalAlignment.CENTER);
             table.setBorder(new SolidBorder(2));
@@ -236,30 +254,33 @@ public class ReportDAO {
             
             //headers
             table.addCell(new Paragraph("S.N.O").setBold());
+            table.addCell(new Paragraph("Bill #").setBold());
+            table.addCell(new Paragraph("Date").setBold());
             table.addCell(new Paragraph("Total Amount Receivable").setBold());
             table.addCell(new Paragraph("Discount Amount").setBold());
             table.addCell(new Paragraph("Net Amount").setBold());
-            table.addCell(new Paragraph("Date").setBold());
+            
             int serial =1;
             //Now Add Data Into these table Columns 
             for (Report report : vectorChequeReport) {
                 
                 table.addCell(new Paragraph(serial+""));
+                table.addCell(new Paragraph(report.getBillNumber()));
+                table.addCell(new Paragraph(report.getBillDate()));
                 table.addCell(new Paragraph(report.getTotalAmountReceivable()));
                 table.addCell(new Paragraph(report.getDiscountAmount()));
                 table.addCell(new Paragraph(report.getNetAmount()));
-                table.addCell(new Paragraph(report.getBillDate()));
                 serial++;
             }
             
+            table.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
+            table.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
             table.addCell(new Cell().add(new Paragraph("Total:")).setTextAlignment(TextAlignment.RIGHT).setBold().setBorder(Border.NO_BORDER));
             table.addCell(new Cell().add(new Paragraph(vectorOfTotalCheque.get(0).getTotalOf_recieveable())).setTextAlignment(TextAlignment.CENTER).setBold().setBorder(Border.NO_BORDER));
             table.addCell(new Cell().add(new Paragraph(vectorOfTotalCheque.get(0).getTotalOf_discountAmount())).setTextAlignment(TextAlignment.CENTER).setBold().setBorder(Border.NO_BORDER));
             table.addCell(new Cell().add(new Paragraph(vectorOfTotalCheque.get(0).getTotalOf_netAmount())).setTextAlignment(TextAlignment.CENTER).setBold().setBorder(Border.NO_BORDER));
-            table.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
             layoutDocument.add(table);
             
-            layoutDocument.add(new Paragraph("\n Bill Number: _____________").setTextAlignment(TextAlignment.RIGHT));
             layoutDocument.add(new Paragraph("\n\n\n"));
             layoutDocument.add(new Paragraph("Signature: _________________").setBold());
             
