@@ -151,7 +151,7 @@ public class ReportService {
                 + " SUM(`discount_amount`) AS `totalOf_discountAmount`, "
                 + "SUM(`net_amount`) AS `totalOf_netAmount` "
                 + "FROM `restaurant_kot` WHERE DATE_FORMAT(`bill_date_time`, '%Y-%m-%d') " +
-                    " BETWEEN '"+fromDate+"' AND '"+toDate+"' AND `payment_method` = 'CREDIT_CARD' ORDER BY `id` ASC;;";
+                    " BETWEEN '"+fromDate+"' AND '"+toDate+"' AND `payment_method` = 'CHEQUE' ORDER BY `id` ASC;;";
         
         ResultSet resultSet;
         Report report;
