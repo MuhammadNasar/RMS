@@ -16,6 +16,7 @@ public class MainForm extends javax.swing.JFrame {
     private UserForm userForm;
     private PendingBillsForm pandingBillsForm;
     private PendingPaymentsForm pendingPaymentsForm;
+    private Home home;
 
     /**
      * Creates new form MainForm
@@ -31,6 +32,17 @@ public class MainForm extends javax.swing.JFrame {
                 g.fillRect(0, 0, c.getWidth(), c.getHeight());
             }
         });
+        
+        closeOtherForms();
+        
+        home = new Home();
+        desktopPane.add(home);
+        home.setVisible(true);
+        try {
+            home.setMaximum(true);
+        } catch (Exception ex) {
+
+        }
 
         //setIconImage(Toolkit.getDefaultToolkit().getClass().getResource("/images/logo_round.png"));
         //ImageIcon icon = new ImageIcon("");
@@ -39,6 +51,9 @@ public class MainForm extends javax.swing.JFrame {
     private void closeOtherForms() {
         if (!(dish == null || dish.isClosed())) {
             dish.dispose();
+        }
+        if (!(home == null || home.isClosed())) {
+            home.dispose();
         }
 
         if (!(waiters == null || waiters.isClosed())) {
@@ -110,6 +125,12 @@ public class MainForm extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnHomeMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnHomeMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnHomeMouseReleased(evt);
             }
         });
 
@@ -224,10 +245,6 @@ public class MainForm extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(112, 112, 112)
-                .addComponent(activeTab, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -244,7 +261,10 @@ public class MainForm extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnUser)
                             .addComponent(btnPendingPayments, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnPendingBills, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnPendingBills, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(112, 112, 112)
+                                .addComponent(activeTab, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -300,7 +320,7 @@ public class MainForm extends javax.swing.JFrame {
         desktopPane.setLayout(desktopPaneLayout);
         desktopPaneLayout.setHorizontalGroup(
             desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1046, Short.MAX_VALUE)
+            .addGap(0, 1305, Short.MAX_VALUE)
         );
         desktopPaneLayout.setVerticalGroup(
             desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -336,10 +356,23 @@ public class MainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnHomeMouseExited
 
     private void btnHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHomeMouseClicked
+       
+        closeOtherForms();
+        
+        home = new Home();
+        desktopPane.add(home);
+        home.setVisible(true);
+        try {
+            home.setMaximum(true);
+        } catch (Exception ex) {
+
+        }
+        
         ImageIcon btnimage = new ImageIcon(getClass().getResource("/images/btn_home_clicked.png"));
         btnHome.setIcon(btnimage);
         ImageIcon btnimage2 = new ImageIcon(getClass().getResource("/images/home_icon.png"));
         activeTab.setIcon(btnimage2);
+        
     }//GEN-LAST:event_btnHomeMouseClicked
 
     private void btnDishesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDishesMouseEntered
@@ -570,6 +603,22 @@ public class MainForm extends javax.swing.JFrame {
         btnPendingBills.setIcon(btnimage);
     }//GEN-LAST:event_btnPendingBillsMouseExited
 
+    private void btnHomeMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHomeMouseReleased
+        // TODO add your handling code here:
+        ImageIcon btnimage = new ImageIcon(getClass().getResource("/images/btn_home_clicked.png"));
+        btnHome.setIcon(btnimage);
+        ImageIcon btnimage2 = new ImageIcon(getClass().getResource("/images/home_icon.png"));
+        activeTab.setIcon(btnimage2);
+    }//GEN-LAST:event_btnHomeMouseReleased
+
+    private void btnHomeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHomeMousePressed
+        // TODO add your handling code here:
+//        ImageIcon btnimage = new ImageIcon(getClass().getResource("/images/btn_home_clicked.png"));
+//        btnHome.setIcon(btnimage);
+//        ImageIcon btnimage2 = new ImageIcon(getClass().getResource("/images/home_icon.png"));
+//        activeTab.setIcon(btnimage2);
+    }//GEN-LAST:event_btnHomeMousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -609,7 +658,7 @@ public class MainForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel activeTab;
     private javax.swing.JLabel btnDishes;
-    private javax.swing.JLabel btnHome;
+    protected javax.swing.JLabel btnHome;
     private javax.swing.JLabel btnOrders;
     private javax.swing.JLabel btnPendingBills;
     private javax.swing.JLabel btnPendingPayments;

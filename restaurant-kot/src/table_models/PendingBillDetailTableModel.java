@@ -28,7 +28,7 @@ public class PendingBillDetailTableModel extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return 4;
+        return 3;
 
     }
 
@@ -45,9 +45,9 @@ public class PendingBillDetailTableModel extends AbstractTableModel {
             case 2:
                 object = vectorpPandigBillUpdates.get(rowIndex).getAmount();
                 break;
-            case 3:
-                object = vectorpPandigBillUpdates.get(rowIndex).getSum();
-                break;
+//            case 3:
+//                object = vectorpPandigBillUpdates.get(rowIndex).getSum();
+//                break;
         }
         return object;
     }
@@ -65,9 +65,9 @@ public class PendingBillDetailTableModel extends AbstractTableModel {
             case 2:
                 name="Price";
                 break;
-            case 3:
-                name="sum";
-                break;
+//            case 3:
+//                name="sum";
+//                break;
                         
         }return name;
    }
